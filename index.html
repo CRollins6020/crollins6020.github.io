@@ -377,14 +377,28 @@
     }
     
     /* Code-inspired text decoration - using theme variables */
-    .title {
-      font-size: 1.25rem;
-      color: var(--text-lighter);
-      margin-bottom: 1rem;
-      position: relative;
-      display: inline-block;
-      padding: 0 10px;
-    }
+
+/* === Force white glowing title text with inline brackets === */
+.title {
+  color: #ffffff !important;
+  display: inline; /* keep everything on one line */
+  position: relative;
+  text-shadow:
+    0 0 4px rgba(255, 255, 255, 0.6),
+    0 0 8px rgba(255, 255, 255, 0.4),
+    0 0 12px rgba(255, 255, 255, 0.3) !important;
+}
+
+.title::before,
+.title::after {
+  color: #FFD966 !important;
+  text-shadow:
+    0 0 3px rgba(255, 217, 102, 0.6),
+    0 0 6px rgba(255, 217, 102, 0.4);
+  position: static !important;
+  margin: 0 4px;
+}
+
 
     .title::before {
       content: "<";
@@ -584,16 +598,18 @@
       margin-top: 1.6rem;
     }
     
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 20px;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: linear-gradient(to bottom, var(--primary-color), transparent 90%);
-      animation: growLine 3s ease-in-out forwards;
-    }
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 1.4rem; /* slightly left to align with icon center */
+  top: 0;
+  bottom: -2rem; /* extend past last item */
+  width: 4px;
+  background: linear-gradient(to bottom, var(--primary-color), transparent 90%);
+  animation: growLine 3s ease-in-out forwards;
+}
+
     
     @keyframes growLine {
       0% {
@@ -625,26 +641,32 @@
       transform: translateX(5px);
     }
     
-    .timeline-item::before {
-      content: "\f0b1";
-      font-family: "Font Awesome 5 Free";
-      font-weight: 900;
-      position: absolute;
-      left: -2.2rem;
-      top: 0;
-      background: var(--card-bg-translucent);
-      color: var(--primary-color);
-      font-size: 1rem;
-      border-radius: 50%;
-      width: 2.2rem;
-      height: 2.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px var(--shadow-color);
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      backdrop-filter: blur(3px);
-    }
+
+
+
+.timeline-item::before {
+  content: "\f0b1";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  left: -2.75rem; /* nudged slightly more left */
+  top: 0;
+  background: var(--card-bg-translucent);
+  color: var(--primary-color);
+  font-size: 1.35rem;
+  border-radius: 50%;
+  width: 2.6rem;
+  height: 2.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  backdrop-filter: blur(3px);
+}
+
+
+
     
     .timeline-item:hover::before {
       transform: scale(1.15);
@@ -908,6 +930,19 @@
       clip: rect(0, 0, 0, 0);
       white-space: nowrap;
       border-width: 0;
+    }
+    
+    /* Footer styling - explicit centering */
+    .footer-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 60px;
+      text-align: center;
+    }
+    
+    .footer-center p {
+      margin: 0;
     }
     
     /* Media queries */
@@ -1299,47 +1334,6 @@
       </div>
     </section>
     
-    <section class="section" id="faq" aria-labelledby="faq-heading">
-      <h2 id="faq-heading">Beyond the Resume</h2>
-      
-      <div class="faq-container" role="tablist">
-        <article class="faq-item">
-          <h3 class="faq-question" id="faq-1-question" tabindex="0" role="tab" aria-expanded="false" aria-controls="faq-1-answer">How would you describe your taste in music?</h3>
-          <div id="faq-1-answer" class="faq-answer" role="tabpanel" aria-labelledby="faq-1-question" hidden>
-            <p>Pretty all over the map. One minute I'm listening to SZA or Kendrick Lamar, then I'll switch to something completely different like Atarashii Gakko. I grew up on classics like Van Morrison, The Fugees, and Lauryn Hill too, so those are still in regular rotation. My playlists make zero sense to anyone else. I just go with whatever fits my mood at the time, regardless of genre.</p>
-          </div>
-        </article>
-        
-        <article class="faq-item">
-          <h3 class="faq-question" id="faq-2-question" tabindex="0" role="tab" aria-expanded="false" aria-controls="faq-2-answer">You like video games, eh? What video games have captured your attention lately?</h3>
-          <div id="faq-2-answer" class="faq-answer" role="tabpanel" aria-labelledby="faq-2-question" hidden>
-            <p>Star Citizen is my main go-to—I'm drawn to its expansive sci-fi sandbox environment. Different games serve different purposes for me: FPS titles when I need to unwind, Path of Exile 2 when I want to zone out, and games like Baldur's Gate 3 and Kingdom Come: Deliverance for their immersive worlds.</p>
-          </div>
-        </article>
-        
-        <article class="faq-item">
-          <h3 class="faq-question" id="faq-3-question" tabindex="0" role="tab" aria-expanded="false" aria-controls="faq-3-answer">What's your ideal way to spend a weekend?</h3>
-          <div id="faq-3-answer" class="faq-answer" role="tabpanel" aria-labelledby="faq-3-question" hidden>
-            <p>No alarms, first of all. I like starting the day slow - good coffee, actual breakfast, no rush. Then it's usually some combination of binging a show, playing whatever game I'm into at the moment, and grabbing food from this burrito place we like. Later on, heading to a local brewery for a couple drinks, then back home for a movie. Nothing fancy or planned out. Just good food, entertainment, and zero obligations.</p>
-          </div>
-        </article>
-        
-        <article class="faq-item">
-          <h3 class="faq-question" id="faq-4-question" tabindex="0" role="tab" aria-expanded="false" aria-controls="faq-4-answer">What's something seemingly trivial you've thought deeply about?</h3>
-          <div id="faq-4-answer" class="faq-answer" role="tabpanel" aria-labelledby="faq-4-question" hidden>
-            <p>The logic behind how we define 'afternoon.' If you break down the word, it literally means 'after noon,' yet we're taught it's the time between 1pm and 6pm. But here's my thing - I think 'afternoon' really includes noon itself, regardless of what the name implies. Think about it: When do people eat lunch? In the morning? No. In the evening? No. In the afternoon? Yes. And at what time? NOON! So we're all sitting there at 12:00 having our 'afternoon lunch' at a time that's technically not afternoon. Maybe that's why documentation is always delivered 'this afternoon'—nobody actually knows when that is!</p>
-          </div>
-        </article>
-        
-        <article class="faq-item">
-          <h3 class="faq-question" id="faq-5-question" tabindex="0" role="tab" aria-expanded="false" aria-controls="faq-5-answer">How do you recharge when you're feeling drained?</h3>
-          <div id="faq-5-answer" class="faq-answer" role="tabpanel" aria-labelledby="faq-5-question" hidden>
-            <p>I need to fully disconnect from technology sometimes. Taking a day trip, just driving somewhere new, exploring a bit, finding a decent place to eat. Nothing elaborate or Instagram-worthy, just a change of scenery without emails or notifications.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
 <section class="section" id="availability" aria-labelledby="availability-heading">
   <h2 id="availability-heading">Current Availability</h2>
   <p class="emphasis">The best technology deserves the best documentation. Your solution deserves a communicator who cares.</p>
@@ -1354,256 +1348,240 @@
 
   </main>
 
-  <footer role="contentinfo" class="section" style="text-align: center; padding: 1rem;">
-    <p>&copy; 2025 Corey Rollins. All rights reserved.</p>
-  </footer>
+<footer role="contentinfo" class="section footer-center">
+  <p>&copy; 2025 Corey Rollins. All rights reserved.</p>
+</footer>
 
   <button onclick="scrollToTop()" class="back-to-top" id="backToTopBtn" title="Go to top" aria-label="Back to top">
     <i class="fas fa-arrow-up" aria-hidden="true"></i>
   </button>
   
   <script>
-    // DOM references - cache DOM queries for better performance
-    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-    const sections = document.querySelectorAll('.section');
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const faqItems = document.querySelectorAll('.faq-item');
-    const testimonials = document.querySelectorAll('.testimonial');
-    const prevBtn = document.querySelector('.testimonial-prev');
-    const nextBtn = document.querySelector('.testimonial-next');
-    const dots = document.querySelectorAll('.testimonial-dot');
-    const backToTopBtn = document.getElementById("backToTopBtn");
-    let activeIndex = 0;
-    let testimonialInterval;
-    
-    // Theme switcher functionality
-    function switchTheme(e) {
-      if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        toggleSwitch.setAttribute('aria-checked', 'true');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-        toggleSwitch.setAttribute('aria-checked', 'false');
-      }    
-    }
-    
-    toggleSwitch.addEventListener('change', switchTheme, false);
-    
-    // Check for saved user preference
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
+    document.addEventListener('DOMContentLoaded', function() {
+      // DOM references - cache DOM queries for better performance
+      const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+      const sections = document.querySelectorAll('.section');
+      const timelineItems = document.querySelectorAll('.timeline-item');
+      const faqItems = document.querySelectorAll('.faq-item');
+      const testimonials = document.querySelectorAll('.testimonial');
+      const prevBtn = document.querySelector('.testimonial-prev');
+      const nextBtn = document.querySelector('.testimonial-next');
+      const dots = document.querySelectorAll('.testimonial-dot');
+      const backToTopBtn = document.getElementById("backToTopBtn");
+      let activeIndex = 0;
+      let testimonialInterval;
       
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-        toggleSwitch.setAttribute('aria-checked', 'true');
-      }
-    }
-    
-    // Use IntersectionObserver for scroll animations
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
-          sectionObserver.unobserve(entry.target); // Stop observing once animated
-        }
-      });
-    }, {
-      root: null,
-      threshold: 0.1,
-      rootMargin: "-20% 0px"
-    });
-    
-    sections.forEach(section => {
-      sectionObserver.observe(section);
-    });
-    
-    // Timeline items observer
-    const timelineObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Get index from data attribute or determine position
-          const index = Array.from(timelineItems).indexOf(entry.target);
-          setTimeout(() => {
-            entry.target.classList.add('animate');
-          }, index * 200); // Staggered animation
-          timelineObserver.unobserve(entry.target);
-        }
-      });
-    }, {
-      root: null,
-      threshold: 0.1,
-      rootMargin: "-10% 0px"
-    });
-    
-    timelineItems.forEach(item => {
-      timelineObserver.observe(item);
-    });
-    
-    // FAQ interaction with keyboard accessibility
-    faqItems.forEach(item => {
-      const question = item.querySelector('.faq-question');
-      const answer = item.querySelector('.faq-answer');
-      
-      question.addEventListener('click', toggleFaq);
-      question.addEventListener('keydown', function(e) {
-        // Toggle on Enter or Space
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          toggleFaq.call(this);
-        }
-      });
-      
-      function toggleFaq() {
-        const expanded = this.getAttribute('aria-expanded') === 'true';
-        
-        // Close all other FAQ items
-        faqItems.forEach(otherItem => {
-          const otherQuestion = otherItem.querySelector('.faq-question');
-          const otherAnswer = otherItem.querySelector('.faq-answer');
-          
-          if (otherItem !== item && otherItem.classList.contains('active')) {
-            otherItem.classList.remove('active');
-            otherQuestion.setAttribute('aria-expanded', 'false');
-            otherAnswer.hidden = true;
-          }
-        });
-        
-        // Toggle current item
-        item.classList.toggle('active');
-        this.setAttribute('aria-expanded', !expanded);
-        answer.hidden = expanded;
-      }
-    });
-    
-    // Testimonial carousel functionality
-    function showTestimonial(index) {
-      // Update ARIA attributes for accessibility
-      testimonials.forEach((testimonial, i) => {
-        testimonial.classList.remove('active');
-        dots[i].setAttribute('aria-selected', 'false');
-      });
-      
-      testimonials[index].classList.add('active');
-      dots[index].setAttribute('aria-selected', 'true');
-      activeIndex = index;
-    }
-    
-    function setupTestimonialControls() {
-      prevBtn.addEventListener('click', () => {
-        const newIndex = activeIndex === 0 ? testimonials.length - 1 : activeIndex - 1;
-        showTestimonial(newIndex);
-      });
-      
-      nextBtn.addEventListener('click', () => {
-        const newIndex = activeIndex === testimonials.length - 1 ? 0 : activeIndex + 1;
-        showTestimonial(newIndex);
-      });
-      
-      // Keyboard support for prev/next buttons
-      prevBtn.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          prevBtn.click();
-        }
-      });
-      
-      nextBtn.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          nextBtn.click();
-        }
-      });
-      
-      dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-          const index = parseInt(dot.getAttribute('data-index'));
-          showTestimonial(index);
-        });
-        
-        // Keyboard support for dots
-        dot.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            dot.click();
-          }
-        });
-      });
-    }
-    
-    // Auto-rotate testimonials
-    function startTestimonialAutoRotation() {
-      testimonialInterval = setInterval(() => {
-        const newIndex = activeIndex === testimonials.length - 1 ? 0 : activeIndex + 1;
-        showTestimonial(newIndex);
-      }, 8000);
-    }
-    
-    // Pause rotation on hover or focus
-    function setupTestimonialPause() {
-      const testimonialContainer = document.querySelector('.testimonial-container');
-      const pauseAutoRotation = () => {
-        clearInterval(testimonialInterval);
-      };
-      
-      const resumeAutoRotation = () => {
-        clearInterval(testimonialInterval);
-        startTestimonialAutoRotation();
-      };
-      
-      testimonialContainer.addEventListener('mouseenter', pauseAutoRotation);
-      testimonialContainer.addEventListener('mouseleave', resumeAutoRotation);
-      
-      // Also pause on focus of controls
-      const controls = testimonialContainer.querySelectorAll('button');
-      controls.forEach(control => {
-        control.addEventListener('focus', pauseAutoRotation);
-        control.addEventListener('blur', resumeAutoRotation);
-      });
-    }
-    
-    // Initialize testimonial carousel
-    function initTestimonials() {
-      setupTestimonialControls();
-      startTestimonialAutoRotation();
-      setupTestimonialPause();
-      
-      // Set first testimonial as active
-      showTestimonial(0);
-    }
-    
-    // Back to Top button functionality using IntersectionObserver
-    function setupBackToTopButton() {
-      const headerObserver = new IntersectionObserver((entries) => {
-        // When header is out of view, show the button
-        if (!entries[0].isIntersecting) {
-          backToTopBtn.style.display = "flex";
+      // Theme switcher functionality
+      function switchTheme(e) {
+        if (e.target.checked) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+          toggleSwitch.setAttribute('aria-checked', 'true');
         } else {
-          backToTopBtn.style.display = "none";
+          document.documentElement.setAttribute('data-theme', 'light');
+          localStorage.setItem('theme', 'light');
+          toggleSwitch.setAttribute('aria-checked', 'false');
+        }    
+      }
+      
+      if (toggleSwitch) {
+        toggleSwitch.addEventListener('change', switchTheme, false);
+        
+        // Check for saved user preference
+        const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+        
+        if (currentTheme) {
+          document.documentElement.setAttribute('data-theme', currentTheme);
+          
+          if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+            toggleSwitch.setAttribute('aria-checked', 'true');
+          }
         }
-      }, {
-        threshold: 0,
-        rootMargin: "-100px 0px 0px 0px"
-      });
+      }
       
-      // Observe the header
-      headerObserver.observe(document.querySelector('header'));
-      
-      // Scroll to top function
-      backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ 
-          top: 0, 
-          behavior: 'smooth' 
+      // Use IntersectionObserver for scroll animations
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+            sectionObserver.unobserve(entry.target);
+          }
         });
+      }, {
+        root: null,
+        threshold: 0.1,
+        rootMargin: "-20% 0px"
       });
-    }
-    
-    // Initialize page
-    function initializePage() {
-      // Set initial state for sections
+      
+      sections.forEach(section => {
+        sectionObserver.observe(section);
+      });
+      
+      // Timeline items observer
+      const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const index = Array.from(timelineItems).indexOf(entry.target);
+            setTimeout(() => {
+              entry.target.classList.add('animate');
+            }, index * 200);
+            timelineObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        root: null,
+        threshold: 0.1,
+        rootMargin: "-10% 0px"
+      });
+      
+      timelineItems.forEach(item => {
+        timelineObserver.observe(item);
+      });
+      
+      // FAQ interaction with keyboard accessibility
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        
+        if (question && answer) {
+          question.addEventListener('click', toggleFaq);
+          question.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              toggleFaq.call(this);
+            }
+          });
+        }
+        
+        function toggleFaq() {
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          
+          // Close all other FAQ items
+          faqItems.forEach(otherItem => {
+            const otherQuestion = otherItem.querySelector('.faq-question');
+            const otherAnswer = otherItem.querySelector('.faq-answer');
+            
+            if (otherQuestion && otherAnswer && otherItem !== item && otherItem.classList.contains('active')) {
+              otherItem.classList.remove('active');
+              otherQuestion.setAttribute('aria-expanded', 'false');
+              otherAnswer.hidden = true;
+            }
+          });
+          
+          // Toggle current item
+          item.classList.toggle('active');
+          this.setAttribute('aria-expanded', !expanded);
+          answer.hidden = expanded;
+        }
+      });
+      
+      // Testimonial carousel functionality
+      function showTestimonial(index) {
+        // Update ARIA attributes for accessibility
+        testimonials.forEach((testimonial, i) => {
+          testimonial.classList.remove('active');
+          dots[i].setAttribute('aria-selected', 'false');
+        });
+        
+        testimonials[index].classList.add('active');
+        dots[index].setAttribute('aria-selected', 'true');
+        activeIndex = index;
+      }
+      
+      function startTestimonialAutoRotation() {
+        // Clear any existing interval first
+        clearInterval(testimonialInterval);
+        
+        testimonialInterval = setInterval(() => {
+          const newIndex = (activeIndex + 1) % testimonials.length;
+          showTestimonial(newIndex);
+        }, 5000); // Changed to 5 seconds for more frequent rotation
+      }
+      
+      function setupTestimonialControls() {
+        if (prevBtn) {
+          prevBtn.addEventListener('click', function() {
+            const newIndex = activeIndex === 0 ? testimonials.length - 1 : activeIndex - 1;
+            showTestimonial(newIndex);
+            // Restart auto-rotation after manual navigation
+            startTestimonialAutoRotation();
+          });
+        }
+        
+        if (nextBtn) {
+          nextBtn.addEventListener('click', function() {
+            const newIndex = (activeIndex + 1) % testimonials.length;
+            showTestimonial(newIndex);
+            // Restart auto-rotation after manual navigation
+            startTestimonialAutoRotation();
+          });
+        }
+        
+        // Dot controls
+        dots.forEach(dot => {
+          dot.addEventListener('click', function() {
+            const index = parseInt(this.getAttribute('data-index'), 10);
+            showTestimonial(index);
+            // Restart auto-rotation after manual navigation
+            startTestimonialAutoRotation();
+          });
+        });
+      }
+      
+      function setupTestimonialPause() {
+        const testimonialContainer = document.querySelector('.testimonial-container');
+        
+        if (testimonialContainer) {
+          testimonialContainer.addEventListener('mouseenter', function() {
+            clearInterval(testimonialInterval);
+          });
+          
+          testimonialContainer.addEventListener('mouseleave', function() {
+            startTestimonialAutoRotation();
+          });
+        }
+      }
+      
+      // Initialize testimonial carousel if elements exist
+      if (testimonials.length > 0 && dots.length > 0) {
+        // Set first testimonial as active
+        showTestimonial(0);
+        setupTestimonialControls();
+        setupTestimonialPause();
+        startTestimonialAutoRotation();
+      }
+      
+      // Back to Top button functionality
+      function setupBackToTopButton() {
+        if (!backToTopBtn) return;
+        
+        const header = document.querySelector('header');
+        if (!header) return;
+        
+        const headerObserver = new IntersectionObserver((entries) => {
+          if (!entries[0].isIntersecting) {
+            backToTopBtn.style.display = "flex";
+          } else {
+            backToTopBtn.style.display = "none";
+          }
+        }, {
+          threshold: 0,
+          rootMargin: "-100px 0px 0px 0px"
+        });
+        
+        headerObserver.observe(header);
+      }
+      
+      // Helper function for back to top button
+      window.scrollToTop = function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      };
+      
+      // Initialize animations
       sections.forEach(section => {
         section.classList.add('animate');
       });
@@ -1615,39 +1593,25 @@
         }, 300 + index * 200);
       });
       
-      // DO NOT set first FAQ item as active - removed this code to keep FAQ collapsed
-      
-      // Initialize testimonials
-      initTestimonials();
-      
       // Setup back to top button
       setupBackToTopButton();
-    }
-    
-    // Run initialization when DOM is loaded
-    document.addEventListener('DOMContentLoaded', initializePage);
-    
-    // Keyboard navigation improvement
-    document.addEventListener('keydown', function(e) {
-      // If Escape key pressed, close any open accordions
-      if (e.key === 'Escape') {
-        faqItems.forEach(item => {
-          if (item.classList.contains('active')) {
-            const question = item.querySelector('.faq-question');
-            question.click();
-            question.focus();
-          }
-        });
-      }
-    });
-    
-    // Helper function for back to top button
-    function scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+      
+      // Keyboard navigation improvement
+      document.addEventListener('keydown', function(e) {
+        // If Escape key pressed, close any open accordions
+        if (e.key === 'Escape') {
+          faqItems.forEach(item => {
+            if (item.classList.contains('active')) {
+              const question = item.querySelector('.faq-question');
+              if (question) {
+                question.click();
+                question.focus();
+              }
+            }
+          });
+        }
       });
-    }
+    });
   </script>
 </body>
 </html>
