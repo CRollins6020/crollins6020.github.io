@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Corey Rollins | Technical Writer & Instructional Designer</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <style>
+<style>
     html {
       scroll-behavior: smooth;
     }
@@ -16,39 +16,65 @@
       color: #1a1a1a;
     }
     
-    /* General hyperlink styling */
-    a {
-      color: #375D8A;
-      text-decoration: underline;
+    /* Force ALL hyperlinks to use our colors regardless of where they are */
+    a:link, a:visited {
+      color: #375D8A !important; /* Default link color */
       transition: color 0.2s ease;
     }
     
-    a:hover {
-      color: #1f3b5c;
+    a:hover, a:active {
+      color: #1f3b5c !important; /* Darker blue on hover */
     }
     
-    /* Links on dark backgrounds */
-    header a:not(.contact-links a) {
-      color: #FFD966;
-      text-decoration: underline;
+    /* Override for dark backgrounds explicitly */
+    header a:not(.contact-links a):link,
+    header a:not(.contact-links a):visited,
+    .blue-background a:link,
+    .blue-background a:visited,
+    [style*="background:#375D8A"] a:link,
+    [style*="background:#375D8A"] a:visited,
+    [style*="background-color:#375D8A"] a:link,
+    [style*="background-color:#375D8A"] a:visited {
+      color: #FFD966 !important; /* Gold/yellow for links on dark blue */
     }
     
-    header a:not(.contact-links a):hover {
-      color: #FFF2CC;
+    header a:not(.contact-links a):hover,
+    header a:not(.contact-links a):active,
+    .blue-background a:hover,
+    .blue-background a:active,
+    [style*="background:#375D8A"] a:hover,
+    [style*="background:#375D8A"] a:active,
+    [style*="background-color:#375D8A"] a:hover,
+    [style*="background-color:#375D8A"] a:active {
+      color: #FFF2CC !important; /* Lighter gold on hover */
     }
     
-    /* Any element with dark blue background */
-    [style*="background-color: #375D8A"] a,
-    [style*="background: #375D8A"] a,
-    .section-dark a {
-      color: #FFD966;
-      text-decoration: underline;
+    /* Force contact links to keep their styling */
+    .contact-links a {
+      display: inline-block;
+      margin: 0.5rem;
+      color: #ffffff !important;
+      background-color: #4a90e2;
+      padding: 0.75rem 1.25rem;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
     
-    [style*="background-color: #375D8A"] a:hover,
-    [style*="background: #375D8A"] a:hover,
-    .section-dark a:hover {
-      color: #FFF2CC;
+    .contact-links a:hover {
+      background-color: #357ab8;
+      transform: translateY(-2px);
+      color: #ffffff !important;
+    }
+    
+    /* Now add a direct style for any links that need the gold color specifically */
+    .gold-link {
+      color: #FFD966 !important;
+    }
+    
+    .gold-link:hover {
+      color: #FFF2CC !important;
     }
     
     header {
@@ -81,21 +107,6 @@
     }
     .contact-links {
       margin-top: 1rem;
-    }
-    .contact-links a {
-      display: inline-block;
-      margin: 0.5rem;
-      color: #ffffff;
-      background-color: #4a90e2;
-      padding: 0.75rem 1.25rem;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-    .contact-links a:hover {
-      background-color: #357ab8;
-      transform: translateY(-2px);
     }
     .section {
       max-width: 1000px;
@@ -217,15 +228,9 @@
       transform: scale(1.1);
     }
     
-    /* Custom class for elements with blue background */
-    .blue-bg a {
-      color: #FFD966;
-      text-decoration: underline;
-    }
-    
-    .blue-bg a:hover {
-      color: #FFF2CC;
-      text-decoration: underline;
+    /* Blue background utility class */
+    .blue-background {
+      background-color: #375D8A;
     }
 </style>
 </head>
