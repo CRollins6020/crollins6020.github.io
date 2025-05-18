@@ -15,6 +15,42 @@
       background-color: #f5f7fa;
       color: #1a1a1a;
     }
+    
+    /* General hyperlink styling */
+    a {
+      color: #375D8A;
+      text-decoration: underline;
+      transition: color 0.2s ease;
+    }
+    
+    a:hover {
+      color: #1f3b5c;
+    }
+    
+    /* Links on dark backgrounds */
+    header a:not(.contact-links a) {
+      color: #FFD966;
+      text-decoration: underline;
+    }
+    
+    header a:not(.contact-links a):hover {
+      color: #FFF2CC;
+    }
+    
+    /* Any element with dark blue background */
+    [style*="background-color: #375D8A"] a,
+    [style*="background: #375D8A"] a,
+    .section-dark a {
+      color: #FFD966;
+      text-decoration: underline;
+    }
+    
+    [style*="background-color: #375D8A"] a:hover,
+    [style*="background: #375D8A"] a:hover,
+    .section-dark a:hover {
+      color: #FFF2CC;
+    }
+    
     header {
       background: linear-gradient(to right, #1f3b5c, #375D8A);
       color: #ffffff;
@@ -180,31 +216,18 @@
       background-color: #2c3f66;
       transform: scale(1.1);
     }
-    /* Special styling for links on dark backgrounds */
-header a, 
-.section-dark a,
-[style*="background-color: #375D8A"] a,
-[style*="background: #375D8A"] a,
-.timeline-item::before a {
-  color: #FFD966;  /* Gold/yellow for links on dark blue backgrounds */
-  text-decoration: underline;
-}
-
-header a:hover, 
-.section-dark a:hover,
-[style*="background-color: #375D8A"] a:hover,
-[style*="background: #375D8A"] a:hover,
-.timeline-item::before a:hover {
-  color: #FFF2CC;  /* Lighter gold on hover */
-  text-decoration: underline;
-}
-
-/* Keep contact links as they are since they have their own styling */
-.contact-links a {
-  color: #ffffff;
-  text-decoration: none;
-}
-  </style>
+    
+    /* Custom class for elements with blue background */
+    .blue-bg a {
+      color: #FFD966;
+      text-decoration: underline;
+    }
+    
+    .blue-bg a:hover {
+      color: #FFF2CC;
+      text-decoration: underline;
+    }
+</style>
 </head>
 <body>
   <header>
@@ -341,4 +364,4 @@ header a:hover,
     }
   </script>
 </body>
-</html> 
+</html>
