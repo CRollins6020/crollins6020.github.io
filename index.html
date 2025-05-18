@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -1371,6 +1372,7 @@
       let activeIndex = 0;
       let testimonialInterval;
       
+      
       // Theme switcher functionality
       function switchTheme(e) {
         if (e.target.checked) {
@@ -1482,21 +1484,23 @@
         testimonials.forEach((testimonial, i) => {
           testimonial.classList.remove('active');
           dots[i].setAttribute('aria-selected', 'false');
+          dots[i].classList.remove('active');
         });
         
         testimonials[index].classList.add('active');
         dots[index].setAttribute('aria-selected', 'true');
+        dots[index].classList.add('active');
         activeIndex = index;
       }
       
-      function startTestimonialAutoRotation() {
+      function startTestimonialRotation() {
         // Clear any existing interval first
         clearInterval(testimonialInterval);
         
         testimonialInterval = setInterval(() => {
           const newIndex = (activeIndex + 1) % testimonials.length;
           showTestimonial(newIndex);
-        }, 5000); // Changed to 5 seconds for more frequent rotation
+        }, 5000); // 5 seconds between slides
       }
       
       function setupTestimonialControls() {
@@ -1504,8 +1508,9 @@
           prevBtn.addEventListener('click', function() {
             const newIndex = activeIndex === 0 ? testimonials.length - 1 : activeIndex - 1;
             showTestimonial(newIndex);
-            // Restart auto-rotation after manual navigation
-            startTestimonialAutoRotation();
+            // Reset the timer to give user time to read
+            clearInterval(testimonialInterval);
+            startTestimonialRotation();
           });
         }
         
@@ -1513,8 +1518,9 @@
           nextBtn.addEventListener('click', function() {
             const newIndex = (activeIndex + 1) % testimonials.length;
             showTestimonial(newIndex);
-            // Restart auto-rotation after manual navigation
-            startTestimonialAutoRotation();
+            // Reset the timer to give user time to read
+            clearInterval(testimonialInterval);
+            startTestimonialRotation();
           });
         }
         
@@ -1523,24 +1529,11 @@
           dot.addEventListener('click', function() {
             const index = parseInt(this.getAttribute('data-index'), 10);
             showTestimonial(index);
-            // Restart auto-rotation after manual navigation
-            startTestimonialAutoRotation();
+            // Reset the timer to give user time to read
+            clearInterval(testimonialInterval);
+            startTestimonialRotation();
           });
         });
-      }
-      
-      function setupTestimonialPause() {
-        const testimonialContainer = document.querySelector('.testimonial-container');
-        
-        if (testimonialContainer) {
-          testimonialContainer.addEventListener('mouseenter', function() {
-            clearInterval(testimonialInterval);
-          });
-          
-          testimonialContainer.addEventListener('mouseleave', function() {
-            startTestimonialAutoRotation();
-          });
-        }
       }
       
       // Initialize testimonial carousel if elements exist
@@ -1548,8 +1541,9 @@
         // Set first testimonial as active
         showTestimonial(0);
         setupTestimonialControls();
-        setupTestimonialPause();
-        startTestimonialAutoRotation();
+        
+        // Start automatic rotation on page load
+        startTestimonialRotation();
       }
       
       // Back to Top button functionality
