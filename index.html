@@ -1,32 +1,165 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Corey Rollins | Technical Writer & Instructional Designer</title>
+  <title>Corey Rollins | Instructional Designer & Technical Writer</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
+    :root {
+      --primary-color: #375D8A;
+      --primary-dark: #1f3b5c;
+      --primary-light: #4a90e2;
+      --accent-color: #FFD966;
+      --accent-light: #FFF2CC;
+      --bg-color: #f5f7fa;
+      --card-bg: #ffffff;
+      --text-color: #1a1a1a;
+      --text-light: #6b6b6b;
+      --text-lighter: #cfd8e3;
+      --border-color: #e0e0e0;
+      --shadow-color: rgba(0, 0, 0, 0.15);
+      --shadow-heavy: rgba(0, 0, 0, 0.5);
+      --testimonial-bg: #eaf4fb;
+    }
+    
+    [data-theme="dark"] {
+      --primary-color: #5e8cc6;
+      --primary-dark: #375D8A;
+      --primary-light: #7eadeb;
+      --accent-color: #FFD966;
+      --accent-light: #FFF2CC;
+      --bg-color: #121212;
+      --card-bg: #1e1e1e;
+      --text-color: #f0f0f0;
+      --text-light: #b0b0b0;
+      --text-lighter: #888888;
+      --border-color: #444444;
+      --shadow-color: rgba(0, 0, 0, 0.5);
+      --shadow-heavy: rgba(0, 0, 0, 0.8);
+      --testimonial-bg: #253341;
+    }
+    
     html {
       scroll-behavior: smooth;
     }
+    
     body {
       margin: 0;
       font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f5f7fa;
-      color: #1a1a1a;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
+    
+    /* Basic link styling */
+    a {
+      color: var(--primary-color);
+      text-decoration: underline;
+      transition: color 0.2s ease;
+    }
+    
+    a:hover {
+      color: var(--primary-dark);
+    }
+    
+    /* Gold links - use this class for any link that needs to be gold */
+    .gold-link {
+      color: var(--accent-color) !important;
+      text-decoration: underline;
+    }
+    
+    .gold-link:hover {
+      color: var(--accent-light) !important;
+    }
+    
     header {
-      background: linear-gradient(to right, #1f3b5c, #375D8A);
+      background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
       color: #ffffff;
       padding: 3rem 1rem;
       text-align: center;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 20px 60px var(--shadow-heavy);
+      position: relative;
     }
+    
+    /* Theme toggle switch */
+    .theme-switch-wrapper {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .theme-switch {
+      display: inline-block;
+      height: 34px;
+      position: relative;
+      width: 60px;
+    }
+    
+    .theme-switch input {
+      display: none;
+    }
+    
+    .slider {
+      background-color: #ccc;
+      bottom: 0;
+      cursor: pointer;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: .4s;
+      border-radius: 34px;
+    }
+    
+    .slider:before {
+      background-color: white;
+      bottom: 4px;
+      content: "";
+      height: 26px;
+      left: 4px;
+      position: absolute;
+      transition: .4s;
+      width: 26px;
+      border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+      background-color: var(--primary-color);
+    }
+    
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+    
+    .theme-switch-wrapper .fa-sun {
+      color: #f39c12;
+      margin-right: 10px;
+    }
+    
+    .theme-switch-wrapper .fa-moon {
+      color: #f1c40f;
+      margin-left: 10px;
+    }
+    
+    /* Target links in the header specifically */
+    header p a {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+    
+    header p a:hover {
+      color: var(--accent-light);
+    }
+    
     .profile-container {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
+    
     .profile-container img {
       width: 160px;
       height: 160px;
@@ -35,52 +168,125 @@
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
       margin-bottom: 1rem;
     }
+    
     .profile-container h1 {
       margin: 0;
       font-size: 2.75rem;
     }
+    
     .title {
       font-size: 1.25rem;
-      color: #cfd8e3;
+      color: var(--text-lighter);
     }
+    
     .contact-links {
       margin-top: 1rem;
     }
+    
     .contact-links a {
       display: inline-block;
       margin: 0.5rem;
       color: #ffffff;
-      background-color: #4a90e2;
+      background-color: var(--primary-light);
       padding: 0.75rem 1.25rem;
       text-decoration: none;
       font-weight: bold;
       border-radius: 8px;
       transition: background-color 0.3s ease, transform 0.3s ease;
     }
+    
     .contact-links a:hover {
-      background-color: #357ab8;
+      background-color: var(--primary-dark);
       transform: translateY(-2px);
     }
+    
     .section {
       max-width: 1000px;
       margin: 2rem auto;
       padding: 2rem;
-      background: #ffffff;
+      background: var(--card-bg);
       border-radius: 1rem;
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 24px 80px var(--shadow-color);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      opacity: 0;
+      transform: translateY(30px);
     }
+    
+    .section.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
     .section h2 {
-      color: #375D8A;
-      border-bottom: 2px solid #e0e0e0;
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--border-color);
       padding-bottom: 0.5rem;
       margin-bottom: 1.5rem;
     }
+    
+    /* Skills Section Styling */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-category {
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-category h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .skill-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .skill-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .skill-name {
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .skill-level-text {
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+
+    .skill-bar {
+      height: 8px;
+      background-color: var(--border-color);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .skill-level {
+      height: 100%;
+      background: linear-gradient(to right, var(--primary-dark), var(--primary-light));
+      border-radius: 4px;
+      width: 0;
+      transition: width 1s ease;
+    }
+    
+    /* Work Timeline */
     .timeline {
       display: flex;
       flex-direction: column;
       position: relative;
       margin-left: 1rem;
     }
+    
     .timeline::before {
       content: "";
       position: absolute;
@@ -88,9 +294,10 @@
       top: 0;
       bottom: 0;
       width: 4px;
-      background: linear-gradient(to bottom, #375D8A, transparent 90%);
+      background: linear-gradient(to bottom, var(--primary-color), transparent 90%);
       animation: growLine 3s ease-in-out forwards;
     }
+    
     @keyframes growLine {
       0% {
         height: 0;
@@ -99,6 +306,7 @@
         height: 100%;
       }
     }
+    
     .timeline-item {
       display: flex;
       flex-direction: column;
@@ -106,83 +314,260 @@
       margin-left: 3rem;
       margin-bottom: 2.5rem;
       padding-left: 1rem;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
+    
+    .timeline-item.animate {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
     .timeline-item::before {
       content: "\f0b1";
       font-family: "Font Awesome 5 Free";
       font-weight: 900;
       position: absolute;
       left: -2.5rem;
-      background: #ffffff;
-      color: #375D8A;
+      background: var(--card-bg);
+      color: var(--primary-color);
       font-size: 1.2rem;
       border-radius: 50%;
       padding: 0.5rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 12px var(--shadow-color);
       transition: transform 0.3s ease;
     }
+    
     .timeline-item:hover::before {
       transform: scale(1.15);
     }
+    
     .timeline-item h3 {
       margin: 0 0 0.2rem;
       font-size: 1.25rem;
-      color: #2c3e50;
+      color: var(--text-color);
     }
+    
     .timeline-item .company {
       font-weight: 500;
-      color: #6b6b6b;
+      color: var(--text-light);
       font-size: 0.95rem;
       margin-bottom: 0.5rem;
     }
+    
     .timeline-item ul {
       margin: 0;
       padding-left: 1rem;
     }
+    
     .timeline-item li {
       margin-bottom: 0.5rem;
     }
+    
+    /* Testimonial Carousel */
+    .testimonial-container {
+      position: relative;
+    }
+    
+    .testimonial-carousel {
+      overflow: hidden;
+      position: relative;
+      height: 350px;
+    }
+    
     .testimonial {
-      background: #eaf4fb;
-      border-left: 4px solid #375D8A;
+      background: var(--testimonial-bg);
+      border-left: 4px solid var(--primary-color);
       border-radius: 1rem;
       padding: 1.5rem;
       margin-bottom: 1.5rem;
-      color: #1a1a1a;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+      color: var(--text-color);
+      box-shadow: 0 16px 40px var(--shadow-color);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      opacity: 0;
+      transform: translateX(100px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
+    
+    .testimonial.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .testimonial p {
+      font-style: italic;
+    }
+    
     .testimonial .author {
       font-weight: bold;
-      color: #1a1a1a;
+      color: var(--text-color);
       margin-top: 1rem;
+      font-style: normal;
     }
+    
     .testimonial .role {
       font-size: 0.9rem;
-      color: #555;
+      color: var(--text-light);
+      font-style: normal;
     }
+    
+    .testimonial-nav {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    
+    .testimonial-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--border-color);
+      margin: 0 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .testimonial-dot.active {
+      background-color: var(--primary-color);
+    }
+    
+    .testimonial-prev, .testimonial-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      z-index: 10;
+      transition: background-color 0.3s ease;
+    }
+    
+    .testimonial-prev:hover, .testimonial-next:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    .testimonial-prev {
+      left: -20px;
+    }
+    
+    .testimonial-next {
+      right: -20px;
+    }
+    
+    /* FAQ Section */
+    .faq-container {
+      margin-top: 2rem;
+    }
+    
+    .faq-item {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1rem;
+    }
+    
+    .faq-question {
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .faq-question::after {
+      content: '\f107';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      transition: transform 0.3s ease;
+    }
+    
+    .faq-item.active .faq-question::after {
+      transform: rotate(180deg);
+    }
+    
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      line-height: 1.6;
+    }
+    
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      margin-top: 1rem;
+    }
+    
     .back-to-top {
       display: none;
       position: fixed;
       bottom: 30px;
       right: 30px;
       z-index: 99;
-      background-color: #375D8A;
+      background-color: var(--primary-color);
       color: white;
       cursor: pointer;
       padding: 12px 16px;
       border-radius: 50%;
       font-size: 18px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      box-shadow: 0 8px 24px var(--shadow-heavy);
       transition: background-color 0.3s, transform 0.3s;
     }
+    
     .back-to-top:hover {
-      background-color: #2c3f66;
+      background-color: var(--primary-dark);
       transform: scale(1.1);
+    }
+    
+    /* Utility classes */
+    .mt-1 { margin-top: 0.5rem; }
+    .mt-2 { margin-top: 1rem; }
+    .mt-3 { margin-top: 1.5rem; }
+    .mt-4 { margin-top: 2rem; }
+    .mt-5 { margin-top: 2.5rem; }
+    
+    .emphasis {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    /* Media queries */
+    @media (max-width: 768px) {
+      .skills-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .testimonial-prev, .testimonial-next {
+        display: none;
+      }
+      
+      .testimonial-carousel {
+        height: 450px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
+    <div class="theme-switch-wrapper">
+      <i class="fas fa-sun"></i>
+      <label class="theme-switch" for="checkbox">
+        <input type="checkbox" id="checkbox" />
+        <span class="slider"></span>
+      </label>
+      <i class="fas fa-moon"></i>
+    </div>
+    
     <div class="profile-container">
       <img src="https://iili.io/36TbGja.jpg" alt="Corey Rollins" />
       <h1>Corey Rollins</h1>
@@ -192,6 +577,7 @@
         <a href="mailto:corey.p.rollins@gmail.com"><i class="fas fa-envelope"></i> Email</a>
         <a href="https://www.linkedin.com/in/corey-p-rollins" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
         <a href="https://github.com/CRollins6020/CRollins6020" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="/path/to/Corey_Rollins_Resume.pdf" download><i class="fas fa-file-pdf"></i> Resume</a>
       </div>
     </div>
   </header>
@@ -199,11 +585,191 @@
   <section class="section" id="about">
     <h2>About Me</h2>
     <p>I'm a technical content professional with over a decade of experience crafting clear, engaging, and impactful learning content and documentation. My background spans instructional design, technical writing, and enablement strategy—with a focus on making technology approachable, understandable, and actionable.</p>
-    <p>I’ve worked closely with SMEs, product managers, and engineering teams to produce everything from onboarding materials and product walkthroughs to internal enablement content. If you’re looking for a resume with specific project details or deliverables, <strong>I’m happy to provide one on request</strong>.</p>
+    <p><span class="emphasis">When technology is complex, confusion becomes expensive.</span> I've worked closely with SMEs, product managers, and engineering teams to produce everything from onboarding materials and product walkthroughs to internal enablement content. If you're looking for a resume with specific project details or deliverables, <strong>I'm happy to provide one on request</strong>.</p>
     <p>To view my Technical Writing portfolio, visit my <a href="https://github.com/CRollins6020/CRollins6020" target="_blank">GitHub profile</a>.</p>
   </section>
-    <section class="section" id="work-history">
+  
+  <section class="section" id="skills">
+    <h2>Technical & Content Skills</h2>
+    
+    <div class="skills-container">
+      <!-- Documentation Tools -->
+      <div class="skill-category">
+        <h3>Documentation Tools</h3>
+        <div class="skill-items">
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>MadCap Flare</span>
+              <span class="skill-level-text">90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" data-level="90"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Confluence</span>
+              <span class="skill-level-text">95%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" data-level="95"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Markdown</span>
+              <span class="skill-level-text">85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" data-level="85"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>XML/DITA</span>
+              <span class="skill-level-text">70%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" data-level="70"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Instructional Design -->
+      <div class="skill-category">
+        <h3>Learning Design</h3>
+        <div class="skill-items">
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Articulate 360</span>
+              <span class="skill-level-text">90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" data-level="90"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Adobe Captivate</span>
+              <span class="skill-level-text">80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" data-level="80"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>LMS Administration</span>
+              <span class="skill-level-text">85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" data-level="85"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>ADDIE Methodology</span>
+              <span class="skill-level-text">95%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" data-level="95"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Technical Knowledge -->
+      <div class="skill-category">
+        <h3>Technical Knowledge</h3>
+        <div class="skill-items">
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>HTML/CSS</span>
+              <span class="skill-level-text">80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" data-level="80"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>API Documentation</span>
+              <span class="skill-level-text">75%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" data-level="75"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Git/Version Control</span>
+              <span class="skill-level-text">70%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" data-level="70"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Email Security/Architecture</span>
+              <span class="skill-level-text">90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" data-level="90"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Content Design -->
+      <div class="skill-category">
+        <h3>Content Design</h3>
+        <div class="skill-items">
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Information Architecture</span>
+              <span class="skill-level-text">90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" data-level="90"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>UX Writing</span>
+              <span class="skill-level-text">85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" data-level="85"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Style Guide Development</span>
+              <span class="skill-level-text">95%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" data-level="95"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">
+              <span>Visual Communication</span>
+              <span class="skill-level-text">80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" data-level="80"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section" id="work-history">
     <h2>Work History</h2>
+    <p class="emphasis">Like good documentation, my career path has been purposeful, structured, and continuously improving.</p>
     <div class="timeline">
       <div class="timeline-item">
         <h3>Senior Instructional Designer</h3>
@@ -263,57 +829,264 @@
   </section>
 
   <section class="section" id="testimonials">
-  <h2>Testimonials</h2>
+    <h2>Testimonials</h2>
+    <p class="emphasis">The best documentation gets used. The best instructional designers get recommended.</p>
+    
+    <div class="testimonial-container">
+      <button class="testimonial-prev"><i class="fas fa-chevron-left"></i></button>
+      
+      <div class="testimonial-carousel">
+        <div class="testimonial active" data-index="0">
+          <div class="author"><a href="https://www.linkedin.com/in/aj-steffenberg/" target="_blank">A.J. Steffenberg</a></div>
+          <div class="role">VP, Global Services | Mimecast</div>
+          <p>"When I started at Mimecast, Corey was already a manager of one of our teams, and what stands out to me with our time there is how much Corey evolved. He has an innate gift of 
+          situational analysis and will give an accurate assessment concerning the feasibility of a task. <br><br>With the help of his perspectives, we were able to effectively specialize the 
+          teams into specific Customer Onboarding and Professional Services functions, as well as successfully scale up the size of the teams and the profitability of the business. Corey 
+          was consistently reliable with his perspectives and I could count on his judgement and execution on a daily basis."</p>
+        </div>
 
-  <div class="testimonial">
-    <div class="author"><a href="https://www.linkedin.com/in/aj-steffenberg/" target="_blank">A.J. Steffenberg</a></div>
-    <div class="role">VP, Global Services | Mimecast</div>
-    <p>"When I started at Mimecast, Corey was already a manager of one of our teams, and what stands out to me with our time there is how much Corey evolved. He has an innate gift of 
-    situational analysis and will give an accurate assessment concerning the feasibility of a task. <br><br>With the help of his perspectives, we were able to effectively specialize the 
-    teams into specific Customer Onboarding and Professional Services functions, as well as successfully scale up the size of the teams and the profitability of the business. Corey 
-    was consistently reliable with his perspectives and I could count on his judgement and execution on a daily basis."</p>
-  </div>
+        <div class="testimonial" data-index="1">
+          <div class="author"><a href="https://www.linkedin.com/in/annelise-cockcroft-a5955237/" target="_blank">Annelise Cockcroft</a></div>
+          <div class="role">Principal Project Manager | Mimecast</div>
+          <p>"I am pleased to recommend Corey, with whom I have had the pleasure of working for over six years. Throughout our time together, we have both taken on various roles, and I have 
+          consistently been impressed by Corey's exceptional attention to detail. Corey has an outstanding track record of delivering all projects on time, ensuring that deadlines are met 
+          without compromising quality. <br><br>The content he has created as an instructional designer over the past few years is of the highest standard, showcasing his creativity and expertise 
+          in the field. Beyond his professional skills, Corey is a true asset to any company. His loyalty and dedication to his work are impeccable, making him not only a reliable colleague 
+          but also a trusted team member. I wholeheartedly endorse Corey and believe he will continue to excel in any endeavor he pursues."</p>
+        </div>
 
-  <div class="testimonial">
-    <div class="author"><a href="https://www.linkedin.com/in/annelise-cockcroft-a5955237/" target="_blank">Annelise Cockcroft</a></div>
-    <div class="role">Principal Project Manager | Mimecast</div>
-    <p>"I am pleased to recommend Corey, with whom I have had the pleasure of working for over six years. Throughout our time together, we have both taken on various roles, and I have 
-    consistently been impressed by Corey’s exceptional attention to detail. Corey has an outstanding track record of delivering all projects on time, ensuring that deadlines are met 
-    without compromising quality. <br><br>The content he has created as an instructional designer over the past few years is of the highest standard, showcasing his creativity and expertise 
-    in the field. Beyond his professional skills, Corey is a true asset to any company. His loyalty and dedication to his work are impeccable, making him not only a reliable colleague 
-    but also a trusted team member. I wholeheartedly endorse Corey and believe he will continue to excel in any endeavor he pursues."</p>
-  </div>
+        <div class="testimonial" data-index="2">
+          <div class="author"><a href="https://www.linkedin.com/in/tommy-michaud-81687b101/" target="_blank">Tommy Michaud</a></div>
+          <div class="role">Senior Technical Specialist | Mimecast</div>
+          <p>"Corey was an invaluable teammate during my time at Mimecast. He was always the go-to person when you needed to get up to speed or understand something deeply. His attention to 
+          detail and his ability to teach information clearly made him a trusted resource across the team. On top of that, he's an incredibly fun and positive person to work with."</p>
+        </div>
+      </div>
+      
+      <button class="testimonial-next"><i class="fas fa-chevron-right"></i></button>
+      
+      <div class="testimonial-nav">
+        <div class="testimonial-dot active" data-index="0"></div>
+        <div class="testimonial-dot" data-index="1"></div>
+        <div class="testimonial-dot" data-index="2"></div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <p class="emphasis">Great documentation anticipates questions. Great technical communicators answer them.</p>
+    
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question">What types of documentation do you specialize in?</div>
+        <div class="faq-answer">
+          <p>I specialize in creating user manuals, product guides, knowledge base articles, and training materials that transform complex technical concepts into clear, actionable content. My experience spans both technical documentation and instructional design, with particular strengths in onboarding materials, troubleshooting guides, and process documentation.</p>
+          <p>Whether it's creating step-by-step guides for end-users or developing comprehensive technical references for internal teams, I focus on matching the documentation style to the audience's needs and knowledge level.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">How do you approach a new documentation project?</div>
+        <div class="faq-answer">
+          <p>My process begins with stakeholder interviews and audience analysis to understand the specific needs and knowledge gaps. I then collaborate with subject matter experts to gather technical information, develop a content strategy, and create a documentation plan.</p>
+          <p>For complex projects, I develop a structured information architecture before drafting content, ensuring consistency and scalability. Each deliverable undergoes technical review, user testing, and quality assurance before publication. Throughout the process, I maintain a focus on user needs, readability, and technical accuracy.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">What's your availability for new opportunities?</div>
+        <div class="faq-answer">
+          <p>I'm currently open to new full-time opportunities in instructional design and technical writing roles. I can start a new position with two weeks' notice.</p>
+          <p>I'm open to remote, hybrid, or on-site positions in the greater Boston area. For the right opportunity, I'm also open to relocation. I'm particularly interested in roles where I can leverage my instructional design experience while growing my technical writing skills.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">How do you keep documentation updated with rapidly changing products?</div>
+        <div class="faq-answer">
+          <p>Maintaining current documentation in fast-paced environments requires a systematic approach. I implement documentation as code principles where appropriate, maintain close relationships with development and product teams, and establish clear version control practices.</p>
+          <p>I also believe in creating modular content that can be updated efficiently, implementing regular review cycles, and using analytics to identify documentation areas that need attention. For particularly dynamic products, I develop templates and reusable components that streamline updates while maintaining consistency.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">Can you describe your experience transitioning technical content between systems?</div>
+        <div class="faq-answer">
+          <p>I've led several content migration projects, including the transition of a knowledge base with over 500 articles from a legacy system to Confluence. This process involved content auditing, information architecture restructuring, metadata standardization, and establishing new governance processes.</p>
+          <p>The key to successful content migration is balancing technical requirements with user experience considerations. I believe in preserving what works, improving what doesn't, and ensuring the new system better serves both content creators and end users. My approach typically includes thorough planning, stakeholder alignment, content transformation, and post-migration optimization.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="testimonial">
-    <div class="author"><a href="https://www.linkedin.com/in/tommy-michaud-81687b101/" target="_blank">Tommy Michaud</a></div>
-    <div class="role">Senior Technical Specialist | Mimecast</div>
-    <p>"Corey was an invaluable teammate during my time at Mimecast. He was always the go-to person when you needed to get up to speed or understand something deeply. His attention to 
-    detail and his ability to teach information clearly made him a trusted resource across the team. On top of that, he's an incredibly fun and positive person to work with."</p>
-  </div>
-</section>
-
- <section class="section" id="availability">
+  <section class="section" id="availability">
     <h2>Current Availability</h2>
-    <p>I’m open to new opportunities in documentation, enablement, and training. Whether for internal platforms or customer-facing solutions, I bring structure and clarity to every technical narrative.</p>
+    <p class="emphasis">The best technology deserves the best documentation. Your solution deserves a communicator who cares.</p>
+    <p>I'm open to new opportunities in documentation, enablement, and training. Whether for internal platforms or customer-facing solutions, I bring structure and clarity to every technical narrative.</p>
     <p><a href="mailto:corey.p.rollins@gmail.com">Reach out to start a conversation</a>. A tailored resume is available upon request.</p>
   </section>
 
   <button onclick="scrollToTop()" class="back-to-top" id="backToTopBtn" title="Go to top">
     ↑
   </button>
+  
   <script>
+    // Theme switcher functionality
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    
+    function switchTheme(e) {
+      if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      }    
+    }
+    
+    toggleSwitch.addEventListener('change', switchTheme, false);
+    
+    // Check for saved user preference
+    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+    
+    if (currentTheme) {
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      
+      if (currentTheme === 'dark') {
+        toggleSwitch.checked = true;
+      }
+    }
+    
+    // Section animation on scroll
+    const sections = document.querySelectorAll('.section');
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    
+    function checkScroll() {
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < window.innerHeight * 0.8) {
+          section.classList.add('animate');
+          
+          // Animate skill bars when skills section becomes visible
+          if (section.id === 'skills' && !section.classList.contains('skills-animated')) {
+            const skillLevels = section.querySelectorAll('.skill-level');
+            skillLevels.forEach(skill => {
+              setTimeout(() => {
+                skill.style.width = skill.getAttribute('data-level') + '%';
+              }, 200);
+            });
+            section.classList.add('skills-animated');
+          }
+        }
+      });
+      
+      // Animate timeline items with a delay
+      timelineItems.forEach((item, index) => {
+        const itemTop = item.getBoundingClientRect().top;
+        if (itemTop < window.innerHeight * 0.8) {
+          setTimeout(() => {
+            item.classList.add('animate');
+          }, index * 200); // Staggered animation
+        }
+      });
+    }
+    
+    // FAQ interaction
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      
+      question.addEventListener('click', () => {
+        // Close all other FAQ items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('active')) {
+            otherItem.classList.remove('active');
+          }
+        });
+        
+        // Toggle current item
+        item.classList.toggle('active');
+      });
+    });
+    
+    // Testimonial carousel functionality
+    const testimonials = document.querySelectorAll('.testimonial');
+    const prevBtn = document.querySelector('.testimonial-prev');
+    const nextBtn = document.querySelector('.testimonial-next');
+    const dots = document.querySelectorAll('.testimonial-dot');
+    let activeIndex = 0;
+    
+    function showTestimonial(index) {
+      testimonials.forEach(testimonial => {
+        testimonial.classList.remove('active');
+      });
+      
+      dots.forEach(dot => {
+        dot.classList.remove('active');
+      });
+      
+      testimonials[index].classList.add('active');
+      dots[index].classList.add('active');
+      activeIndex = index;
+    }
+    
+    prevBtn.addEventListener('click', () => {
+      const newIndex = activeIndex === 0 ? testimonials.length - 1 : activeIndex - 1;
+      showTestimonial(newIndex);
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      const newIndex = activeIndex === testimonials.length - 1 ? 0 : activeIndex + 1;
+      showTestimonial(newIndex);
+    });
+    
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const index = parseInt(dot.getAttribute('data-index'));
+        showTestimonial(index);
+      });
+    });
+    
+    // Auto-rotate testimonials
+    let testimonialInterval = setInterval(() => {
+      const newIndex = activeIndex === testimonials.length - 1 ? 0 : activeIndex + 1;
+      showTestimonial(newIndex);
+    }, 8000);
+    
+    // Pause rotation on hover
+    const testimonialContainer = document.querySelector('.testimonial-container');
+    testimonialContainer.addEventListener('mouseenter', () => {
+      clearInterval(testimonialInterval);
+    });
+    
+    testimonialContainer.addEventListener('mouseleave', () => {
+      testimonialInterval = setInterval(() => {
+        const newIndex = activeIndex === testimonials.length - 1 ? 0 : activeIndex + 1;
+        showTestimonial(newIndex);
+      }, 8000);
+    });
+    
     // Back to Top button functionality
     const backToTopBtn = document.getElementById("backToTopBtn");
-    window.onscroll = function () {
+    
+    window.onscroll = function() {
+      checkScroll();
+      
       if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
         backToTopBtn.style.display = "block";
       } else {
         backToTopBtn.style.display = "none";
       }
     };
+    
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+    
+    // Initialize
+    checkScroll();
   </script>
 </body>
 </html>
