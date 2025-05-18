@@ -3,8 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Corey Rollins - Instructional Designer & Technical Writer with over a decade of experience creating clear, engaging documentation and learning solutions." />
+  <meta name="keywords" content="instructional design, technical writing, documentation, learning materials, content strategy" />
+  <meta name="author" content="Corey Rollins" />
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="Corey Rollins | Instructional Designer & Technical Writer" />
+  <meta property="og:description" content="Technical content professional specializing in creating clear, actionable documentation and learning experiences." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourwebsite.com" />
+  <meta property="og:image" content="https://iili.io/36TbGja.jpg" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Corey Rollins | Instructional Designer & Technical Writer" />
+  <meta name="twitter:description" content="Technical content professional specializing in creating clear, actionable documentation and learning experiences." />
+  <meta name="twitter:image" content="https://iili.io/36TbGja.jpg" />
+  
   <title>Corey Rollins | Instructional Designer & Technical Writer</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" defer />
   <style>
     :root {
       --primary-color: #375D8A;
@@ -21,6 +38,7 @@
       --shadow-color: rgba(0, 0, 0, 0.15);
       --shadow-heavy: rgba(0, 0, 0, 0.5);
       --testimonial-bg: #eaf4fb;
+      --focus-outline: 3px solid #4a90e2;
     }
     
     [data-theme="dark"] {
@@ -38,21 +56,98 @@
       --shadow-color: rgba(0, 0, 0, 0.5);
       --shadow-heavy: rgba(0, 0, 0, 0.8);
       --testimonial-bg: #253341;
+      --focus-outline: 3px solid #FFD966;
     }
     
+    /* Global focus style reset */
+    *:focus {
+      outline: none;
+    }
+    
+    /* Keyboard-only focus styles for accessibility */
+    *:focus-visible {
+      outline: var(--focus-outline);
+      outline-offset: 2px;
+    }
+    
+    /* FAQ question special handling */
+    .faq-question {
+      transition: color 0.2s ease;
+    }
+    
+    .faq-question:hover {
+      color: var(--primary-color);
+    }
+    
+    .faq-question:active {
+      color: var(--primary-dark);
+    }
+    
+    /* Base styles */
     html {
       scroll-behavior: smooth;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    
+    *, *:before, *:after {
+      box-sizing: inherit;
     }
     
     body {
       margin: 0;
-      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
       transition: background-color 0.3s ease, color 0.3s ease;
+      line-height: 1.6;
+      font-size: 1rem;
     }
     
-    /* Basic link styling */
+    /* Skip navigation link for accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--primary-dark);
+      color: white;
+      padding: 8px 16px;
+      z-index: 100;
+      text-decoration: none;
+      transition: top 0.3s;
+    }
+    
+    .skip-link:focus {
+      top: 0;
+    }
+    
+    /* Typography and links */
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 0;
+      line-height: 1.3;
+    }
+    
+    h1 {
+      font-size: 2.75rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.25rem;
+    }
+    
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    p {
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    
     a {
       color: var(--primary-color);
       text-decoration: underline;
@@ -63,7 +158,7 @@
       color: var(--primary-dark);
     }
     
-    /* Gold links - use this class for any link that needs to be gold */
+    /* Gold links */
     .gold-link {
       color: var(--accent-color) !important;
       text-decoration: underline;
@@ -73,6 +168,7 @@
       color: var(--accent-light) !important;
     }
     
+    /* Header */
     header {
       background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
       color: #ffffff;
@@ -89,6 +185,7 @@
       right: 20px;
       display: flex;
       align-items: center;
+      z-index: 10;
     }
     
     .theme-switch {
@@ -99,7 +196,9 @@
     }
     
     .theme-switch input {
-      display: none;
+      opacity: 0;
+      width: 0;
+      height: 0;
     }
     
     .slider {
@@ -158,6 +257,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      max-width: 800px;
+      margin: 0 auto;
     }
     
     .profile-container img {
@@ -169,22 +270,22 @@
       margin-bottom: 1rem;
     }
     
-    .profile-container h1 {
-      margin: 0;
-      font-size: 2.75rem;
-    }
-    
     .title {
       font-size: 1.25rem;
       color: var(--text-lighter);
+      margin-bottom: 1rem;
     }
     
     .contact-links {
-      margin-top: 1rem;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
     
     .contact-links a {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       margin: 0.5rem;
       color: #ffffff;
       background-color: var(--primary-light);
@@ -195,9 +296,18 @@
       transition: background-color 0.3s ease, transform 0.3s ease;
     }
     
+    .contact-links a i {
+      margin-right: 8px;
+    }
+    
     .contact-links a:hover {
       background-color: var(--primary-dark);
       transform: translateY(-2px);
+    }
+    
+    /* Main content */
+    main {
+      padding: 1rem;
     }
     
     .section {
@@ -224,59 +334,72 @@
       margin-bottom: 1.5rem;
     }
     
-    /* Skills Section Styling */
-    .skills-container {
+    /* Modern Skills Section Styling */
+    .modern-skills-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
 
-    .skill-category {
-      margin-bottom: 1.5rem;
+    .skill-panel {
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
     }
 
-    .skill-category h3 {
-      color: var(--primary-color);
-      margin-bottom: 1rem;
-      font-size: 1.2rem;
+    .skill-panel:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     }
 
-    .skill-items {
+    .skill-header {
+      background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+      color: white;
+      padding: 1.2rem;
       display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .skill-header i {
+      font-size: 1.4rem;
+      margin-right: 0.8rem;
+    }
+
+    .skill-header h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: white;
+    }
+
+    .skill-content {
+      padding: 1.2rem;
     }
 
     .skill-item {
+      margin-bottom: 0.8rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border-color);
+      transition: transform 0.2s ease;
       display: flex;
-      flex-direction: column;
+      align-items: center;
     }
 
-    .skill-name {
+    .skill-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .skill-item:hover {
+      transform: translateX(5px);
+    }
+
+    .skill-item span {
       font-weight: 500;
-      margin-bottom: 0.3rem;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .skill-level-text {
-      color: var(--text-light);
-      font-size: 0.85rem;
-    }
-
-    .skill-bar {
-      height: 8px;
-      background-color: var(--border-color);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .skill-level {
-      height: 100%;
-      background: linear-gradient(to right, var(--primary-dark), var(--primary-light));
-      border-radius: 4px;
-      width: 0;
-      transition: width 1s ease;
     }
     
     /* Work Timeline */
@@ -285,6 +408,7 @@
       flex-direction: column;
       position: relative;
       margin-left: 1rem;
+      margin-top: 2rem;
     }
     
     .timeline::before {
@@ -330,11 +454,16 @@
       font-weight: 900;
       position: absolute;
       left: -2.5rem;
+      top: 0;
       background: var(--card-bg);
       color: var(--primary-color);
       font-size: 1.2rem;
       border-radius: 50%;
-      padding: 0.5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       box-shadow: 0 4px 12px var(--shadow-color);
       transition: transform 0.3s ease;
     }
@@ -358,22 +487,28 @@
     
     .timeline-item ul {
       margin: 0;
-      padding-left: 1rem;
+      padding-left: 1.25rem;
     }
     
     .timeline-item li {
       margin-bottom: 0.5rem;
     }
     
+    .timeline-item li:last-child {
+      margin-bottom: 0;
+    }
+    
     /* Testimonial Carousel */
     .testimonial-container {
       position: relative;
+      margin-top: 2rem;
     }
     
     .testimonial-carousel {
       overflow: hidden;
       position: relative;
       height: 350px;
+      border-radius: 1rem;
     }
     
     .testimonial {
@@ -381,21 +516,23 @@
       border-left: 4px solid var(--primary-color);
       border-radius: 1rem;
       padding: 1.5rem;
-      margin-bottom: 1.5rem;
       color: var(--text-color);
       box-shadow: 0 16px 40px var(--shadow-color);
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
+      height: 100%;
       opacity: 0;
       transform: translateX(100px);
       transition: opacity 0.5s ease, transform 0.5s ease;
+      overflow-y: auto;
     }
     
     .testimonial.active {
       opacity: 1;
       transform: translateX(0);
+      z-index: 1;
     }
     
     .testimonial p {
@@ -418,7 +555,7 @@
     .testimonial-nav {
       display: flex;
       justify-content: center;
-      margin-top: 10px;
+      margin-top: 1rem;
     }
     
     .testimonial-dot {
@@ -429,6 +566,8 @@
       margin: 0 5px;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      border: none;
+      padding: 0;
     }
     
     .testimonial-dot.active {
@@ -483,6 +622,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 0.5rem 0;
+      transition: color 0.2s ease;
     }
     
     .faq-question::after {
@@ -496,6 +637,10 @@
       transform: rotate(180deg);
     }
     
+    .faq-question:hover {
+      color: var(--primary-color);
+    }
+    
     .faq-answer {
       max-height: 0;
       overflow: hidden;
@@ -504,7 +649,7 @@
     }
     
     .faq-item.active .faq-answer {
-      max-height: 300px;
+      max-height: 500px;
       margin-top: 1rem;
     }
     
@@ -518,10 +663,16 @@
       color: white;
       cursor: pointer;
       padding: 12px 16px;
+      border: none;
       border-radius: 50%;
       font-size: 18px;
       box-shadow: 0 8px 24px var(--shadow-heavy);
       transition: background-color 0.3s, transform 0.3s;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .back-to-top:hover {
@@ -541,9 +692,37 @@
       font-weight: 600;
     }
     
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+    
     /* Media queries */
     @media (max-width: 768px) {
-      .skills-container {
+      html {
+        font-size: 14px;
+      }
+      
+      h1 {
+        font-size: 2.25rem;
+      }
+      
+      h2 {
+        font-size: 1.75rem;
+      }
+      
+      .section {
+        padding: 1.5rem;
+      }
+      
+      .modern-skills-container {
         grid-template-columns: 1fr;
       }
       
@@ -554,388 +733,447 @@
       .testimonial-carousel {
         height: 450px;
       }
+      
+      .contact-links {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .contact-links a {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      html {
+        font-size: 12px;
+      }
+      
+      .section {
+        padding: 1.25rem;
+        margin: 1.5rem auto;
+      }
+      
+      .timeline-item {
+        margin-left: 2.5rem;
+      }
+      
+      .testimonial-carousel {
+        height: 500px;
+      }
+    }
+    
+    /* Print styles */
+    @media print {
+      body {
+        background-color: white;
+        color: black;
+      }
+      
+      .section {
+        box-shadow: none;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      
+      .theme-switch-wrapper, .back-to-top {
+        display: none !important;
+      }
+      
+      a {
+        text-decoration: none;
+        color: black;
+      }
+      
+      .timeline::before {
+        display: none;
+      }
     }
   </style>
+  <!-- Structured data for Professional Profile -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Corey Rollins",
+      "jobTitle": "Instructional Designer & Technical Writer",
+      "description": "Technical content professional with over a decade of experience creating clear, engaging content.",
+      "image": "https://iili.io/36TbGja.jpg",
+      "email": "corey.p.rollins@gmail.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/corey-p-rollins",
+        "https://github.com/CRollins6020/CRollins6020"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Mimecast"
+      }
+    }
+  </script>
 </head>
 <body>
-  <header>
-    <div class="theme-switch-wrapper">
-      <i class="fas fa-sun"></i>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <header role="banner">
+    <div class="theme-switch-wrapper" aria-labelledby="theme-label">
+      <span id="theme-label" class="sr-only">Toggle dark mode</span>
+      <i class="fas fa-sun" aria-hidden="true"></i>
       <label class="theme-switch" for="checkbox">
-        <input type="checkbox" id="checkbox" />
+        <input type="checkbox" id="checkbox" role="switch" aria-checked="false" />
         <span class="slider"></span>
       </label>
-      <i class="fas fa-moon"></i>
+      <i class="fas fa-moon" aria-hidden="true"></i>
     </div>
     
     <div class="profile-container">
-      <img src="https://iili.io/36TbGja.jpg" alt="Corey Rollins" />
+      <img src="https://iili.io/36TbGja.jpg" alt="Corey Rollins" width="160" height="160" />
       <h1>Corey Rollins</h1>
       <div class="title">Instructional Designer & Aspiring Technical Writer</div>
       <p>Good technology solves problems. Good documentation prevents them.</p>
-      <div class="contact-links">
-        <a href="mailto:corey.p.rollins@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-        <a href="https://www.linkedin.com/in/corey-p-rollins" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://github.com/CRollins6020/CRollins6020" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        <a href="/path/to/Corey_Rollins_Resume.pdf" download><i class="fas fa-file-pdf"></i> Resume</a>
-      </div>
+      <nav class="contact-links" aria-label="Contact links">
+        <a href="mailto:corey.p.rollins@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i> Email</a>
+        <a href="https://www.linkedin.com/in/corey-p-rollins" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+        <a href="https://github.com/CRollins6020/CRollins6020" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+        <a href="/path/to/Corey_Rollins_Resume.pdf" download><i class="fas fa-file-pdf" aria-hidden="true"></i> Resume</a>
+      </nav>
     </div>
   </header>
 
-  <section class="section" id="about">
-    <h2>About Me</h2>
-    <p>I'm a technical content professional with over a decade of experience crafting clear, engaging, and impactful learning content and documentation. My background spans instructional design, technical writing, and enablement strategy—with a focus on making technology approachable, understandable, and actionable.</p>
-    <p><span class="emphasis">When technology is complex, confusion becomes expensive.</span> I've worked closely with SMEs, product managers, and engineering teams to produce everything from onboarding materials and product walkthroughs to internal enablement content. If you're looking for a resume with specific project details or deliverables, <strong>I'm happy to provide one on request</strong>.</p>
-    <p>To view my Technical Writing portfolio, visit my <a href="https://github.com/CRollins6020/CRollins6020" target="_blank">GitHub profile</a>.</p>
-  </section>
-  
-  <section class="section" id="skills">
-    <h2>Technical & Content Skills</h2>
+  <main id="main-content">
+    <section class="section" id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About Me</h2>
+      <p>I'm a technical content professional with over a decade of experience crafting clear, engaging, and impactful learning content and documentation. My background spans instructional design, technical writing, and enablement strategy—with a focus on making technology approachable, understandable, and actionable.</p>
+      <p><span class="emphasis">When technology is complex, confusion becomes expensive.</span> I've worked closely with SMEs, product managers, and engineering teams to produce everything from onboarding materials and product walkthroughs to internal enablement content. If you're looking for a resume with specific project details or deliverables, <strong>I'm happy to provide one on request</strong>.</p>
+      <p>To view my Technical Writing portfolio, visit my <a href="https://github.com/CRollins6020/CRollins6020" target="_blank" rel="noopener noreferrer">GitHub profile</a>.</p>
+    </section>
     
-    <div class="skills-container">
-      <!-- Documentation Tools -->
-      <div class="skill-category">
-        <h3>Documentation Tools</h3>
-        <div class="skill-items">
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>MadCap Flare</span>
-              <span class="skill-level-text">90%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" data-level="90"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Confluence</span>
-              <span class="skill-level-text">95%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" data-level="95"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Markdown</span>
-              <span class="skill-level-text">85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" data-level="85"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>XML/DITA</span>
-              <span class="skill-level-text">70%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" data-level="70"></div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <section class="section" id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Technical & Content Skills</h2>
       
-      <!-- Instructional Design -->
-      <div class="skill-category">
-        <h3>Learning Design</h3>
-        <div class="skill-items">
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Articulate 360</span>
-              <span class="skill-level-text">90%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" data-level="90"></div>
-            </div>
+      <div class="modern-skills-container">
+        <!-- Core Technical Communication Skills -->
+        <article class="skill-panel" tabindex="0">
+          <div class="skill-header">
+            <i class="fas fa-exchange-alt" aria-hidden="true"></i>
+            <h3>Core Technical Skills</h3>
           </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Adobe Captivate</span>
-              <span class="skill-level-text">80%</span>
+          <div class="skill-content">
+            <div class="skill-item">
+              <span>Translating Complex Concepts</span>
             </div>
-            <div class="skill-bar">
-              <div class="skill-level" data-level="80"></div>
+            <div class="skill-item">
+              <span>Content Strategy</span>
             </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>LMS Administration</span>
-              <span class="skill-level-text">85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" data-level="85"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>ADDIE Methodology</span>
-              <span class="skill-level-text">95%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" data-level="95"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Technical Knowledge -->
-      <div class="skill-category">
-        <h3>Technical Knowledge</h3>
-        <div class="skill-items">
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>HTML/CSS</span>
-              <span class="skill-level-text">80%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" data-level="80"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>API Documentation</span>
-              <span class="skill-level-text">75%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" data-level="75"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Git/Version Control</span>
-              <span class="skill-level-text">70%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" data-level="70"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Email Security/Architecture</span>
-              <span class="skill-level-text">90%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" data-level="90"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Content Design -->
-      <div class="skill-category">
-        <h3>Content Design</h3>
-        <div class="skill-items">
-          <div class="skill-item">
-            <div class="skill-name">
+            <div class="skill-item">
               <span>Information Architecture</span>
-              <span class="skill-level-text">90%</span>
             </div>
-            <div class="skill-bar">
-              <div class="skill-level" data-level="90"></div>
+            <div class="skill-item">
+              <span>Technical Documentation</span>
             </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>UX Writing</span>
-              <span class="skill-level-text">85%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-level" data-level="85"></div>
+            <div class="skill-item">
+              <span>SCORM Implementation</span>
             </div>
           </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Style Guide Development</span>
-              <span class="skill-level-text">95%</span>
+        </article>
+        
+        <!-- Types of Documentation -->
+        <article class="skill-panel" tabindex="0">
+          <div class="skill-header">
+            <i class="fas fa-file-alt" aria-hidden="true"></i>
+            <h3>Documentation Types</h3>
+          </div>
+          <div class="skill-content">
+            <div class="skill-item">
+              <span>How-To Guides</span>
             </div>
-            <div class="skill-bar">
-              <div class="skill-level" data-level="95"></div>
+            <div class="skill-item">
+              <span>Process Documentation</span>
+            </div>
+            <div class="skill-item">
+              <span>Enablement Videos</span>
+            </div>
+            <div class="skill-item">
+              <span>Product Documentation</span>
+            </div>
+            <div class="skill-item">
+              <span>Training Materials</span>
             </div>
           </div>
-          <div class="skill-item">
-            <div class="skill-name">
-              <span>Visual Communication</span>
-              <span class="skill-level-text">80%</span>
+        </article>
+        
+        <!-- Key Tools -->
+        <article class="skill-panel" tabindex="0">
+          <div class="skill-header">
+            <i class="fas fa-tools" aria-hidden="true"></i>
+            <h3>Key Tools</h3>
+          </div>
+          <div class="skill-content">
+            <div class="skill-item">
+              <span>Confluence</span>
             </div>
-            <div class="skill-bar">
-              <div class="skill-level" data-level="80"></div>
+            <div class="skill-item">
+              <span>Microsoft Office 365</span>
+            </div>
+            <div class="skill-item">
+              <span>SharePoint</span>
+            </div>
+            <div class="skill-item">
+              <span>JIRA</span>
+            </div>
+            <div class="skill-item">
+              <span>Camtasia</span>
             </div>
           </div>
-        </div>
+        </article>
+        
+        <!-- Technical Knowledge -->
+        <article class="skill-panel" tabindex="0">
+          <div class="skill-header">
+            <i class="fas fa-code" aria-hidden="true"></i>
+            <h3>Technical Knowledge</h3>
+          </div>
+          <div class="skill-content">
+            <div class="skill-item">
+              <span>Email Security/Architecture</span>
+            </div>
+            <div class="skill-item">
+              <span>HTML/CSS (basic)</span>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Currently Learning -->
+        <article class="skill-panel" tabindex="0">
+          <div class="skill-header">
+            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+            <h3>Currently Learning</h3>
+          </div>
+          <div class="skill-content">
+            <div class="skill-item">
+              <span>API Documentation</span>
+            </div>
+            <div class="skill-item">
+              <span>Swagger</span>
+            </div>
+            <div class="skill-item">
+              <span>MS Visual Studio Code</span>
+            </div>
+            <div class="skill-item">
+              <span>GitHub Workflows</span>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Collaboration Skills -->
+        <article class="skill-panel" tabindex="0">
+          <div class="skill-header">
+            <i class="fas fa-users" aria-hidden="true"></i>
+            <h3>Collaboration Skills</h3>
+          </div>
+          <div class="skill-content">
+            <div class="skill-item">
+              <span>Cross-Functional Collaboration</span>
+            </div>
+            <div class="skill-item">
+              <span>SME Interview Management</span>
+            </div>
+            <div class="skill-item">
+              <span>Knowledge Transfer</span>
+            </div>
+          </div>
+        </article>
       </div>
-    </div>
-  </section>
-  
-  <section class="section" id="work-history">
-    <h2>Work History</h2>
-    <p class="emphasis">Like good documentation, my career path has been purposeful, structured, and continuously improving.</p>
-    <div class="timeline">
-      <div class="timeline-item">
-        <h3>Senior Instructional Designer</h3>
-        <div class="company">Mimecast | 2022 – 2025</div>
-        <ul>
-          <li>Created instructional materials for internal and external users</li>
-          <li>Partnered with SMEs to develop training assets and documentation</li>
-          <li>Maintained and expanded content systems across teams</li>
-        </ul>
-      </div>
-      <div class="timeline-item">
-        <h3>Instructional Designer</h3>
-        <div class="company">Mimecast | 2020 – 2022</div>
-        <ul>
-          <li>Developed learning programs aligned to new product launches</li>
-          <li>Authored technical and customer education content</li>
-          <li>Designed knowledge base and learning hub architecture</li>
-        </ul>
-      </div>
-      <div class="timeline-item">
-        <h3>Manager, Implementation</h3>
-        <div class="company">Mimecast | 2018 – 2020</div>
-        <ul>
-          <li>Managed onboarding programs and technical implementations</li>
-          <li>Built team playbooks and internal enablement resources</li>
-          <li>Collaborated cross-functionally to improve customer experience</li>
-        </ul>
-      </div>
-      <div class="timeline-item">
-        <h3>Implementation Lead</h3>
-        <div class="company">Mimecast | 2016 – 2018</div>
-        <ul>
-          <li>Supported complex environments during customer onboarding</li>
-          <li>Created SOPs and internal process documentation</li>
-          <li>Mentored peers and contributed to team development</li>
-        </ul>
-      </div>
-      <div class="timeline-item">
-        <h3>Support & Implementation Engineer</h3>
-        <div class="company">Mimecast | 2013 – 2016</div>
-        <ul>
-          <li>Provided technical support for enterprise clients</li>
-          <li>Documented troubleshooting workflows and escalation procedures</li>
-          <li>Led product walkthroughs and onboarding sessions</li>
-        </ul>
-      </div>
-      <div class="timeline-item">
-        <h3>Support Specialist</h3>
-        <div class="company">Mimecast | 2011 – 2013</div>
-        <ul>
-          <li>Supported customer queries across multiple platforms</li>
-          <li>Identified and documented recurring support issues</li>
-          <li>Built internal knowledge articles for Tier 1 resolutions</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="testimonials">
-    <h2>Testimonials</h2>
-    <p class="emphasis">The best documentation gets used. The best instructional designers get recommended.</p>
+    </section>
     
-    <div class="testimonial-container">
-      <button class="testimonial-prev"><i class="fas fa-chevron-left"></i></button>
+    <section class="section" id="work-history" aria-labelledby="work-history-heading">
+      <h2 id="work-history-heading">Work History</h2>
+      <p class="emphasis">Like good documentation, my career path has been purposeful, structured, and continuously improving.</p>
+      <div class="timeline" aria-label="Work experience timeline">
+        <article class="timeline-item" tabindex="0">
+          <h3>Senior Instructional Designer</h3>
+          <div class="company" aria-label="Company and time period">Mimecast | 2022 – 2025</div>
+          <ul aria-label="Key responsibilities">
+            <li>Created instructional materials for internal and external users</li>
+            <li>Partnered with SMEs to develop training assets and documentation</li>
+            <li>Maintained and expanded content systems across teams</li>
+          </ul>
+        </article>
+        <article class="timeline-item" tabindex="0">
+          <h3>Instructional Designer</h3>
+          <div class="company" aria-label="Company and time period">Mimecast | 2020 – 2022</div>
+          <ul aria-label="Key responsibilities">
+            <li>Developed learning programs aligned to new product launches</li>
+            <li>Authored technical and customer education content</li>
+            <li>Designed knowledge base and learning hub architecture</li>
+          </ul>
+        </article>
+        <article class="timeline-item" tabindex="0">
+          <h3>Manager, Implementation</h3>
+          <div class="company" aria-label="Company and time period">Mimecast | 2018 – 2020</div>
+          <ul aria-label="Key responsibilities">
+            <li>Managed onboarding programs and technical implementations</li>
+            <li>Built team playbooks and internal enablement resources</li>
+            <li>Collaborated cross-functionally to improve customer experience</li>
+          </ul>
+        </article>
+        <article class="timeline-item" tabindex="0">
+          <h3>Implementation Lead</h3>
+          <div class="company" aria-label="Company and time period">Mimecast | 2016 – 2018</div>
+          <ul aria-label="Key responsibilities">
+            <li>Supported complex environments during customer onboarding</li>
+            <li>Created SOPs and internal process documentation</li>
+            <li>Mentored peers and contributed to team development</li>
+          </ul>
+        </article>
+        <article class="timeline-item" tabindex="0">
+          <h3>Support & Implementation Engineer</h3>
+          <div class="company" aria-label="Company and time period">Mimecast | 2013 – 2016</div>
+          <ul aria-label="Key responsibilities">
+            <li>Provided technical support for enterprise clients</li>
+            <li>Documented troubleshooting workflows and escalation procedures</li>
+            <li>Led product walkthroughs and onboarding sessions</li>
+          </ul>
+        </article>
+        <article class="timeline-item" tabindex="0">
+          <h3>Support Specialist</h3>
+          <div class="company" aria-label="Company and time period">Mimecast | 2011 – 2013</div>
+          <ul aria-label="Key responsibilities">
+            <li>Supported customer queries across multiple platforms</li>
+            <li>Identified and documented recurring support issues</li>
+            <li>Built internal knowledge articles for Tier 1 resolutions</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials" aria-labelledby="testimonials-heading">
+      <h2 id="testimonials-heading">Testimonials</h2>
+      <p class="emphasis">The best documentation gets used. The best instructional designers get recommended.</p>
       
-      <div class="testimonial-carousel">
-        <div class="testimonial active" data-index="0">
-          <div class="author"><a href="https://www.linkedin.com/in/aj-steffenberg/" target="_blank">A.J. Steffenberg</a></div>
-          <div class="role">VP, Global Services | Mimecast</div>
-          <p>"When I started at Mimecast, Corey was already a manager of one of our teams, and what stands out to me with our time there is how much Corey evolved. He has an innate gift of 
-          situational analysis and will give an accurate assessment concerning the feasibility of a task. <br><br>With the help of his perspectives, we were able to effectively specialize the 
-          teams into specific Customer Onboarding and Professional Services functions, as well as successfully scale up the size of the teams and the profitability of the business. Corey 
-          was consistently reliable with his perspectives and I could count on his judgement and execution on a daily basis."</p>
-        </div>
+      <div class="testimonial-container">
+        <button class="testimonial-prev" aria-label="Previous testimonial"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+        
+        <div class="testimonial-carousel" aria-live="polite">
+          <article class="testimonial active" data-index="0" aria-labelledby="testimonial-author-1">
+            <div id="testimonial-author-1" class="author"><a href="https://www.linkedin.com/in/aj-steffenberg/" target="_blank" rel="noopener noreferrer">A.J. Steffenberg</a></div>
+            <div class="role">VP, Global Services | Mimecast</div>
+            <p>"When I started at Mimecast, Corey was already a manager of one of our teams, and what stands out to me with our time there is how much Corey evolved. He has an innate gift of 
+            situational analysis and will give an accurate assessment concerning the feasibility of a task. <br><br>With the help of his perspectives, we were able to effectively specialize the 
+            teams into specific Customer Onboarding and Professional Services functions, as well as successfully scale up the size of the teams and the profitability of the business. Corey 
+            was consistently reliable with his perspectives and I could count on his judgement and execution on a daily basis."</p>
+          </article>
 
-        <div class="testimonial" data-index="1">
-          <div class="author"><a href="https://www.linkedin.com/in/annelise-cockcroft-a5955237/" target="_blank">Annelise Cockcroft</a></div>
-          <div class="role">Principal Project Manager | Mimecast</div>
-          <p>"I am pleased to recommend Corey, with whom I have had the pleasure of working for over six years. Throughout our time together, we have both taken on various roles, and I have 
-          consistently been impressed by Corey's exceptional attention to detail. Corey has an outstanding track record of delivering all projects on time, ensuring that deadlines are met 
-          without compromising quality. <br><br>The content he has created as an instructional designer over the past few years is of the highest standard, showcasing his creativity and expertise 
-          in the field. Beyond his professional skills, Corey is a true asset to any company. His loyalty and dedication to his work are impeccable, making him not only a reliable colleague 
-          but also a trusted team member. I wholeheartedly endorse Corey and believe he will continue to excel in any endeavor he pursues."</p>
-        </div>
+          <article class="testimonial" data-index="1" aria-labelledby="testimonial-author-2">
+            <div id="testimonial-author-2" class="author"><a href="https://www.linkedin.com/in/annelise-cockcroft-a5955237/" target="_blank" rel="noopener noreferrer">Annelise Cockcroft</a></div>
+            <div class="role">Principal Project Manager | Mimecast</div>
+            <p>"I am pleased to recommend Corey, with whom I have had the pleasure of working for over six years. Throughout our time together, we have both taken on various roles, and I have 
+            consistently been impressed by Corey's exceptional attention to detail. Corey has an outstanding track record of delivering all projects on time, ensuring that deadlines are met 
+            without compromising quality. <br><br>The content he has created as an instructional designer over the past few years is of the highest standard, showcasing his creativity and expertise 
+            in the field. Beyond his professional skills, Corey is a true asset to any company. His loyalty and dedication to his work are impeccable, making him not only a reliable colleague 
+            but also a trusted team member. I wholeheartedly endorse Corey and believe he will continue to excel in any endeavor he pursues."</p>
+          </article>
 
-        <div class="testimonial" data-index="2">
-          <div class="author"><a href="https://www.linkedin.com/in/tommy-michaud-81687b101/" target="_blank">Tommy Michaud</a></div>
-          <div class="role">Senior Technical Specialist | Mimecast</div>
-          <p>"Corey was an invaluable teammate during my time at Mimecast. He was always the go-to person when you needed to get up to speed or understand something deeply. His attention to 
-          detail and his ability to teach information clearly made him a trusted resource across the team. On top of that, he's an incredibly fun and positive person to work with."</p>
+          <article class="testimonial" data-index="2" aria-labelledby="testimonial-author-3">
+            <div id="testimonial-author-3" class="author"><a href="https://www.linkedin.com/in/tommy-michaud-81687b101/" target="_blank" rel="noopener noreferrer">Tommy Michaud</a></div>
+            <div class="role">Senior Technical Specialist | Mimecast</div>
+            <p>"Corey was an invaluable teammate during my time at Mimecast. He was always the go-to person when you needed to get up to speed or understand something deeply. His attention to 
+            detail and his ability to teach information clearly made him a trusted resource across the team. On top of that, he's an incredibly fun and positive person to work with."</p>
+          </article>
+        </div>
+        
+        <button class="testimonial-next" aria-label="Next testimonial"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+        
+        <div class="testimonial-nav" role="tablist" aria-label="Testimonial navigation">
+          <button class="testimonial-dot active" data-index="0" role="tab" aria-selected="true" aria-controls="testimonial-0" aria-label="Testimonial 1"></button>
+          <button class="testimonial-dot" data-index="1" role="tab" aria-selected="false" aria-controls="testimonial-1" aria-label="Testimonial 2"></button>
+          <button class="testimonial-dot" data-index="2" role="tab" aria-selected="false" aria-controls="testimonial-2" aria-label="Testimonial 3"></button>
         </div>
       </div>
+    </section>
+    
+    <section class="section" id="faq" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Beyond the Resume</h2>
       
-      <button class="testimonial-next"><i class="fas fa-chevron-right"></i></button>
-      
-      <div class="testimonial-nav">
-        <div class="testimonial-dot active" data-index="0"></div>
-        <div class="testimonial-dot" data-index="1"></div>
-        <div class="testimonial-dot" data-index="2"></div>
+      <div class="faq-container" role="tablist">
+        <article class="faq-item">
+          <h3 class="faq-question" id="faq-1-question" tabindex="0" role="tab" aria-expanded="false" aria-controls="faq-1-answer">How would you describe your taste in music?</h3>
+          <div id="faq-1-answer" class="faq-answer" role="tabpanel" aria-labelledby="faq-1-question" hidden>
+            <p>Pretty all over the map. One minute I'm listening to SZA or Kendrick Lamar, then I'll switch to something completely different like Atarashii Gakko. I grew up on classics like Van Morrison, The Fugees, and Lauryn Hill too, so those are still in regular rotation. My playlists make zero sense to anyone else. I just go with whatever fits my mood at the time, regardless of genre.</p>
+          </div>
+        </article>
+        
+        <article class="faq-item">
+          <h3 class="faq-question" id="faq-2-question" tabindex="0" role="tab" aria-expanded="false" aria-controls="faq-2-answer">What video games have captured your attention lately?</h3>
+          <div id="faq-2-answer" class="faq-answer" role="tabpanel" aria-labelledby="faq-2-question" hidden>
+            <p>Star Citizen is my main go-to—I'm drawn to its expansive sci-fi sandbox environment. Different games serve different purposes for me: FPS titles when I need to unwind, Path of Exile 2 when I want to zone out, and games like Baldur's Gate 3 and Kingdom Come: Deliverance for their immersive worlds. Gaming offers a nice complement to technical work—it's problem-solving in entirely different contexts.</p>
+          </div>
+        </article>
+        
+        <article class="faq-item">
+          <h3 class="faq-question" id="faq-3-question" tabindex="0" role="tab" aria-expanded="false" aria-controls="faq-3-answer">What's your ideal way to spend a weekend?</h3>
+          <div id="faq-3-answer" class="faq-answer" role="tabpanel" aria-labelledby="faq-3-question" hidden>
+            <p>No alarms, first of all. I like starting the day slow - good coffee, actual breakfast, no rush. Then it's usually some combination of binging a show, playing whatever game I'm into at the moment, and grabbing food from this burrito place we like. Later on, heading to a local brewery for a couple drinks, then back home for a movie. Nothing fancy or planned out. Just good food, entertainment, and zero obligations.</p>
+          </div>
+        </article>
+        
+        <article class="faq-item">
+          <h3 class="faq-question" id="faq-4-question" tabindex="0" role="tab" aria-expanded="false" aria-controls="faq-4-answer">What's something seemingly trivial you've thought deeply about?</h3>
+          <div id="faq-4-answer" class="faq-answer" role="tabpanel" aria-labelledby="faq-4-question" hidden>
+            <p>The logic behind how we define "afternoon." If you break down the word, it literally means "after noon," yet we often use it to describe times between 1pm and 6pm. When someone says "afternoon," they usually mean "noon." We eat lunch at noon. Noon isn't morning or evening, it's afternoon. This kind of linguistic analysis might seem inconsequential, but I think attention to these details reflects the same mindset that makes for effective technical communication.</p>
+          </div>
+        </article>
+        
+        <article class="faq-item">
+          <h3 class="faq-question" id="faq-5-question" tabindex="0" role="tab" aria-expanded="false" aria-controls="faq-5-answer">How do you recharge when you're feeling drained?</h3>
+          <div id="faq-5-answer" class="faq-answer" role="tabpanel" aria-labelledby="faq-5-question" hidden>
+            <p>I need to fully disconnect from technology sometimes. Taking a day trip with my fiancé - just driving somewhere new, exploring a bit, finding a decent place to eat. Nothing elaborate or Instagram-worthy, just a change of scenery without emails or notifications. It clears my head in a way that nothing else really does.</p>
+          </div>
+        </article>
       </div>
-    </div>
-  </section>
-  
-  <section class="section" id="faq">
-  <h2>Beyond the Resume</h2>
-  
-  <div class="faq-container">
-    <div class="faq-item">
-      <div class="faq-question">How would you describe your taste in music?</div>
-      <div class="faq-answer">
-        <p>My playlists are pretty eclectic. I enjoy artists across various genres—from SZA and Kendrick Lamar to Atarashii Gakko, as well as classics like Van Morrison and The Fugees. There's something about having diverse musical influences that helps keep my thinking flexible and often sparks creativity in unexpected ways.</p>
-      </div>
-    </div>
-    
-    <div class="faq-item">
-      <div class="faq-question">What video games have captured your attention lately?</div>
-      <div class="faq-answer">
-        <p>Star Citizen is my main go-to—I'm drawn to its expansive sci-fi sandbox environment. Different games serve different purposes for me: FPS titles when I need to unwind, Path of Exile 2 when I want to zone out, and games like Baldur's Gate 3 and Kingdom Come: Deliverance for their immersive worlds. Gaming offers a nice complement to technical work—it's problem-solving in entirely different contexts.</p>
-      </div>
-    </div>
-    
-    <div class="faq-item">
-      <div class="faq-question">What's your ideal way to spend a weekend?</div>
-      <div class="faq-answer">
-        <p>I value balance in my downtime. A good weekend involves relaxed mornings with coffee, catching up on shows or games, and exploring local spots with my fiancé. I've found that having this clear separation between work and leisure helps me return to projects with renewed focus and perspective.</p>
-      </div>
-    </div>
-    
-    <div class="faq-item">
-      <div class="faq-question">What's something seemingly trivial you've thought deeply about?</div>
-      <div class="faq-answer">
-        <p>The logic behind how we define "afternoon." The word literally means "after noon," yet we typically use it to describe times between 1pm and 6pm. This attention to linguistic precision might seem minor, but it reflects the same mindset that makes for effective technical communication—questioning assumptions and seeking clarity in how we express ideas.</p>
-      </div>
-    </div>
-    
-    <div class="faq-item">
-      <div class="faq-question">How do you recharge when you're feeling drained?</div>
-      <div class="faq-answer">
-        <p>I find that occasionally disconnecting from technology is essential. Taking day trips with my fiancé to explore new places helps reset my thinking. This change of environment improves my focus and creativity when I return to work—maintaining this balance contributes significantly to sustained productivity and fresh perspectives.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-  <section class="section" id="availability">
-    <h2>Current Availability</h2>
-    <p class="emphasis">The best technology deserves the best documentation. Your solution deserves a communicator who cares.</p>
-    <p>I'm open to new opportunities in documentation, enablement, and training. Whether for internal platforms or customer-facing solutions, I bring structure and clarity to every technical narrative.</p>
-    <p><a href="mailto:corey.p.rollins@gmail.com">Reach out to start a conversation</a>. A tailored resume is available upon request.</p>
-  </section>
+    <section class="section" id="availability" aria-labelledby="availability-heading">
+      <h2 id="availability-heading">Current Availability</h2>
+      <p class="emphasis">The best technology deserves the best documentation. Your solution deserves a communicator who cares.</p>
+      <p>I'm open to new opportunities in documentation, enablement, and training. Whether for internal platforms or customer-facing solutions, I bring structure and clarity to every technical narrative.</p>
+      <p><a href="mailto:corey.p.rollins@gmail.com">Reach out to start a conversation</a>. A tailored resume is available upon request.</p>
+    </section>
+  </main>
 
-  <button onclick="scrollToTop()" class="back-to-top" id="backToTopBtn" title="Go to top">
-    ↑
+  <footer role="contentinfo" class="section" style="text-align: center; padding: 1rem;">
+    <p>&copy; 2025 Corey Rollins. All rights reserved.</p>
+  </footer>
+
+  <button onclick="scrollToTop()" class="back-to-top" id="backToTopBtn" title="Go to top" aria-label="Back to top">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
   </button>
   
   <script>
-    // Theme switcher functionality
+    // DOM references - cache DOM queries for better performance
     const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const sections = document.querySelectorAll('.section');
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const faqItems = document.querySelectorAll('.faq-item');
+    const testimonials = document.querySelectorAll('.testimonial');
+    const prevBtn = document.querySelector('.testimonial-prev');
+    const nextBtn = document.querySelector('.testimonial-next');
+    const dots = document.querySelectorAll('.testimonial-dot');
+    const backToTopBtn = document.getElementById("backToTopBtn");
+    let activeIndex = 0;
+    let testimonialInterval;
     
+    // Theme switcher functionality
     function switchTheme(e) {
       if (e.target.checked) {
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
+        toggleSwitch.setAttribute('aria-checked', 'true');
       } else {
         document.documentElement.setAttribute('data-theme', 'light');
         localStorage.setItem('theme', 'light');
+        toggleSwitch.setAttribute('aria-checked', 'false');
       }    
     }
     
@@ -949,138 +1187,254 @@
       
       if (currentTheme === 'dark') {
         toggleSwitch.checked = true;
+        toggleSwitch.setAttribute('aria-checked', 'true');
       }
     }
     
-    // Section animation on scroll
-    const sections = document.querySelectorAll('.section');
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    
-    function checkScroll() {
-      sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        if (sectionTop < window.innerHeight * 0.8) {
-          section.classList.add('animate');
-          
-          // Animate skill bars when skills section becomes visible
-          if (section.id === 'skills' && !section.classList.contains('skills-animated')) {
-            const skillLevels = section.querySelectorAll('.skill-level');
-            skillLevels.forEach(skill => {
-              setTimeout(() => {
-                skill.style.width = skill.getAttribute('data-level') + '%';
-              }, 200);
-            });
-            section.classList.add('skills-animated');
-          }
+    // Use IntersectionObserver for scroll animations
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          sectionObserver.unobserve(entry.target); // Stop observing once animated
         }
       });
-      
-      // Animate timeline items with a delay
-      timelineItems.forEach((item, index) => {
-        const itemTop = item.getBoundingClientRect().top;
-        if (itemTop < window.innerHeight * 0.8) {
+    }, {
+      root: null,
+      threshold: 0.1,
+      rootMargin: "-20% 0px"
+    });
+    
+    sections.forEach(section => {
+      sectionObserver.observe(section);
+    });
+    
+    // Timeline items observer
+    const timelineObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Get index from data attribute or determine position
+          const index = Array.from(timelineItems).indexOf(entry.target);
           setTimeout(() => {
-            item.classList.add('animate');
+            entry.target.classList.add('animate');
           }, index * 200); // Staggered animation
+          timelineObserver.unobserve(entry.target);
         }
       });
-    }
+    }, {
+      root: null,
+      threshold: 0.1,
+      rootMargin: "-10% 0px"
+    });
     
-    // FAQ interaction
-    const faqItems = document.querySelectorAll('.faq-item');
+    timelineItems.forEach(item => {
+      timelineObserver.observe(item);
+    });
     
+    // FAQ interaction with keyboard accessibility
     faqItems.forEach(item => {
       const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
       
-      question.addEventListener('click', () => {
+      question.addEventListener('click', toggleFaq);
+      question.addEventListener('keydown', function(e) {
+        // Toggle on Enter or Space
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleFaq.call(this);
+        }
+      });
+      
+      function toggleFaq() {
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        
         // Close all other FAQ items
         faqItems.forEach(otherItem => {
+          const otherQuestion = otherItem.querySelector('.faq-question');
+          const otherAnswer = otherItem.querySelector('.faq-answer');
+          
           if (otherItem !== item && otherItem.classList.contains('active')) {
             otherItem.classList.remove('active');
+            otherQuestion.setAttribute('aria-expanded', 'false');
+            otherAnswer.hidden = true;
           }
         });
         
         // Toggle current item
         item.classList.toggle('active');
-      });
+        this.setAttribute('aria-expanded', !expanded);
+        answer.hidden = expanded;
+      }
     });
     
     // Testimonial carousel functionality
-    const testimonials = document.querySelectorAll('.testimonial');
-    const prevBtn = document.querySelector('.testimonial-prev');
-    const nextBtn = document.querySelector('.testimonial-next');
-    const dots = document.querySelectorAll('.testimonial-dot');
-    let activeIndex = 0;
-    
     function showTestimonial(index) {
-      testimonials.forEach(testimonial => {
+      // Update ARIA attributes for accessibility
+      testimonials.forEach((testimonial, i) => {
         testimonial.classList.remove('active');
-      });
-      
-      dots.forEach(dot => {
-        dot.classList.remove('active');
+        dots[i].setAttribute('aria-selected', 'false');
       });
       
       testimonials[index].classList.add('active');
-      dots[index].classList.add('active');
+      dots[index].setAttribute('aria-selected', 'true');
       activeIndex = index;
     }
     
-    prevBtn.addEventListener('click', () => {
-      const newIndex = activeIndex === 0 ? testimonials.length - 1 : activeIndex - 1;
-      showTestimonial(newIndex);
-    });
-    
-    nextBtn.addEventListener('click', () => {
-      const newIndex = activeIndex === testimonials.length - 1 ? 0 : activeIndex + 1;
-      showTestimonial(newIndex);
-    });
-    
-    dots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        const index = parseInt(dot.getAttribute('data-index'));
-        showTestimonial(index);
+    function setupTestimonialControls() {
+      prevBtn.addEventListener('click', () => {
+        const newIndex = activeIndex === 0 ? testimonials.length - 1 : activeIndex - 1;
+        showTestimonial(newIndex);
       });
-    });
+      
+      nextBtn.addEventListener('click', () => {
+        const newIndex = activeIndex === testimonials.length - 1 ? 0 : activeIndex + 1;
+        showTestimonial(newIndex);
+      });
+      
+      // Keyboard support for prev/next buttons
+      prevBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          prevBtn.click();
+        }
+      });
+      
+      nextBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          nextBtn.click();
+        }
+      });
+      
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          const index = parseInt(dot.getAttribute('data-index'));
+          showTestimonial(index);
+        });
+        
+        // Keyboard support for dots
+        dot.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            dot.click();
+          }
+        });
+      });
+    }
     
     // Auto-rotate testimonials
-    let testimonialInterval = setInterval(() => {
-      const newIndex = activeIndex === testimonials.length - 1 ? 0 : activeIndex + 1;
-      showTestimonial(newIndex);
-    }, 8000);
-    
-    // Pause rotation on hover
-    const testimonialContainer = document.querySelector('.testimonial-container');
-    testimonialContainer.addEventListener('mouseenter', () => {
-      clearInterval(testimonialInterval);
-    });
-    
-    testimonialContainer.addEventListener('mouseleave', () => {
+    function startTestimonialAutoRotation() {
       testimonialInterval = setInterval(() => {
         const newIndex = activeIndex === testimonials.length - 1 ? 0 : activeIndex + 1;
         showTestimonial(newIndex);
       }, 8000);
-    });
-    
-    // Back to Top button functionality
-    const backToTopBtn = document.getElementById("backToTopBtn");
-    
-    window.onscroll = function() {
-      checkScroll();
-      
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        backToTopBtn.style.display = "block";
-      } else {
-        backToTopBtn.style.display = "none";
-      }
-    };
-    
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     
-    // Initialize
-    checkScroll();
+    // Pause rotation on hover or focus
+    function setupTestimonialPause() {
+      const testimonialContainer = document.querySelector('.testimonial-container');
+      const pauseAutoRotation = () => {
+        clearInterval(testimonialInterval);
+      };
+      
+      const resumeAutoRotation = () => {
+        clearInterval(testimonialInterval);
+        startTestimonialAutoRotation();
+      };
+      
+      testimonialContainer.addEventListener('mouseenter', pauseAutoRotation);
+      testimonialContainer.addEventListener('mouseleave', resumeAutoRotation);
+      
+      // Also pause on focus of controls
+      const controls = testimonialContainer.querySelectorAll('button');
+      controls.forEach(control => {
+        control.addEventListener('focus', pauseAutoRotation);
+        control.addEventListener('blur', resumeAutoRotation);
+      });
+    }
+    
+    // Initialize testimonial carousel
+    function initTestimonials() {
+      setupTestimonialControls();
+      startTestimonialAutoRotation();
+      setupTestimonialPause();
+      
+      // Set first testimonial as active
+      showTestimonial(0);
+    }
+    
+    // Back to Top button functionality using IntersectionObserver
+    function setupBackToTopButton() {
+      const headerObserver = new IntersectionObserver((entries) => {
+        // When header is out of view, show the button
+        if (!entries[0].isIntersecting) {
+          backToTopBtn.style.display = "flex";
+        } else {
+          backToTopBtn.style.display = "none";
+        }
+      }, {
+        threshold: 0,
+        rootMargin: "-100px 0px 0px 0px"
+      });
+      
+      // Observe the header
+      headerObserver.observe(document.querySelector('header'));
+      
+      // Scroll to top function
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ 
+          top: 0, 
+          behavior: 'smooth' 
+        });
+      });
+    }
+    
+    // Initialize page
+    function initializePage() {
+      // Set initial state for sections
+      sections.forEach(section => {
+        section.classList.add('animate');
+      });
+      
+      // Staggered animation for timeline items
+      timelineItems.forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add('animate');
+        }, 300 + index * 200);
+      });
+      
+      // Set first FAQ item as active
+      if (faqItems.length > 0) {
+        const firstQuestion = faqItems[0].querySelector('.faq-question');
+        const firstAnswer = faqItems[0].querySelector('.faq-answer');
+        faqItems[0].classList.add('active');
+        firstQuestion.setAttribute('aria-expanded', 'true');
+        firstAnswer.hidden = false;
+      }
+      
+      // Initialize testimonials
+      initTestimonials();
+      
+      // Setup back to top button
+      setupBackToTopButton();
+    }
+    
+    // Run initialization when DOM is loaded
+    document.addEventListener('DOMContentLoaded', initializePage);
+    
+    // Keyboard navigation improvement
+    document.addEventListener('keydown', function(e) {
+      // If Escape key pressed, close any open accordions
+      if (e.key === 'Escape') {
+        faqItems.forEach(item => {
+          if (item.classList.contains('active')) {
+            const question = item.querySelector('.faq-question');
+            question.click();
+            question.focus();
+          }
+        });
+      }
+    });
   </script>
 </body>
 </html>
