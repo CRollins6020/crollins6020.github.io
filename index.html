@@ -22,6 +22,8 @@
   
   <title>Corey Rollins | Instructional Designer & Technical Writer</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" defer />
+  <!-- Add the tech font -->
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary-color: #375D8A;
@@ -63,6 +65,23 @@
       --focus-outline: 3px solid #FFD966;
       --header-gradient-start: rgba(31, 59, 92, 0.97);
       --header-gradient-end: rgba(55, 93, 138, 0.95);
+    }
+    
+    /* Create RGB versions of colors for rgba usage */
+    :root {
+      --primary-color-rgb: 55, 93, 138;
+      --primary-dark-rgb: 31, 59, 92;
+      --primary-light-rgb: 74, 144, 226;
+      --accent-color-rgb: 255, 217, 102;
+      --border-color-rgb: 224, 224, 224;
+    }
+    
+    [data-theme="dark"] {
+      --primary-color-rgb: 94, 140, 198;
+      --primary-dark-rgb: 55, 93, 138;
+      --primary-light-rgb: 126, 173, 235;
+      --accent-color-rgb: 255, 217, 102;
+      --border-color-rgb: 68, 68, 68;
     }
     
     /* Global focus style reset */
@@ -177,7 +196,7 @@
     /* Header */
     header {
       background: linear-gradient(to right, var(--header-gradient-start), var(--header-gradient-end)),
-                  url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+                  url('https://images.unsplash.com/photo-1563206767-5b18f218e8de');
       background-blend-mode: overlay;
       background-size: cover;
       background-position: center;
@@ -186,6 +205,72 @@
       text-align: center;
       box-shadow: 0 20px 60px var(--shadow-heavy);
       position: relative;
+    }
+    
+    /* Tech-inspired animated gradient - with reduced opacity for readability */
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, 
+        rgba(var(--primary-dark-rgb), 0.3) 0%, 
+        rgba(var(--primary-color-rgb), 0.3) 50%, 
+        rgba(var(--primary-light-rgb), 0.3) 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Subtle digital scan line effect - very light for readability */
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.02) 2px,
+        rgba(255, 255, 255, 0.02) 4px
+      );
+      pointer-events: none;
+      z-index: 2;
+    }
+    
+    /* Tech font for header with improved contrast */
+    header h1 {
+      font-family: 'Share Tech Mono', monospace;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(var(--primary-light-rgb), 0.5);
+      position: relative;
+      z-index: 5;
+    }
+
+    [data-theme="dark"] header h1 {
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.9), 0 0 20px rgba(var(--primary-light-rgb), 0.7);
+    }
+    
+    /* Ensure paragraph text in header is readable */
+    header p {
+      position: relative;
+      z-index: 5;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
     
     /* Theme toggle switch */
@@ -274,25 +359,67 @@
       max-width: 800px;
       margin: 0 auto;
       position: relative;
-      z-index: 1;
+      z-index: 5;
     }
     
+    /* Enhanced profile image with theme-sensitive glow */
     .profile-container img {
       width: 160px;
       height: 160px;
       object-fit: cover;
       border-radius: 50%;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(var(--primary-light-rgb), 0.5);
       margin-bottom: 1rem;
-      border: 3px solid rgba(255, 255, 255, 0.2);
+      border: 3px solid rgba(var(--primary-light-rgb), 0.4);
+      transition: box-shadow 0.3s ease, border 0.3s ease;
+    }
+
+    [data-theme="dark"] .profile-container img {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(var(--primary-light-rgb), 0.7);
+      border: 3px solid rgba(var(--primary-light-rgb), 0.6);
     }
     
+    /* Code-inspired text decoration - using theme variables */
     .title {
       font-size: 1.25rem;
       color: var(--text-lighter);
       margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+      padding: 0 10px;
+    }
+
+    .title::before {
+      content: "<";
+      color: var(--accent-color);
+      font-weight: bold;
+      opacity: 0.8;
+      position: absolute;
+      left: -10px;
+    }
+
+    .title::after {
+      content: "/>";
+      color: var(--accent-color);
+      font-weight: bold;
+      opacity: 0.8;
+      position: absolute;
+      right: -20px;
     }
     
+    /* Animated pulse for contact links - theme-aware */
+    @keyframes pulse-light {
+      0% { box-shadow: 0 0 0 0 rgba(var(--primary-color-rgb), 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(var(--primary-color-rgb), 0); }
+      100% { box-shadow: 0 0 0 0 rgba(var(--primary-color-rgb), 0); }
+    }
+
+    @keyframes pulse-dark {
+      0% { box-shadow: 0 0 0 0 rgba(var(--primary-light-rgb), 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(var(--primary-light-rgb), 0); }
+      100% { box-shadow: 0 0 0 0 rgba(var(--primary-light-rgb), 0); }
+    }
+
     .contact-links {
       margin-top: 1.5rem;
       display: flex;
@@ -305,13 +432,33 @@
       align-items: center;
       margin: 0.5rem;
       color: #ffffff;
-      background-color: rgba(74, 144, 226, 0.8);
+      background-color: rgba(var(--primary-color-rgb), 0.8);
       padding: 0.75rem 1.25rem;
       text-decoration: none;
       font-weight: bold;
       border-radius: 8px;
       transition: all 0.3s ease;
       backdrop-filter: blur(5px);
+      animation: pulse-light 2s infinite;
+      position: relative;
+      z-index: 5;
+    }
+
+    [data-theme="dark"] .contact-links a {
+      animation: pulse-dark 2s infinite;
+      background-color: rgba(var(--primary-dark-rgb), 0.8);
+    }
+
+    .contact-links a:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+
+    .contact-links a:nth-child(3) {
+      animation-delay: 1s;
+    }
+
+    .contact-links a:nth-child(4) {
+      animation-delay: 1.5s;
     }
     
     .contact-links a i {
@@ -765,23 +912,6 @@
       border-width: 0;
     }
     
-    /* Create RGB versions of colors for rgba usage */
-    :root {
-      --primary-color-rgb: 55, 93, 138;
-      --primary-dark-rgb: 31, 59, 92;
-      --primary-light-rgb: 74, 144, 226;
-      --accent-color-rgb: 255, 217, 102;
-      --border-color-rgb: 224, 224, 224;
-    }
-    
-    [data-theme="dark"] {
-      --primary-color-rgb: 94, 140, 198;
-      --primary-dark-rgb: 55, 93, 138;
-      --primary-light-rgb: 126, 173, 235;
-      --accent-color-rgb: 255, 217, 102;
-      --border-color-rgb: 68, 68, 68;
-    }
-    
     /* Media queries */
     @media (max-width: 768px) {
       html {
@@ -1183,9 +1313,9 @@
         </article>
         
         <article class="faq-item">
-          <h3 class="faq-question" id="faq-2-question" tabindex="0" role="tab" aria-expanded="false" aria-controls="faq-2-answer">What video games have captured your attention lately?</h3>
+          <h3 class="faq-question" id="faq-2-question" tabindex="0" role="tab" aria-expanded="false" aria-controls="faq-2-answer">You like video games, eh? What video games have captured your attention lately?</h3>
           <div id="faq-2-answer" class="faq-answer" role="tabpanel" aria-labelledby="faq-2-question" hidden>
-            <p>Star Citizen is my main go-to—I'm drawn to its expansive sci-fi sandbox environment. Different games serve different purposes for me: FPS titles when I need to unwind, Path of Exile 2 when I want to zone out, and games like Baldur's Gate 3 and Kingdom Come: Deliverance for their immersive worlds. Gaming offers a nice complement to technical work—it's problem-solving in entirely different contexts.</p>
+            <p>Star Citizen is my main go-to—I'm drawn to its expansive sci-fi sandbox environment. Different games serve different purposes for me: FPS titles when I need to unwind, Path of Exile 2 when I want to zone out, and games like Baldur's Gate 3 and Kingdom Come: Deliverance for their immersive worlds.</p>
           </div>
         </article>
         
@@ -1199,14 +1329,14 @@
         <article class="faq-item">
           <h3 class="faq-question" id="faq-4-question" tabindex="0" role="tab" aria-expanded="false" aria-controls="faq-4-answer">What's something seemingly trivial you've thought deeply about?</h3>
           <div id="faq-4-answer" class="faq-answer" role="tabpanel" aria-labelledby="faq-4-question" hidden>
-            <p>The logic behind how we define "afternoon." If you break down the word, it literally means "after noon," yet we often use it to describe times between 1pm and 6pm. When someone says "afternoon," they usually mean "noon." We eat lunch at noon. Noon isn't morning or evening, it's afternoon. This kind of linguistic analysis might seem inconsequential, but I think attention to these details reflects the same mindset that makes for effective technical communication.</p>
+            <p>The logic behind how we define 'afternoon.' If you break down the word, it literally means 'after noon,' yet we're taught it's the time between 1pm and 6pm. But here's my thing - I think 'afternoon' really includes noon itself, regardless of what the name implies. Think about it: When do people eat lunch? In the morning? No. In the evening? No. In the afternoon? Yes. And at what time? NOON!</p>
           </div>
         </article>
         
         <article class="faq-item">
           <h3 class="faq-question" id="faq-5-question" tabindex="0" role="tab" aria-expanded="false" aria-controls="faq-5-answer">How do you recharge when you're feeling drained?</h3>
           <div id="faq-5-answer" class="faq-answer" role="tabpanel" aria-labelledby="faq-5-question" hidden>
-            <p>I need to fully disconnect from technology sometimes. Taking a day trip with my fiancé - just driving somewhere new, exploring a bit, finding a decent place to eat. Nothing elaborate or Instagram-worthy, just a change of scenery without emails or notifications. It clears my head in a way that nothing else really does.</p>
+            <p>I need to fully disconnect from technology sometimes. Taking a day trip, just driving somewhere new, exploring a bit, finding a decent place to eat. Nothing elaborate or Instagram-worthy, just a change of scenery without emails or notifications.</p>
           </div>
         </article>
       </div>
@@ -1513,6 +1643,14 @@
         });
       }
     });
+    
+    // Helper function for back to top button
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
   </script>
 </body>
 </html>
