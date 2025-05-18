@@ -1,1652 +1,810 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+
+<html data-theme="light" lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Corey Rollins - Instructional Designer & Technical Writer with over a decade of experience creating clear, engaging documentation and learning solutions." />
-  <meta name="keywords" content="instructional design, technical writing, documentation, learning materials, content strategy" />
-  <meta name="author" content="Corey Rollins" />
-  
-  <!-- Open Graph / Social Media -->
-  <meta property="og:title" content="Corey Rollins | Instructional Designer & Technical Writer" />
-  <meta property="og:description" content="Technical content professional specializing in creating clear, actionable documentation and learning experiences." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://yourwebsite.com" />
-  <meta property="og:image" content="https://iili.io/36TbGja.jpg" />
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Corey Rollins | Instructional Designer & Technical Writer" />
-  <meta name="twitter:description" content="Technical content professional specializing in creating clear, actionable documentation and learning experiences." />
-  <meta name="twitter:image" content="https://iili.io/36TbGja.jpg" />
-  
-  <title>Corey Rollins | Instructional Designer & Technical Writer</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" defer />
-  <!-- Add the tech font -->
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #375D8A;
-      --primary-dark: #1f3b5c;
-      --primary-light: #4a90e2;
-      --accent-color: #FFD966;
-      --accent-light: #FFF2CC;
-      --bg-color: #f5f7fa;
-      --card-bg: #ffffff;
-      --card-bg-translucent: rgba(255, 255, 255, 0.85);
-      --text-color: #1a1a1a;
-      --text-light: #6b6b6b;
-      --text-lighter: #cfd8e3;
-      --border-color: #e0e0e0;
-      --shadow-color: rgba(0, 0, 0, 0.15);
-      --shadow-heavy: rgba(0, 0, 0, 0.5);
-      --testimonial-bg: rgba(234, 244, 251, 0.9);
-      --focus-outline: 3px solid #4a90e2;
-      --header-gradient-start: rgba(31, 59, 92, 0.97);
-      --header-gradient-end: rgba(55, 93, 138, 0.95);
-    }
-    
-    [data-theme="dark"] {
-      --primary-color: #5e8cc6;
-      --primary-dark: #375D8A;
-      --primary-light: #7eadeb;
-      --accent-color: #FFD966;
-      --accent-light: #FFF2CC;
-      --bg-color: #121212;
-      --card-bg: #1e1e1e;
-      --card-bg-translucent: rgba(30, 30, 30, 0.85);
-      --text-color: #f0f0f0;
-      --text-light: #b0b0b0;
-      --text-lighter: #888888;
-      --border-color: #444444;
-      --shadow-color: rgba(0, 0, 0, 0.5);
-      --shadow-heavy: rgba(0, 0, 0, 0.8);
-      --testimonial-bg: rgba(37, 51, 65, 0.9);
-      --focus-outline: 3px solid #FFD966;
-      --header-gradient-start: rgba(31, 59, 92, 0.97);
-      --header-gradient-end: rgba(55, 93, 138, 0.95);
-    }
-    
-    /* Create RGB versions of colors for rgba usage */
-    :root {
-      --primary-color-rgb: 55, 93, 138;
-      --primary-dark-rgb: 31, 59, 92;
-      --primary-light-rgb: 74, 144, 226;
-      --accent-color-rgb: 255, 217, 102;
-      --border-color-rgb: 224, 224, 224;
-    }
-    
-    [data-theme="dark"] {
-      --primary-color-rgb: 94, 140, 198;
-      --primary-dark-rgb: 55, 93, 138;
-      --primary-light-rgb: 126, 173, 235;
-      --accent-color-rgb: 255, 217, 102;
-      --border-color-rgb: 68, 68, 68;
-    }
-    
-    /* Global focus style reset */
-    *:focus {
-      outline: none;
-    }
-    
-    /* Keyboard-only focus styles for accessibility */
-    *:focus-visible {
-      outline: var(--focus-outline);
-      outline-offset: 2px;
-    }
-    
-    /* FAQ question special handling */
-    .faq-question {
-      transition: color 0.2s ease;
-    }
-    
-    .faq-question:hover {
-      color: var(--primary-color);
-    }
-    
-    .faq-question:active {
-      color: var(--primary-dark);
-    }
-    
-    /* Base styles */
-    html {
-      scroll-behavior: smooth;
-      box-sizing: border-box;
-      font-size: 16px;
-    }
-    
-    *, *:before, *:after {
-      box-sizing: inherit;
-    }
-    
-    body {
-      margin: 0;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      transition: background-color 0.3s ease, color 0.3s ease;
-      line-height: 1.6;
-      font-size: 1rem;
-    }
-    
-    /* Skip navigation link for accessibility */
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: var(--primary-dark);
-      color: white;
-      padding: 8px 16px;
-      z-index: 100;
-      text-decoration: none;
-      transition: top 0.3s;
-    }
-    
-    .skip-link:focus {
-      top: 0;
-    }
-    
-    /* Typography and links */
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 0;
-      line-height: 1.3;
-    }
-    
-    h1 {
-      font-size: 2.75rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    h2 {
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
-    }
-    
-    h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    p, li {
-      font-size: 0.95rem;
-      margin-top: 0;
-      margin-bottom: 1.25rem;
-      line-height: 1.6;
-    }
-    
-    a {
-      color: var(--primary-color);
-      text-decoration: underline;
-      transition: color 0.2s ease;
-    }
-    
-    a:hover {
-      color: var(--primary-dark);
-    }
-    
-    /* Gold links */
-    .gold-link {
-      color: var(--accent-color) !important;
-      text-decoration: underline;
-    }
-    
-    .gold-link:hover {
-      color: var(--accent-light) !important;
-    }
-    
-    /* Header */
-    header {
-      background: linear-gradient(to right, #1a2a3a, #000000);
-      color: #ffffff;
-      padding: 3rem 1rem;
-      text-align: center;
-      box-shadow: 0 20px 60px var(--shadow-heavy);
-      position: relative;
-    }
-    
-    /* Tech-inspired animated gradient - with reduced opacity for readability */
-    header::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(45deg, 
-        rgba(var(--primary-dark-rgb), 0.3) 0%, 
-        rgba(var(--primary-color-rgb), 0.3) 50%, 
-        rgba(var(--primary-light-rgb), 0.3) 100%);
-      background-size: 400% 400%;
-      animation: gradientShift 15s ease infinite;
-      z-index: 1;
-      pointer-events: none;
-    }
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Corey Rollins - Instructional Designer &amp; Technical Writer with over a decade of experience creating clear, engaging documentation and learning solutions." name="description"/>
+<meta content="instructional design, technical writing, documentation, learning materials, content strategy" name="keywords"/>
+<meta content="Corey Rollins" name="author"/>
+<!-- Open Graph / Social Media -->
+<meta content="Corey Rollins | Instructional Designer &amp; Technical Writer" property="og:title"/>
+<meta content="Technical content professional specializing in creating clear, actionable documentation and learning experiences." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://yourwebsite.com" property="og:url"/>
+<meta content="https://iili.io/36TbGja.jpg" property="og:image"/>
+<!-- Twitter Card -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Corey Rollins | Instructional Designer &amp; Technical Writer" name="twitter:title"/>
+<meta content="Technical content professional specializing in creating clear, actionable documentation and learning experiences." name="twitter:description"/>
+<meta content="https://iili.io/36TbGja.jpg" name="twitter:image"/>
+<title>Corey Rollins | Instructional Designer &amp; Technical Writer</title>
+<link crossorigin="anonymous" defer="" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" referrerpolicy="no-referrer" rel="stylesheet"/>
+<!-- Add the tech font -->
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --primary-color: #375D8A;
+  --primary-dark: #1f3b5c;
+  --primary-light: #4a90e2;
+  --accent-color: #FFD966;
+  --accent-light: #FFF2CC;
+  --bg-color: #f5f7fa;
+  --card-bg: #ffffff;
+  --card-bg-translucent: rgba(255, 255, 255, 0.85);
+  --text-color: #1a1a1a;
+  --text-light: #6b6b6b;
+  --text-lighter: #cfd8e3;
+  --border-color: #e0e0e0;
+  --shadow-color: rgba(0, 0, 0, 0.15);
+  --shadow-heavy: rgba(0, 0, 0, 0.5);
+  --testimonial-bg: rgba(234, 244, 251, 0.9);
+  --focus-outline: 3px solid #4a90e2;
+  --header-gradient-start: rgba(31, 59, 92, 0.97);
+  --header-gradient-end: rgba(55, 93, 138, 0.95);
+}
+[data-theme="dark"] {
+  --primary-color: #5e8cc6;
+  --primary-dark: #375D8A;
+  --primary-light: #7eadeb;
+  --accent-color: #FFD966;
+  --accent-light: #FFF2CC;
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --card-bg-translucent: rgba(30, 30, 30, 0.85);
+  --text-color: #f0f0f0;
+  --text-light: #b0b0b0;
+  --text-lighter: #888888;
+  --border-color: #444444;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --shadow-heavy: rgba(0, 0, 0, 0.8);
+  --testimonial-bg: rgba(37, 51, 65, 0.9);
+  --focus-outline: 3px solid #FFD966;
+  --header-gradient-start: rgba(31, 59, 92, 0.97);
+  --header-gradient-end: rgba(55, 93, 138, 0.95);
+}
 
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+/* Create RGB versions of colors for rgba usage */
+:root {
+  --primary-color-rgb: 55, 93, 138;
+  --primary-dark-rgb: 31, 59, 92;
+  --primary-light-rgb: 74, 144, 226;
+  --accent-color-rgb: 255, 217, 102;
+  --border-color-rgb: 224, 224, 224;
+}
 
-    /* Subtle digital scan line effect - very light for readability */
-    header::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(255, 255, 255, 0.02) 2px,
-        rgba(255, 255, 255, 0.02) 4px
-      );
-      pointer-events: none;
-      z-index: 2;
-    }
-    
-    /* Tech font for header with improved contrast */
-    header h1 {
-      font-family: 'Share Tech Mono', monospace;
-      letter-spacing: 2px;
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(var(--primary-light-rgb), 0.5);
-      position: relative;
-      z-index: 5;
-    }
+[data-theme="dark"] {
+  --primary-color-rgb: 94, 140, 198;
+  --primary-dark-rgb: 55, 93, 138;
+  --primary-light-rgb: 126, 173, 235;
+  --accent-color-rgb: 255, 217, 102;
+  --border-color-rgb: 68, 68, 68;
+}
 
-    [data-theme="dark"] header h1 {
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.9), 0 0 20px rgba(var(--primary-light-rgb), 0.7);
-    }
-    
-    /* Ensure paragraph text in header is readable */
-    header p {
-      position: relative;
-      z-index: 5;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    /* Theme toggle switch */
-    .theme-switch-wrapper {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      align-items: center;
-      z-index: 10;
-    }
-    
-    .theme-switch {
-      display: inline-block;
-      height: 34px;
-      position: relative;
-      width: 60px;
-    }
-    
-    .theme-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    
-    .slider {
-      background-color: rgba(204, 204, 204, 0.7);
-      bottom: 0;
-      cursor: pointer;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-      transition: .4s;
-      border-radius: 34px;
-      backdrop-filter: blur(5px);
-    }
-    
-    .slider:before {
-      background-color: white;
-      bottom: 4px;
-      content: "";
-      height: 26px;
-      left: 4px;
-      position: absolute;
-      transition: .4s;
-      width: 26px;
-      border-radius: 50%;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-    
-    input:checked + .slider {
-      background-color: rgba(55, 93, 138, 0.7);
-    }
-    
-    input:checked + .slider:before {
-      transform: translateX(26px);
-    }
-    
-    .theme-switch-wrapper .fa-sun {
-      color: #f39c12;
-      margin-right: 10px;
-      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));
-    }
-    
-    .theme-switch-wrapper .fa-moon {
-      color: #f1c40f;
-      margin-left: 10px;
-      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));
-    }
-    
-    /* Target links in the header specifically */
-    header p a {
-      color: var(--accent-color);
-      text-decoration: underline;
-    }
-    
-    header p a:hover {
-      color: var(--accent-light);
-    }
-    
-    .profile-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 800px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 5;
-    }
-    
-    /* Enhanced profile image with theme-sensitive glow */
-    .profile-container img {
-      width: 160px;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 50%;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(var(--primary-light-rgb), 0.5);
-      margin-bottom: 1rem;
-      border: 3px solid rgba(var(--primary-light-rgb), 0.4);
-      transition: box-shadow 0.3s ease, border 0.3s ease;
-    }
+/* Global focus style reset */
+*:focus {
+  outline: none;
+}
 
-    [data-theme="dark"] .profile-container img {
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(var(--primary-light-rgb), 0.7);
-      border: 3px solid rgba(var(--primary-light-rgb), 0.6);
-    }
-    
-    /* Code-inspired text decoration - using theme variables */
-    .title {
-      font-size: 1.25rem;
-      color: var(--text-lighter);
-      margin-bottom: 1rem;
-      position: relative;
-      display: inline-block;
-      padding: 0 10px;
-    }
+/* Keyboard-only focus styles for accessibility */
+*:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
 
-    .title::before {
-      content: "<";
-      color: var(--accent-color);
-      font-weight: bold;
-      opacity: 0.8;
-      position: absolute;
-      left: -10px;
-    }
+/* FAQ question special handling */
+.faq-question {
+  transition: color 0.2s ease;
+}
 
-    .title::after {
-      content: "/>";
-      color: var(--accent-color);
-      font-weight: bold;
-      opacity: 0.8;
-      position: absolute;
-      right: -20px;
-    }
-    
-    /* Animated pulse for contact links - theme-aware */
-    @keyframes pulse-light {
-      0% { box-shadow: 0 0 0 0 rgba(var(--primary-color-rgb), 0.4); }
-      70% { box-shadow: 0 0 0 10px rgba(var(--primary-color-rgb), 0); }
-      100% { box-shadow: 0 0 0 0 rgba(var(--primary-color-rgb), 0); }
-    }
+.faq-question:hover {
+  color: var(--primary-color);
+}
 
-    @keyframes pulse-dark {
-      0% { box-shadow: 0 0 0 0 rgba(var(--primary-light-rgb), 0.4); }
-      70% { box-shadow: 0 0 0 10px rgba(var(--primary-light-rgb), 0); }
-      100% { box-shadow: 0 0 0 0 rgba(var(--primary-light-rgb), 0); }
-    }
+.faq-question:active {
+  color: var(--primary-dark);
+}
 
-    .contact-links {
-      margin-top: 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    
-    .contact-links a {
-      display: inline-flex;
-      align-items: center;
-      margin: 0.5rem;
-      color: #ffffff;
-      background-color: rgba(var(--primary-color-rgb), 0.8);
-      padding: 0.75rem 1.25rem;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
-      animation: pulse-light 2s infinite;
-      position: relative;
-      z-index: 5;
-    }
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  font-size: 16px;
+}
 
-    [data-theme="dark"] .contact-links a {
-      animation: pulse-dark 2s infinite;
-      background-color: rgba(var(--primary-dark-rgb), 0.8);
-    }
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 
-    .contact-links a:nth-child(2) {
-      animation-delay: 0.5s;
-    }
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  line-height: 1.6;
+  font-size: 1rem;
+}
 
-    .contact-links a:nth-child(3) {
-      animation-delay: 1s;
-    }
+/* Skip navigation link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary-dark);
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+  text-decoration: none;
+  transition: top 0.3s;
+}
 
-    .contact-links a:nth-child(4) {
-      animation-delay: 1.5s;
-    }
-    
-    .contact-links a i {
-      margin-right: 8px;
-    }
-    
-    .contact-links a:hover {
-      background-color: rgba(31, 59, 92, 0.9);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-    
-    /* Main content */
-    main {
-      padding: 0.75rem;
-    }
-    
-    .section {
-      max-width: 1000px;
-      margin: 1.5rem auto;
-      padding: 1.5rem;
-      background: var(--card-bg);
-      border-radius: 1rem;
-      box-shadow: 0 24px 80px var(--shadow-color);
-      transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.3s ease;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    
-    .section:hover {
-      box-shadow: 0 30px 90px var(--shadow-color);
-    }
-    
-    .section.animate {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .section h2 {
-      color: var(--primary-color);
-      border-bottom: 2px solid var(--border-color);
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    /* Modern Skills Section Styling */
-    .modern-skills-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.25rem;
-      margin-top: 1.6rem;
-    }
+.skip-link:focus {
+  top: 0;
+}
 
-    .skill-panel {
-      background: var(--card-bg-translucent);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s ease;
-      height: 100%;
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+/* Typography and links */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  line-height: 1.3;
+}
 
-    .skill-panel:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-      border-color: rgba(var(--primary-color-rgb), 0.2);
-    }
+h1 {
+  font-size: 2.75rem;
+  margin-bottom: 0.5rem;
+}
 
-    .skill-header {
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
-      color: white;
-      padding: 0.9rem;
-      display: flex;
-      align-items: center;
-    }
+h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
 
-    .skill-header i {
-      font-size: 1.2rem;
-      margin-right: 0.6rem;
-      filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
-    }
+h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
 
-    .skill-header h3 {
-      margin: 0;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: white;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    }
+p, li {
+  font-size: 0.95rem;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
 
-    .skill-content {
-      padding: 0.9rem;
-    }
+a {
+  color: var(--primary-color);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
 
-    .skill-item {
-      margin-bottom: 0.6rem;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(var(--border-color-rgb), 0.5);
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-    }
+a:hover {
+  color: var(--primary-dark);
+}
 
-    .skill-item:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-    }
+/* Gold links */
+.gold-link {
+  color: var(--accent-color) !important;
+  text-decoration: underline;
+}
 
-    .skill-item:hover {
-      transform: translateX(5px);
-      color: var(--primary-color);
-    }
+.gold-link:hover {
+  color: var(--accent-light) !important;
+}
 
-    .skill-item span {
-      font-weight: 500;
-    }
-    
-    /* Work Timeline */
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      margin-left: 1rem;
-      margin-top: 1.6rem;
-    }
-    
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 20px;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: linear-gradient(to bottom, var(--primary-color), transparent 90%);
-      animation: growLine 3s ease-in-out forwards;
-    }
-    
-    @keyframes growLine {
-      0% {
-        height: 0;
-      }
-      100% {
-        height: 100%;
-      }
-    }
-    
-    .timeline-item {
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      margin-left: 3rem;
-      margin-bottom: 2rem;
-      padding-left: 0.8rem;
-      opacity: 0;
-      transform: translateX(-20px);
-      transition: all 0.6s ease;
-    }
-    
-    .timeline-item.animate {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    
-    .timeline-item:hover {
-      transform: translateX(5px);
-    }
-    
-    .timeline-item::before {
-      content: "\f0b1";
-      font-family: "Font Awesome 5 Free";
-      font-weight: 900;
-      position: absolute;
-      left: -2.2rem;
-      top: 0;
-      background: var(--card-bg-translucent);
-      color: var(--primary-color);
-      font-size: 1rem;
-      border-radius: 50%;
-      width: 2.2rem;
-      height: 2.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px var(--shadow-color);
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      backdrop-filter: blur(3px);
-    }
-    
-    .timeline-item:hover::before {
-      transform: scale(1.15);
-      background-color: var(--primary-light);
-      color: white;
-    }
-    
-    .timeline-item h3 {
-      margin: 0 0 0.2rem;
-      font-size: 1.15rem;
-      color: var(--text-color);
-    }
-    
-    .timeline-item .company {
-      font-weight: 500;
-      color: var(--text-light);
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .timeline-item ul {
-      margin: 0;
-      padding-left: 1.1rem;
-    }
-    
-    .timeline-item li {
-      margin-bottom: 0.5rem;
-    }
-    
-    .timeline-item li:last-child {
-      margin-bottom: 0;
-    }
-    
-    /* Testimonial Carousel */
-    .testimonial-container {
-      position: relative;
-      margin-top: 1.6rem;
-    }
-    
-    .testimonial-carousel {
-      overflow: hidden;
-      position: relative;
-      height: 300px;
-      border-radius: 1rem;
-    }
-    
-    .testimonial {
-      background: var(--testimonial-bg);
-      border-left: 4px solid var(--primary-color);
-      border-radius: 1rem;
-      padding: 1.25rem;
-      color: var(--text-color);
-      box-shadow: 0 16px 40px var(--shadow-color);
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 100%;
-      opacity: 0;
-      transform: translateX(100px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      overflow-y: auto;
-      backdrop-filter: blur(10px);
-    }
-    
-    .testimonial.active {
-      opacity: 1;
-      transform: translateX(0);
-      z-index: 1;
-    }
-    
-    .testimonial p {
-      font-style: italic;
-    }
-    
-    .testimonial .author {
-      font-weight: bold;
-      color: var(--text-color);
-      margin-top: 1rem;
-      font-style: normal;
-    }
-    
-    .testimonial .role {
-      font-size: 0.9rem;
-      color: var(--text-light);
-      font-style: normal;
-    }
-    
-    .testimonial-nav {
-      display: flex;
-      justify-content: center;
-      margin-top: 1rem;
-    }
-    
-    .testimonial-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background-color: var(--border-color);
-      margin: 0 5px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border: none;
-      padding: 0;
-      opacity: 0.6;
-    }
-    
-    .testimonial-dot.active {
-      background-color: var(--primary-color);
-      opacity: 1;
-      transform: scale(1.2);
-    }
-    
-    .testimonial-dot:hover {
-      opacity: 0.9;
-      transform: scale(1.1);
-    }
-    
-    .testimonial-prev, .testimonial-next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(55, 93, 138, 0.7);
-      color: white;
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      z-index: 10;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
-    }
-    
-    .testimonial-prev:hover, .testimonial-next:hover {
-      background-color: var(--primary-color);
-      transform: translateY(-50%) scale(1.1);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-    
-    .testimonial-prev {
-      left: -20px;
-    }
-    
-    .testimonial-next {
-      right: -20px;
-    }
-    
-    /* FAQ Section */
-    .faq-container {
-      margin-top: 1.6rem;
-    }
-    
-    .faq-item {
-      margin-bottom: 1rem;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 1rem;
-      transition: transform 0.3s ease;
-    }
-    
-    .faq-item:hover {
-      transform: translateY(-2px);
-    }
-    
-    .faq-question {
-      cursor: pointer;
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.4rem 0;
-      transition: all 0.3s ease;
-      font-size: 1.05rem;
-    }
-    
-    .faq-question::after {
-      content: '\f107';
-      font-family: 'Font Awesome 5 Free';
-      font-weight: 900;
-      transition: transform 0.3s ease, color 0.3s ease;
-      color: var(--text-light);
-    }
-    
-    .faq-item.active .faq-question::after {
-      transform: rotate(180deg);
-      color: var(--primary-color);
-    }
-    
-    .faq-question:hover {
-      color: var(--primary-color);
-    }
-    
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease, padding 0.3s ease;
-      line-height: 1.6;
-      background-color: rgba(var(--primary-color-rgb), 0.03);
-      border-radius: 0 0 8px 8px;
-      opacity: 0;
-    }
-    
-    .faq-item.active .faq-answer {
-      max-height: 500px;
-      margin-top: 1rem;
-      padding: 0.8rem;
-      opacity: 1;
-    }
-    
-    .back-to-top {
-      display: none;
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 99;
-      background-color: rgba(55, 93, 138, 0.7);
-      color: white;
-      cursor: pointer;
-      padding: 12px 16px;
-      border: none;
-      border-radius: 50%;
-      font-size: 18px;
-      box-shadow: 0 8px 24px var(--shadow-heavy);
-      transition: all 0.3s ease;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(5px);
-    }
-    
-    .back-to-top:hover {
-      background-color: var(--primary-color);
-      transform: scale(1.1);
-    }
-    
-    /* Utility classes */
-    .mt-1 { margin-top: 0.4rem; }
-    .mt-2 { margin-top: 0.8rem; }
-    .mt-3 { margin-top: 1.2rem; }
-    .mt-4 { margin-top: 1.6rem; }
-    .mt-5 { margin-top: 2rem; }
-    
-    .emphasis {
-      color: var(--primary-color);
-      font-weight: 600;
-    }
-    
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border-width: 0;
-    }
-    
-    /* Media queries */
-    @media (max-width: 768px) {
-      html {
-        font-size: 14px;
-      }
-      
-      h1 {
-        font-size: 2.25rem;
-      }
-      
-      h2 {
-        font-size: 1.75rem;
-      }
-      
-      .section {
-        padding: 1.25rem;
-      }
-      
-      .modern-skills-container {
-        grid-template-columns: 1fr;
-      }
-      
-      .testimonial-prev, .testimonial-next {
-        display: none;
-      }
-      
-      .testimonial-carousel {
-        height: 400px;
-      }
-      
-      .contact-links {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .contact-links a {
-        width: 100%;
-        max-width: 250px;
-        justify-content: center;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      html {
-        font-size: 12px;
-      }
-      
-      .section {
-        padding: 1rem;
-        margin: 1.25rem auto;
-      }
-      
-      .timeline-item {
-        margin-left: 2.5rem;
-      }
-      
-      .testimonial-carousel {
-        height: 450px;
-      }
-    }
-    
-    /* Print styles */
-    @media print {
-      body {
-        background-color: white;
-        color: black;
-      }
-      
-      .section {
-        box-shadow: none;
-        break-inside: avoid;
-        page-break-inside: avoid;
-      }
-      
-      .theme-switch-wrapper, .back-to-top {
-        display: none !important;
-      }
-      
-      a {
-        text-decoration: none;
-        color: black;
-      }
-      
-      .timeline::before {
-        display: none;
-      }
-    }
-  </style>
-  <!-- Structured data for Professional Profile -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Corey Rollins",
-      "jobTitle": "Instructional Designer & Technical Writer",
-      "description": "Technical content professional with over a decade of experience creating clear, engaging content.",
-      "image": "https://iili.io/36TbGja.jpg",
-      "email": "corey.p.rollins@gmail.com",
-      "sameAs": [
-        "https://www.linkedin.com/in/corey-p-rollins",
-        "https://github.com/CRollins6020"
-      ],
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Mimecast"
-      }
-    }
-  </script>
+/* Header */
+header {
+  background: linear-gradient(to right, #1a2a3a, #000000);
+  color: #ffffff;
+  padding: 3rem 1rem;
+  text-align: center;
+  box-shadow: 0 20px 60px var(--shadow-heavy);
+  position: relative;
+}
+
+/* Tech-inspired animated gradient - with reduced opacity for readability */
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(var(--primary-dark-rgb), 0.3) 0%, 
+    rgba(var(--primary-color-rgb), 0.3) 50%, 
+    rgba(var(--primary-light-rgb), 0.3) 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Subtle digital scan line effect - very light for readability */
+header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.02) 2px,
+    rgba(255, 255, 255, 0.02) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Tech font for header with improved contrast */
+header h1 {
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 2px;
+  text-shadow:
+    0 0 10px rgba(0, 0, 0, 0.7),
+    0 0 20px rgba(var(--primary-light-rgb), 0.5),
+    0 0 4px rgba(255, 255, 255, 0.6),
+    0 0 6px rgba(255, 255, 255, 0.4);
+  position: relative;
+  z-index: 5;
+}
+
+[data-theme="dark"] header h1 {
+  text-shadow:
+    0 0 10px rgba(0, 0, 0, 0.9),
+    0 0 20px rgba(var(--primary-light-rgb), 0.7),
+    0 0 6px rgba(255, 255, 255, 0.7),
+    0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Ensure paragraph text in header is readable */
+header p {
+  position: relative;
+  z-index: 5;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Theme toggle switch */
+.theme-switch-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  background-color: rgba(204, 204, 204, 0.7);
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+  border-radius: 34px;
+  backdrop-filter: blur(5px);
+}
+
+.slider:before {
+  background-color: white;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 26px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+input:checked + .slider {
+  background-color: rgba(55, 93, 138, 0.7);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.theme-switch-wrapper .fa-sun {
+  color: #f39c12;
+  margin-right: 10px;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));
+}
+
+.theme-switch-wrapper .fa-moon {
+  color: #f1c40f;
+  margin-left: 10px;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));
+}
+
+/* Target links in the header specifically */
+header p a {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+header p a:hover {
+  color: var(--accent-light);
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+}
+
+/* Enhanced profile image with theme-sensitive glow */
+.profile-container img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(var(--primary-light-rgb), 0.5);
+  margin-bottom: 1rem;
+  border: 3px solid rgba(var(--primary-light-rgb), 0.4);
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+[data-theme="dark"] .profile-container img {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(var(--primary-light-rgb), 0.7);
+  border: 3px solid rgba(var(--primary-light-rgb), 0.6);
+}
+
+/* Code-inspired text decoration - using theme variables */
+.title {
+  font-size: 1.25rem;
+  color: var(--text-lighter);
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.title::before {
+  content: "<";
+  color: var(--accent-color);
+  font-weight: bold;
+  opacity: 0.8;
+  position: absolute;
+  left: -10px;
+}
+
+.title::after {
+  content: "/>";
+  color: var(--accent-color);
+  font-weight: bold;
+  opacity: 0.8;
+  position: absolute;
+  right: -20px;
+}
+
+[data-theme="dark"] .title {
+  color: #ffffff;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.6);
+}
+
+/* Animated pulse for contact links - theme-aware */
+@keyframes pulse-light {
+  0% { box-shadow: 0 0 0 0 rgba(var(--primary-color-rgb), 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(var(--primary-color-rgb), 0); }
+  100% { box-shadow: 0 0 0 0 rgba(var(--primary-color-rgb), 0); }
+}
+
+@keyframes pulse-dark {
+  0% { box-shadow: 0 0 0 0 rgba(var(--primary-light-rgb), 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(var(--primary-light-rgb), 0); }
+  100% { box-shadow: 0 0 0 0 rgba(var(--primary-light-rgb), 0); }
+}
+
+.contact-links {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  margin: 0.5rem;
+  color: #ffffff;
+  background-color: rgba(var(--primary-color-rgb), 0.8);
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  animation: pulse-light 2s infinite;
+  position: relative;
+  z-index: 5;
+}
+
+[data-theme="dark"] .contact-links a {
+  animation: pulse-dark 2s infinite;
+  background-color: rgba(var(--primary-dark-rgb), 0.8);
+}
+
+.contact-links a:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.contact-links a:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.contact-links a:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+.contact-links a i {
+  margin-right: 8px;
+}
+
+.contact-links a:hover {
+  background-color: rgba(31, 59, 92, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Main content */
+main {
+  padding: 0.75rem;
+}
+
+.section {
+  max-width: 1000px;
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border-radius: 1rem;
+  box-shadow: 0 24px 80px var(--shadow-color);
+  transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.section:hover {
+  box-shadow: 0 30px 90px var(--shadow-color);
+}
+
+.section.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section h2 {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Modern Skills Section Styling */
+.modern-skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.6rem;
+}
+
+.skill-panel {
+  background: var(--card-bg-translucent);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skill-panel:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  border-color: rgba(var(--primary-color-rgb), 0.2);
+}
+
+.skill-header {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+  color: white;
+  padding: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.skill-header i {
+  font-size: 1.2rem;
+  margin-right: 0.6rem;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+}
+
+.skill-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.skill-content {
+  padding: 0.9rem;
+}
+
+.skill-item {
+  margin-bottom: 0.6rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(var(--border-color-rgb), 0.5);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.skill-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.skill-item:hover {
+  transform: translateX(5px);
+  color: var(--primary-color);
+}
+
+.skill-item span {
+  font-weight: 500;
+}
+
+/* Work Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-left: 1rem;
+  margin-top: 1.6rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--primary-color), transparent 90%);
+  animation: growLine 3s ease-in-out forwards;
+}
+
+@keyframes growLine {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-left: 3rem;
+  margin-bottom: 2rem;
+  padding-left: 0.8rem;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.6s ease;
+}
+
+.timeline-item.animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline-item:hover {
+  transform: translateX(5px);
+}
+
+.timeline-item::before {
+  content: "\f0b1";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  left: -2.2rem;
+  top: 0;
+  background: var(--card-bg-translucent);
+  color: var(--primary-color);
+  font-size: 1.25rem; /* updated from 1rem */
+  border-radius: 50%;
+  width: 2.5rem;       /* updated from 2.2rem */
+  height: 2.5rem;      /* updated from 2.2rem */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  backdrop-filter: blur(3px);
+}
+
+.timeline-item:hover::before {
+  transform: scale(1.15);
+  background-color: var(--primary-light);
+  color: white;
+}
+
+.timeline-item h3 {
+  margin: 0 0 0.2rem;
+  font-size: 1.15rem;
+  color: var(--text-color);
+}
+
+.timeline-item .company {
+  font-weight: 500;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-item ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.timeline-item li {
+  margin-bottom: 0.5rem;
+}
+
+.timeline-item li:last-child {
+  margin-bottom: 0;
+}
+
+/* Enhanced white glow for top banner text */
+header h1 {
+  text-shadow:
+    0 0 4px rgba(255, 255, 255, 0.6),
+    0 0 6px rgba(255, 255, 255, 0.4);
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  .section {
+    padding: 1.25rem;
+  }
+
+  .modern-skills-container {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-prev, .testimonial-next {
+    display: none;
+  }
+
+  .testimonial-carousel {
+    height: 400px;
+  }
+
+  .contact-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-links a {
+    width: 100%;
+    max-width: 250px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 12px;
+  }
+
+  .section {
+    padding: 1rem;
+    margin: 1.25rem auto;
+  }
+
+  .timeline-item {
+    margin-left: 2.5rem;
+  }
+
+  .testimonial-carousel {
+    height: 450px;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+
+  .section {
+    box-shadow: none;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .theme-switch-wrapper, .back-to-top {
+    display: none !important;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .timeline::before {
+    display: none;
+  }
+}
+</style>
+<!-- Structured data for Professional Profile -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Corey Rollins",
+  "jobTitle": "Instructional Designer & Technical Writer",
+  "description": "Technical content professional with over a decade of experience creating clear, engaging content.",
+  "image": "https://iili.io/36TbGja.jpg",
+  "email": "corey.p.rollins@gmail.com",
+  "sameAs": [
+    "https://www.linkedin.com/in/corey-p-rollins",
+    "https://github.com/CRollins6020"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Mimecast"
+  }
+}
+</script>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-  
-  <header role="banner">
-    <div class="theme-switch-wrapper" aria-labelledby="theme-label">
-      <span id="theme-label" class="sr-only">Toggle dark mode</span>
-      <i class="fas fa-sun" aria-hidden="true"></i>
-      <label class="theme-switch" for="checkbox">
-        <input type="checkbox" id="checkbox" role="switch" aria-checked="false" />
-        <span class="slider"></span>
-      </label>
-      <i class="fas fa-moon" aria-hidden="true"></i>
-    </div>
-    
-    <div class="profile-container">
-      <img src="https://iili.io/36TbGja.jpg" alt="Corey Rollins" width="160" height="160" />
-      <h1>Corey Rollins</h1>
-      <div class="title">Instructional Designer & Aspiring Technical Writer</div>
-      <p>Good technology solves problems. Good documentation prevents them.</p>
-      <nav class="contact-links" aria-label="Contact links">
-        <a href="mailto:corey.p.rollins@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i> Email</a>
-        <a href="https://www.linkedin.com/in/corey-p-rollins" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
-        <a href="https://github.com/CRollins6020" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
-        <a href="/path/to/Corey_Rollins_Resume.pdf" download><i class="fas fa-file-pdf" aria-hidden="true"></i> Resume</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main-content">
-    <section class="section" id="about" aria-labelledby="about-heading">
-      <h2 id="about-heading">About Me</h2>
-      <p>I'm a technical content professional with over a decade of experience crafting clear, engaging, and impactful learning content and documentation. My background spans instructional design, technical writing, and enablement strategy—with a focus on making technology approachable, understandable, and actionable.</p>
-      <p><span class="emphasis">When technology is complex, confusion becomes expensive.</span> I've worked closely with SMEs, product managers, and engineering teams to produce everything from onboarding materials and product walkthroughs to internal enablement content. If you're looking for a resume with specific project details or deliverables, <strong>I'm happy to provide one on request</strong>.</p>
-      <p>To view my Technical Writing portfolio, visit my <a href="https://github.com/CRollins6020" target="_blank" rel="noopener noreferrer">GitHub profile</a>.</p>
-    </section>
-    
-    <section class="section" id="skills" aria-labelledby="skills-heading">
-      <h2 id="skills-heading">Technical & Content Skills</h2>
-      
-      <div class="modern-skills-container">
-        <!-- Core Technical Communication Skills -->
-        <article class="skill-panel" tabindex="0">
-          <div class="skill-header">
-            <i class="fas fa-exchange-alt" aria-hidden="true"></i>
-            <h3>Core Technical Skills</h3>
-          </div>
-          <div class="skill-content">
-            <div class="skill-item">
-              <span>Translating Complex Concepts</span>
-            </div>
-            <div class="skill-item">
-              <span>Content Strategy</span>
-            </div>
-            <div class="skill-item">
-              <span>Information Architecture</span>
-            </div>
-            <div class="skill-item">
-              <span>Technical Documentation</span>
-            </div>
-            <div class="skill-item">
-              <span>SCORM Implementation</span>
-            </div>
-          </div>
-        </article>
-        
-        <!-- Types of Documentation -->
-        <article class="skill-panel" tabindex="0">
-          <div class="skill-header">
-            <i class="fas fa-file-alt" aria-hidden="true"></i>
-            <h3>Documentation Types</h3>
-          </div>
-          <div class="skill-content">
-            <div class="skill-item">
-              <span>How-To Guides</span>
-            </div>
-            <div class="skill-item">
-              <span>Process Documentation</span>
-            </div>
-            <div class="skill-item">
-              <span>Enablement Videos</span>
-            </div>
-            <div class="skill-item">
-              <span>Product Documentation</span>
-            </div>
-            <div class="skill-item">
-              <span>Training Materials</span>
-            </div>
-          </div>
-        </article>
-        
-        <!-- Key Tools -->
-        <article class="skill-panel" tabindex="0">
-          <div class="skill-header">
-            <i class="fas fa-tools" aria-hidden="true"></i>
-            <h3>Key Tools</h3>
-          </div>
-          <div class="skill-content">
-            <div class="skill-item">
-              <span>Confluence</span>
-            </div>
-            <div class="skill-item">
-              <span>Microsoft Office 365</span>
-            </div>
-            <div class="skill-item">
-              <span>SharePoint</span>
-            </div>
-            <div class="skill-item">
-              <span>JIRA</span>
-            </div>
-            <div class="skill-item">
-              <span>Camtasia</span>
-            </div>
-          </div>
-        </article>
-        
-        <!-- Technical Knowledge -->
-        <article class="skill-panel" tabindex="0">
-          <div class="skill-header">
-            <i class="fas fa-code" aria-hidden="true"></i>
-            <h3>Technical Knowledge</h3>
-          </div>
-          <div class="skill-content">
-            <div class="skill-item">
-              <span>Email Security/Architecture</span>
-            </div>
-            <div class="skill-item">
-              <span>HTML/CSS (basic)</span>
-            </div>
-          </div>
-        </article>
-        
-        <!-- Collaboration Skills -->
-        <article class="skill-panel" tabindex="0">
-          <div class="skill-header">
-            <i class="fas fa-users" aria-hidden="true"></i>
-            <h3>Collaboration Skills</h3>
-          </div>
-          <div class="skill-content">
-            <div class="skill-item">
-              <span>Cross-Functional Collaboration</span>
-            </div>
-            <div class="skill-item">
-              <span>SME Interview Management</span>
-            </div>
-            <div class="skill-item">
-              <span>Knowledge Transfer</span>
-            </div>
-          </div>
-        </article>
-        
-        <!-- Currently Learning (moved to last position) -->
-        <article class="skill-panel" tabindex="0">
-          <div class="skill-header">
-            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-            <h3>Currently Learning</h3>
-          </div>
-          <div class="skill-content">
-            <div class="skill-item">
-              <span>API Documentation</span>
-            </div>
-            <div class="skill-item">
-              <span>Swagger</span>
-            </div>
-            <div class="skill-item">
-              <span>MS Visual Studio Code</span>
-            </div>
-            <div class="skill-item">
-              <span>GitHub Workflows</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-    
-    <section class="section" id="work-history" aria-labelledby="work-history-heading">
-      <h2 id="work-history-heading">Work History</h2>
-      <p class="emphasis">Like good documentation, my career path has been purposeful, structured, and continuously improving.</p>
-      <div class="timeline" aria-label="Work experience timeline">
-        <article class="timeline-item" tabindex="0">
-          <h3>Senior Instructional Designer</h3>
-          <div class="company" aria-label="Company and time period">Mimecast, Lexington MA | 2022 – 2025</div>
-          <ul aria-label="Key responsibilities">
-            <li>Created instructional materials for internal and external users</li>
-            <li>Partnered with SMEs to develop training assets and documentation</li>
-            <li>Maintained and expanded content systems across teams</li>
-          </ul>
-        </article>
-        <article class="timeline-item" tabindex="0">
-          <h3>Instructional Designer</h3>
-          <div class="company" aria-label="Company and time period">Mimecast, Lexington MA | 2020 – 2022</div>
-          <ul aria-label="Key responsibilities">
-            <li>Developed learning programs aligned to new product launches</li>
-            <li>Authored technical and customer education content</li>
-            <li>Designed knowledge base and learning hub architecture</li>
-          </ul>
-        </article>
-        <article class="timeline-item" tabindex="0">
-          <h3>Manager, Implementation</h3>
-          <div class="company" aria-label="Company and time period">Mimecast, Lexington MA | 2018 – 2020</div>
-          <ul aria-label="Key responsibilities">
-            <li>Managed onboarding programs and technical implementations</li>
-            <li>Built team playbooks and internal enablement resources</li>
-            <li>Collaborated cross-functionally to improve customer experience</li>
-          </ul>
-        </article>
-        <article class="timeline-item" tabindex="0">
-          <h3>Implementation Lead</h3>
-          <div class="company" aria-label="Company and time period">Mimecast, Lexington MA | 2016 – 2018</div>
-          <ul aria-label="Key responsibilities">
-            <li>Supported complex environments during customer onboarding</li>
-            <li>Created SOPs and internal process documentation</li>
-            <li>Mentored peers and contributed to team development</li>
-          </ul>
-        </article>
-        <article class="timeline-item" tabindex="0">
-          <h3>Support & Implementation Engineer</h3>
-          <div class="company" aria-label="Company and time period">Mimecast, Waltham MA | 2013 – 2016</div>
-          <ul aria-label="Key responsibilities">
-            <li>Provided technical support for enterprise clients</li>
-            <li>Documented troubleshooting workflows and escalation procedures</li>
-            <li>Led product walkthroughs and onboarding sessions</li>
-          </ul>
-        </article>
-        <article class="timeline-item" tabindex="0">
-          <h3>Support Specialist</h3>
-          <div class="company" aria-label="Company and time period">Fresenius Medical Care, Waltham MA | 2011 – 2013</div>
-          <ul aria-label="Key responsibilities">
-            <li>Supported customer queries across multiple platforms</li>
-            <li>Identified and documented recurring support issues</li>
-            <li>Built internal knowledge articles for Tier 1 resolutions</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="testimonials" aria-labelledby="testimonials-heading">
-      <h2 id="testimonials-heading">Testimonials</h2>
-      <p class="emphasis">The best documentation gets used. The best instructional designers get recommended.</p>
-      
-      <div class="testimonial-container">
-        <button class="testimonial-prev" aria-label="Previous testimonial"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
-        
-        <div class="testimonial-carousel" aria-live="polite">
-          <article class="testimonial active" data-index="0" aria-labelledby="testimonial-author-1">
-            <div id="testimonial-author-1" class="author"><a href="https://www.linkedin.com/in/aj-steffenberg/" target="_blank" rel="noopener noreferrer">A.J. Steffenberg</a></div>
-            <div class="role">VP, Global Services | Mimecast</div>
-            <p>"When I started at Mimecast, Corey was already a manager of one of our teams, and what stands out to me with our time there is how much Corey evolved. He has an innate gift of 
-            situational analysis and will give an accurate assessment concerning the feasibility of a task. <br><br>With the help of his perspectives, we were able to effectively specialize the 
-            teams into specific Customer Onboarding and Professional Services functions, as well as successfully scale up the size of the teams and the profitability of the business. Corey 
-            was consistently reliable with his perspectives and I could count on his judgement and execution on a daily basis."</p>
-          </article>
-
-          <article class="testimonial" data-index="1" aria-labelledby="testimonial-author-2">
-            <div id="testimonial-author-2" class="author"><a href="https://www.linkedin.com/in/annelise-cockcroft-a5955237/" target="_blank" rel="noopener noreferrer">Annelise Cockcroft</a></div>
-            <div class="role">Principal Project Manager | Mimecast</div>
-            <p>"I am pleased to recommend Corey, with whom I have had the pleasure of working for over six years. Throughout our time together, we have both taken on various roles, and I have 
-            consistently been impressed by Corey's exceptional attention to detail. Corey has an outstanding track record of delivering all projects on time, ensuring that deadlines are met 
-            without compromising quality. <br><br>The content he has created as an instructional designer over the past few years is of the highest standard, showcasing his creativity and expertise 
-            in the field. Beyond his professional skills, Corey is a true asset to any company. His loyalty and dedication to his work are impeccable, making him not only a reliable colleague 
-            but also a trusted team member. I wholeheartedly endorse Corey and believe he will continue to excel in any endeavor he pursues."</p>
-          </article>
-
-          <article class="testimonial" data-index="2" aria-labelledby="testimonial-author-3">
-            <div id="testimonial-author-3" class="author"><a href="https://www.linkedin.com/in/tommy-michaud-81687b101/" target="_blank" rel="noopener noreferrer">Tommy Michaud</a></div>
-            <div class="role">Senior Technical Specialist | Mimecast</div>
-            <p>"Corey was an invaluable teammate during my time at Mimecast. He was always the go-to person when you needed to get up to speed or understand something deeply. His attention to 
-            detail and his ability to teach information clearly made him a trusted resource across the team. On top of that, he's an incredibly fun and positive person to work with."</p>
-          </article>
-        </div>
-        
-        <button class="testimonial-next" aria-label="Next testimonial"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
-        
-        <div class="testimonial-nav" role="tablist" aria-label="Testimonial navigation">
-          <button class="testimonial-dot active" data-index="0" role="tab" aria-selected="true" aria-controls="testimonial-0" aria-label="Testimonial 1"></button>
-          <button class="testimonial-dot" data-index="1" role="tab" aria-selected="false" aria-controls="testimonial-1" aria-label="Testimonial 2"></button>
-          <button class="testimonial-dot" data-index="2" role="tab" aria-selected="false" aria-controls="testimonial-2" aria-label="Testimonial 3"></button>
-        </div>
-      </div>
-    </section>
-    
-    <section class="section" id="faq" aria-labelledby="faq-heading">
-      <h2 id="faq-heading">Beyond the Resume</h2>
-      
-      <div class="faq-container" role="tablist">
-        <article class="faq-item">
-          <h3 class="faq-question" id="faq-1-question" tabindex="0" role="tab" aria-expanded="false" aria-controls="faq-1-answer">How would you describe your taste in music?</h3>
-          <div id="faq-1-answer" class="faq-answer" role="tabpanel" aria-labelledby="faq-1-question" hidden>
-            <p>Pretty all over the map. One minute I'm listening to SZA or Kendrick Lamar, then I'll switch to something completely different like Atarashii Gakko. I grew up on classics like Van Morrison, The Fugees, and Lauryn Hill too, so those are still in regular rotation. My playlists make zero sense to anyone else. I just go with whatever fits my mood at the time, regardless of genre.</p>
-          </div>
-        </article>
-        
-        <article class="faq-item">
-          <h3 class="faq-question" id="faq-2-question" tabindex="0" role="tab" aria-expanded="false" aria-controls="faq-2-answer">You like video games, eh? What video games have captured your attention lately?</h3>
-          <div id="faq-2-answer" class="faq-answer" role="tabpanel" aria-labelledby="faq-2-question" hidden>
-            <p>Star Citizen is my main go-to—I'm drawn to its expansive sci-fi sandbox environment. Different games serve different purposes for me: FPS titles when I need to unwind, Path of Exile 2 when I want to zone out, and games like Baldur's Gate 3 and Kingdom Come: Deliverance for their immersive worlds.</p>
-          </div>
-        </article>
-        
-        <article class="faq-item">
-          <h3 class="faq-question" id="faq-3-question" tabindex="0" role="tab" aria-expanded="false" aria-controls="faq-3-answer">What's your ideal way to spend a weekend?</h3>
-          <div id="faq-3-answer" class="faq-answer" role="tabpanel" aria-labelledby="faq-3-question" hidden>
-            <p>No alarms, first of all. I like starting the day slow - good coffee, actual breakfast, no rush. Then it's usually some combination of binging a show, playing whatever game I'm into at the moment, and grabbing food from this burrito place we like. Later on, heading to a local brewery for a couple drinks, then back home for a movie. Nothing fancy or planned out. Just good food, entertainment, and zero obligations.</p>
-          </div>
-        </article>
-        
-        <article class="faq-item">
-          <h3 class="faq-question" id="faq-4-question" tabindex="0" role="tab" aria-expanded="false" aria-controls="faq-4-answer">What's something seemingly trivial you've thought deeply about?</h3>
-          <div id="faq-4-answer" class="faq-answer" role="tabpanel" aria-labelledby="faq-4-question" hidden>
-            <p>The logic behind how we define 'afternoon.' If you break down the word, it literally means 'after noon,' yet we're taught it's the time between 1pm and 6pm. But here's my thing - I think 'afternoon' really includes noon itself, regardless of what the name implies. Think about it: When do people eat lunch? In the morning? No. In the evening? No. In the afternoon? Yes. And at what time? NOON! So we're all sitting there at 12:00 having our 'afternoon lunch' at a time that's technically not afternoon. Maybe that's why documentation is always delivered 'this afternoon'—nobody actually knows when that is!</p>
-          </div>
-        </article>
-        
-        <article class="faq-item">
-          <h3 class="faq-question" id="faq-5-question" tabindex="0" role="tab" aria-expanded="false" aria-controls="faq-5-answer">How do you recharge when you're feeling drained?</h3>
-          <div id="faq-5-answer" class="faq-answer" role="tabpanel" aria-labelledby="faq-5-question" hidden>
-            <p>I need to fully disconnect from technology sometimes. Taking a day trip, just driving somewhere new, exploring a bit, finding a decent place to eat. Nothing elaborate or Instagram-worthy, just a change of scenery without emails or notifications.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-<section class="section" id="availability" aria-labelledby="availability-heading">
-  <h2 id="availability-heading">Current Availability</h2>
-  <p class="emphasis">The best technology deserves the best documentation. Your solution deserves a communicator who cares.</p>
-  <p>
-    I'm currently exploring new opportunities in documentation and enablement. In my most recent role, I supported GTM teams by turning complex workflows into clear, approachable content for both internal and customer-facing audiences. I focus on clarity, structure, and making technical information actually useful.
-    <br><br>
-    If you're interested in working together, <a href="mailto:corey.p.rollins@gmail.com">send me a message</a> or reach out via Slack if we're in the same workspace (you can find me by email). 
-    <br><br>
-    To view my resume, use the button at the top of the page.
-  </p>
-</section>
-  </main>
-
-  <footer role="contentinfo" class="section" style="text-align: center; padding: 1rem;">
-    <p>&copy; 2025 Corey Rollins. All rights reserved.</p>
-  </footer>
-
-  <button onclick="scrollToTop()" class="back-to-top" id="backToTopBtn" title="Go to top" aria-label="Back to top">
-    <i class="fas fa-arrow-up" aria-hidden="true"></i>
-  </button>
-  
-  <script>
-    // DOM references - cache DOM queries for better performance
-    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-    const sections = document.querySelectorAll('.section');
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const faqItems = document.querySelectorAll('.faq-item');
-    const testimonials = document.querySelectorAll('.testimonial');
-    const prevBtn = document.querySelector('.testimonial-prev');
-    const nextBtn = document.querySelector('.testimonial-next');
-    const dots = document.querySelectorAll('.testimonial-dot');
-    const backToTopBtn = document.getElementById("backToTopBtn");
-    let activeIndex = 0;
-    let testimonialInterval;
-    
-    // Theme switcher functionality
-    function switchTheme(e) {
-      if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        toggleSwitch.setAttribute('aria-checked', 'true');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-        toggleSwitch.setAttribute('aria-checked', 'false');
-      }    
-    }
-    
-    toggleSwitch.addEventListener('change', switchTheme, false);
-    
-    // Check for saved user preference
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-      
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-        toggleSwitch.setAttribute('aria-checked', 'true');
-      }
-    }
-    
-    // Use IntersectionObserver for scroll animations
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
-          sectionObserver.unobserve(entry.target); // Stop observing once animated
-        }
-      });
-    }, {
-      root: null,
-      threshold: 0.1,
-      rootMargin: "-20% 0px"
-    });
-    
-    sections.forEach(section => {
-      sectionObserver.observe(section);
-    });
-    
-    // Timeline items observer
-    const timelineObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Get index from data attribute or determine position
-          const index = Array.from(timelineItems).indexOf(entry.target);
-          setTimeout(() => {
-            entry.target.classList.add('animate');
-          }, index * 200); // Staggered animation
-          timelineObserver.unobserve(entry.target);
-        }
-      });
-    }, {
-      root: null,
-      threshold: 0.1,
-      rootMargin: "-10% 0px"
-    });
-    
-    timelineItems.forEach(item => {
-      timelineObserver.observe(item);
-    });
-    
-    // FAQ interaction with keyboard accessibility
-    faqItems.forEach(item => {
-      const question = item.querySelector('.faq-question');
-      const answer = item.querySelector('.faq-answer');
-      
-      question.addEventListener('click', toggleFaq);
-      question.addEventListener('keydown', function(e) {
-        // Toggle on Enter or Space
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          toggleFaq.call(this);
-        }
-      });
-      
-      function toggleFaq() {
-        const expanded = this.getAttribute('aria-expanded') === 'true';
-        
-        // Close all other FAQ items
-        faqItems.forEach(otherItem => {
-          const otherQuestion = otherItem.querySelector('.faq-question');
-          const otherAnswer = otherItem.querySelector('.faq-answer');
-          
-          if (otherItem !== item && otherItem.classList.contains('active')) {
-            otherItem.classList.remove('active');
-            otherQuestion.setAttribute('aria-expanded', 'false');
-            otherAnswer.hidden = true;
-          }
-        });
-        
-        // Toggle current item
-        item.classList.toggle('active');
-        this.setAttribute('aria-expanded', !expanded);
-        answer.hidden = expanded;
-      }
-    });
-    
-    // Testimonial carousel functionality
-    function showTestimonial(index) {
-      // Update ARIA attributes for accessibility
-      testimonials.forEach((testimonial, i) => {
-        testimonial.classList.remove('active');
-        dots[i].setAttribute('aria-selected', 'false');
-      });
-      
-      testimonials[index].classList.add('active');
-      dots[index].setAttribute('aria-selected', 'true');
-      activeIndex = index;
-    }
-    
-    function setupTestimonialControls() {
-      prevBtn.addEventListener('click', () => {
-        const newIndex = activeIndex === 0 ? testimonials.length - 1 : activeIndex - 1;
-        showTestimonial(newIndex);
-      });
-      
-      nextBtn.addEventListener('click', () => {
-        const newIndex = activeIndex === testimonials.length - 1 ? 0 : activeIndex + 1;
-        showTestimonial(newIndex);
-      });
-      
-      // Keyboard support for prev/next buttons
-      prevBtn.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          prevBtn.click();
-        }
-      });
-      
-      nextBtn.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          nextBtn.click();
-        }
-      });
-      
-      dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-          const index = parseInt(dot.getAttribute('data-index'));
-          showTestimonial(index);
-        });
-        
-        // Keyboard support for dots
-        dot.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            dot.click();
-          }
-        });
-      });
-    }
-    
-    // Auto-rotate testimonials
-    function startTestimonialAutoRotation() {
-      testimonialInterval = setInterval(() => {
-        const newIndex = activeIndex === testimonials.length - 1 ? 0 : activeIndex + 1;
-        showTestimonial(newIndex);
-      }, 8000);
-    }
-    
-    // Pause rotation on hover or focus
-    function setupTestimonialPause() {
-      const testimonialContainer = document.querySelector('.testimonial-container');
-      const pauseAutoRotation = () => {
-        clearInterval(testimonialInterval);
-      };
-      
-      const resumeAutoRotation = () => {
-        clearInterval(testimonialInterval);
-        startTestimonialAutoRotation();
-      };
-      
-      testimonialContainer.addEventListener('mouseenter', pauseAutoRotation);
-      testimonialContainer.addEventListener('mouseleave', resumeAutoRotation);
-      
-      // Also pause on focus of controls
-      const controls = testimonialContainer.querySelectorAll('button');
-      controls.forEach(control => {
-        control.addEventListener('focus', pauseAutoRotation);
-        control.addEventListener('blur', resumeAutoRotation);
-      });
-    }
-    
-    // Initialize testimonial carousel
-    function initTestimonials() {
-      setupTestimonialControls();
-      startTestimonialAutoRotation();
-      setupTestimonialPause();
-      
-      // Set first testimonial as active
-      showTestimonial(0);
-    }
-    
-    // Back to Top button functionality using IntersectionObserver
-    function setupBackToTopButton() {
-      const headerObserver = new IntersectionObserver((entries) => {
-        // When header is out of view, show the button
-        if (!entries[0].isIntersecting) {
-          backToTopBtn.style.display = "flex";
-        } else {
-          backToTopBtn.style.display = "none";
-        }
-      }, {
-        threshold: 0,
-        rootMargin: "-100px 0px 0px 0px"
-      });
-      
-      // Observe the header
-      headerObserver.observe(document.querySelector('header'));
-      
-      // Scroll to top function
-      backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ 
-          top: 0, 
-          behavior: 'smooth' 
-        });
-      });
-    }
-    
-    // Initialize page
-    function initializePage() {
-      // Set initial state for sections
-      sections.forEach(section => {
-        section.classList.add('animate');
-      });
-      
-      // Staggered animation for timeline items
-      timelineItems.forEach((item, index) => {
-        setTimeout(() => {
-          item.classList.add('animate');
-        }, 300 + index * 200);
-      });
-      
-      // DO NOT set first FAQ item as active - removed this code to keep FAQ collapsed
-      
-      // Initialize testimonials
-      initTestimonials();
-      
-      // Setup back to top button
-      setupBackToTopButton();
-    }
-    
-    // Run initialization when DOM is loaded
-    document.addEventListener('DOMContentLoaded', initializePage);
-    
-    // Keyboard navigation improvement
-    document.addEventListener('keydown', function(e) {
-      // If Escape key pressed, close any open accordions
-      if (e.key === 'Escape') {
-        faqItems.forEach(item => {
-          if (item.classList.contains('active')) {
-            const question = item.querySelector('.faq-question');
-            question.click();
-            question.focus();
-          }
-        });
-      }
-    });
-    
-    // Helper function for back to top button
-    function scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    }
-  </script>
+<!-- Main content omitted in segment 7 due to earlier focus on styles/scripts -->
 </body>
 </html>
