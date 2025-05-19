@@ -45,6 +45,8 @@
       --focus-outline: 3px solid #4a90e2;
       --header-gradient-start: rgba(31, 59, 92, 0.97);
       --header-gradient-end: rgba(55, 93, 138, 0.95);
+      --transition-speed: 0.5s;
+      --transition-easing: cubic-bezier(0.16, 1, 0.3, 1);
     }
     
     [data-theme="dark"] {
@@ -85,6 +87,23 @@
       --border-color-rgb: 68, 68, 68;
     }
     
+    /* Global transition styles */
+    a, h1, h2, h3, h4, h5, h6, p, li, th, td, label, input, select, textarea, 
+    .testimonial, .faq-item, .timeline-item, .skill-panel, .skill-item, .emphasis {
+      transition: color var(--transition-speed) ease, 
+                background-color var(--transition-speed) ease,
+                border-color var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
+    }
+    
+    /* Style for theme transition */
+    .theme-transition * {
+      transition: background-color 0.5s ease, 
+                 color 0.5s ease,
+                 border-color 0.5s ease,
+                 box-shadow 0.5s ease !important;
+    }
+    
     /* Global focus style reset */
     *:focus {
       outline: none;
@@ -112,6 +131,7 @@
     /* Base styles */
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 2rem;
       box-sizing: border-box;
       font-size: 16px;
     }
@@ -125,7 +145,7 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color 0.5s ease, color 0.5s ease;
       line-height: 1.6;
       font-size: 1rem;
     }
@@ -495,7 +515,10 @@
       background: var(--card-bg);
       border-radius: 1rem;
       box-shadow: 0 24px 80px var(--shadow-color);
-      transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.3s ease;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+                  opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+                  box-shadow 0.5s ease,
+                  background-color 0.5s ease;
       opacity: 0;
       transform: translateY(30px);
     }
@@ -630,7 +653,7 @@
       padding-left: 0.8rem;
       opacity: 0;
       transform: translateX(-20px);
-      transition: all 0.6s ease;
+      transition: all 0.8s var(--transition-easing);
     }
     
     .timeline-item.animate {
@@ -728,7 +751,10 @@
       height: 100%;
       opacity: 0;
       transform: translateX(100px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  background-color 0.5s ease,
+                  color 0.5s ease;
       overflow-y: auto;
       backdrop-filter: blur(10px);
     }
@@ -737,6 +763,17 @@
       opacity: 1;
       transform: translateX(0);
       z-index: 1;
+    }
+    
+    /* For slideshow direction awareness */
+    .testimonial.slide-left {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    
+    .testimonial.slide-right {
+      transform: translateX(100px);
+      opacity: 0;
     }
     
     .testimonial p {
@@ -1372,9 +1409,11 @@
       let activeIndex = 0;
       let testimonialInterval;
       
-      
       // Theme switcher functionality
       function switchTheme(e) {
+        // Add transition class to body for smoother transition
+        document.body.classList.add('theme-transition');
+        
         if (e.target.checked) {
           document.documentElement.setAttribute('data-theme', 'dark');
           localStorage.setItem('theme', 'dark');
@@ -1384,6 +1423,11 @@
           localStorage.setItem('theme', 'light');
           toggleSwitch.setAttribute('aria-checked', 'false');
         }    
+        
+        // Remove transition class after transition completes
+        setTimeout(() => {
+          document.body.classList.remove('theme-transition');
+        }, 1000);
       }
       
       if (toggleSwitch) {
@@ -1479,13 +1523,21 @@
       });
       
       // Testimonial carousel functionality
-      function showTestimonial(index) {
-        // Update ARIA attributes for accessibility
+      function showTestimonial(index, direction = 'next') {
+        const currentIndex = activeIndex;
+        
+        // Update ARIA attributes for accessibility and add direction-aware classes
         testimonials.forEach((testimonial, i) => {
           testimonial.classList.remove('active');
+          testimonial.classList.remove('slide-left', 'slide-right');
           dots[i].setAttribute('aria-selected', 'false');
           dots[i].classList.remove('active');
         });
+        
+        // Add slide direction based on navigation direction
+        if (currentIndex !== index) {
+          testimonials[currentIndex].classList.add(direction === 'next' ? 'slide-left' : 'slide-right');
+        }
         
         testimonials[index].classList.add('active');
         dots[index].setAttribute('aria-selected', 'true');
@@ -1499,7 +1551,7 @@
         
         testimonialInterval = setInterval(() => {
           const newIndex = (activeIndex + 1) % testimonials.length;
-          showTestimonial(newIndex);
+          showTestimonial(newIndex, 'next');
         }, 5000); // 5 seconds between slides
       }
       
@@ -1507,7 +1559,7 @@
         if (prevBtn) {
           prevBtn.addEventListener('click', function() {
             const newIndex = activeIndex === 0 ? testimonials.length - 1 : activeIndex - 1;
-            showTestimonial(newIndex);
+            showTestimonial(newIndex, 'prev');
             // Reset the timer to give user time to read
             clearInterval(testimonialInterval);
             startTestimonialRotation();
@@ -1517,7 +1569,7 @@
         if (nextBtn) {
           nextBtn.addEventListener('click', function() {
             const newIndex = (activeIndex + 1) % testimonials.length;
-            showTestimonial(newIndex);
+            showTestimonial(newIndex, 'next');
             // Reset the timer to give user time to read
             clearInterval(testimonialInterval);
             startTestimonialRotation();
@@ -1528,7 +1580,8 @@
         dots.forEach(dot => {
           dot.addEventListener('click', function() {
             const index = parseInt(this.getAttribute('data-index'), 10);
-            showTestimonial(index);
+            const direction = index > activeIndex ? 'next' : 'prev';
+            showTestimonial(index, direction);
             // Reset the timer to give user time to read
             clearInterval(testimonialInterval);
             startTestimonialRotation();
