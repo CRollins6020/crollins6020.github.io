@@ -2,33 +2,33 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Corey Rollins - Instructional Designer & Technical Writer with over a decade of experience creating clear, engaging documentation and learning solutions." />
-  <meta name="keywords" content="instructional design, technical writing, documentation, learning materials, content strategy" />
-  <meta name="author" content="Corey Rollins" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Corey Rollins - Instructional Designer & Technical Writer with over a decade of experience creating clear, engaging documentation and learning solutions.">
+  <meta name="keywords" content="instructional design, technical writing, documentation, learning materials, content strategy">
+  <meta name="author" content="Corey Rollins">
   
   <!-- Open Graph / Social Media -->
-  <meta property="og:title" content="Corey Rollins | Instructional Designer & Technical Writer" />
-  <meta property="og:description" content="Technical content professional specializing in creating clear, actionable documentation and learning experiences." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://yourwebsite.com" />
-  <meta property="og:image" content="https://iili.io/36TbGja.jpg" />
+  <meta property="og:title" content="Corey Rollins | Instructional Designer & Technical Writer">
+  <meta property="og:description" content="Technical content professional specializing in creating clear, actionable documentation and learning experiences.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://crollins6020.github.io">
+  <meta property="og:image" content="https://iili.io/36TbGja.jpg">
   
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Corey Rollins | Instructional Designer & Technical Writer" />
-  <meta name="twitter:description" content="Technical content professional specializing in creating clear, actionable documentation and learning experiences." />
-  <meta name="twitter:image" content="https://iili.io/36TbGja.jpg" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Corey Rollins | Instructional Designer & Technical Writer">
+  <meta name="twitter:description" content="Technical content professional specializing in creating clear, actionable documentation and learning experiences.">
+  <meta name="twitter:image" content="https://iili.io/36TbGja.jpg">
   
   <title>Corey Rollins | Instructional Designer & Technical Writer</title>
-  <!-- Fixed the invalid defer attribute on link element -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- Add the tech font -->
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   
-  <!-- TODO: #1 Move this CSS to an external stylesheet file for better organization and performance -->
+  <!-- External Stylesheets -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
+    /* CSS Variables for Theming */
     :root {
       --primary-color: #375D8A;
       --primary-dark: #1f3b5c;
@@ -50,8 +50,16 @@
       --header-gradient-end: rgba(55, 93, 138, 0.95);
       --transition-speed: 0.5s;
       --transition-easing: cubic-bezier(0.16, 1, 0.3, 1);
+      
+      /* RGB Values for rgba usage */
+      --primary-color-rgb: 55, 93, 138;
+      --primary-dark-rgb: 31, 59, 92;
+      --primary-light-rgb: 74, 144, 226;
+      --accent-color-rgb: 255, 217, 102;
+      --border-color-rgb: 224, 224, 224;
     }
     
+    /* Dark Theme Variables */
     [data-theme="dark"] {
       --primary-color: #5e8cc6;
       --primary-dark: #375D8A;
@@ -69,20 +77,8 @@
       --shadow-heavy: rgba(0, 0, 0, 0.8);
       --testimonial-bg: rgba(37, 51, 65, 0.9);
       --focus-outline: 3px solid #FFD966;
-      --header-gradient-start: rgba(31, 59, 92, 0.97);
-      --header-gradient-end: rgba(55, 93, 138, 0.95);
-    }
-    
-    /* Create RGB versions of colors for rgba usage */
-    :root {
-      --primary-color-rgb: 55, 93, 138;
-      --primary-dark-rgb: 31, 59, 92;
-      --primary-light-rgb: 74, 144, 226;
-      --accent-color-rgb: 255, 217, 102;
-      --border-color-rgb: 224, 224, 224;
-    }
-    
-    [data-theme="dark"] {
+      
+      /* RGB Values for Dark Theme */
       --primary-color-rgb: 94, 140, 198;
       --primary-dark-rgb: 55, 93, 138;
       --primary-light-rgb: 126, 173, 235;
@@ -90,7 +86,7 @@
       --border-color-rgb: 68, 68, 68;
     }
     
-    /* Global transition styles */
+    /* Global Transition Styles */
     a, h1, h2, h3, h4, h5, h6, p, li, th, td, label, input, select, textarea, 
     .testimonial, .timeline-item, .skill-panel, .skill-item, .emphasis {
       transition: color var(--transition-speed) ease, 
@@ -99,7 +95,7 @@
                 box-shadow var(--transition-speed) ease;
     }
     
-    /* Style for theme transition */
+    /* Theme Transition */
     .theme-transition * {
       transition: background-color 0.5s ease, 
                  color 0.5s ease,
@@ -107,18 +103,17 @@
                  box-shadow 0.5s ease !important;
     }
     
-    /* Global focus style reset */
+    /* Global Focus Styles */
     *:focus {
       outline: none;
     }
     
-    /* Keyboard-only focus styles for accessibility */
     *:focus-visible {
       outline: var(--focus-outline);
       outline-offset: 2px;
     }
     
-    /* Base styles */
+    /* Base Styles */
     html {
       scroll-behavior: smooth;
       scroll-padding-top: 2rem;
@@ -145,7 +140,7 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23FFFFFF' fill-opacity='0.8' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
     }
     
-    /* Skip navigation link for accessibility */
+    /* Accessibility */
     .skip-link {
       position: absolute;
       top: -40px;
@@ -162,7 +157,19 @@
       top: 0;
     }
     
-    /* Typography and links */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+    
+    /* Typography */
     h1, h2, h3, h4, h5, h6 {
       margin-top: 0;
       line-height: 1.3;
@@ -200,7 +207,7 @@
       color: var(--primary-dark);
     }
     
-    /* Gold links */
+    /* Gold Links */
     .gold-link {
       color: var(--accent-color) !important;
       text-decoration: underline;
@@ -210,7 +217,7 @@
       color: var(--accent-light) !important;
     }
     
-    /* Header */
+    /* Header Styles */
     header {
       background: linear-gradient(to right, #1a2a3a, #000000);
       color: #ffffff;
@@ -220,7 +227,7 @@
       position: relative;
     }
     
-    /* Tech-inspired animated gradient - with reduced opacity for readability */
+    /* Animated gradient background */
     header::before {
       content: "";
       position: absolute;
@@ -244,7 +251,7 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Subtle digital scan line effect - very light for readability */
+    /* Subtle scan line effect */
     header::after {
       content: "";
       position: absolute;
@@ -263,7 +270,7 @@
       z-index: 2;
     }
     
-    /* Tech font for header with improved contrast */
+    /* Header Typography */
     header h1 {
       font-family: 'Share Tech Mono', monospace;
       letter-spacing: 2px;
@@ -276,7 +283,6 @@
       text-shadow: 0 0 10px rgba(0, 0, 0, 0.9), 0 0 20px rgba(var(--primary-light-rgb), 0.7);
     }
     
-    /* Ensure paragraph text in header is readable */
     header p {
       position: relative;
       z-index: 5;
@@ -286,7 +292,7 @@
       margin-right: auto;
     }
     
-    /* Theme toggle switch */
+    /* Theme Toggle Switch */
     .theme-switch-wrapper {
       position: absolute;
       top: 20px;
@@ -355,16 +361,7 @@
       filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));
     }
     
-    /* Target links in the header specifically */
-    header p a {
-      color: var(--accent-color);
-      text-decoration: underline;
-    }
-    
-    header p a:hover {
-      color: var(--accent-light);
-    }
-    
+    /* Profile Container */
     .profile-container {
       display: flex;
       flex-direction: column;
@@ -375,7 +372,6 @@
       z-index: 5;
     }
     
-    /* Enhanced profile image with theme-sensitive glow */
     .profile-container img {
       width: 160px;
       height: 160px;
@@ -392,29 +388,26 @@
       border: 3px solid rgba(var(--primary-light-rgb), 0.6);
     }
     
-    /* Code-inspired text decoration - using theme variables */
+    /* Title Styling */
+    .title {
+      color: #ffffff !important;
+      display: inline;
+      position: relative;
+      text-shadow:
+        0 0 4px rgba(255, 255, 255, 0.6),
+        0 0 8px rgba(255, 255, 255, 0.4),
+        0 0 12px rgba(255, 255, 255, 0.3) !important;
+    }
 
-/* === Force white glowing title text with inline brackets === */
-.title {
-  color: #ffffff !important;
-  display: inline; /* keep everything on one line */
-  position: relative;
-  text-shadow:
-    0 0 4px rgba(255, 255, 255, 0.6),
-    0 0 8px rgba(255, 255, 255, 0.4),
-    0 0 12px rgba(255, 255, 255, 0.3) !important;
-}
-
-.title::before,
-.title::after {
-  color: #FFD966 !important;
-  text-shadow:
-    0 0 3px rgba(255, 217, 102, 0.6),
-    0 0 6px rgba(255, 217, 102, 0.4);
-  position: static !important;
-  margin: 0 4px;
-}
-
+    .title::before,
+    .title::after {
+      color: #FFD966 !important;
+      text-shadow:
+        0 0 3px rgba(255, 217, 102, 0.6),
+        0 0 6px rgba(255, 217, 102, 0.4);
+      position: static !important;
+      margin: 0 4px;
+    }
 
     .title::before {
       content: "<";
@@ -434,19 +427,7 @@
       right: -20px;
     }
     
-    /* Animated pulse for contact links - theme-aware */
-    @keyframes pulse-light {
-      0% { box-shadow: 0 0 0 0 rgba(var(--primary-color-rgb), 0.4); }
-      70% { box-shadow: 0 0 0 10px rgba(var(--primary-color-rgb), 0); }
-      100% { box-shadow: 0 0 0 0 rgba(var(--primary-color-rgb), 0); }
-    }
-
-    @keyframes pulse-dark {
-      0% { box-shadow: 0 0 0 0 rgba(var(--primary-light-rgb), 0.4); }
-      70% { box-shadow: 0 0 0 10px rgba(var(--primary-light-rgb), 0); }
-      100% { box-shadow: 0 0 0 0 rgba(var(--primary-light-rgb), 0); }
-    }
-
+    /* Contact Links */
     .contact-links {
       margin-top: 1.5rem;
       display: flex;
@@ -469,6 +450,18 @@
       animation: pulse-light 2s infinite;
       position: relative;
       z-index: 5;
+    }
+
+    @keyframes pulse-light {
+      0% { box-shadow: 0 0 0 0 rgba(var(--primary-color-rgb), 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(var(--primary-color-rgb), 0); }
+      100% { box-shadow: 0 0 0 0 rgba(var(--primary-color-rgb), 0); }
+    }
+
+    @keyframes pulse-dark {
+      0% { box-shadow: 0 0 0 0 rgba(var(--primary-light-rgb), 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(var(--primary-light-rgb), 0); }
+      100% { box-shadow: 0 0 0 0 rgba(var(--primary-light-rgb), 0); }
     }
 
     [data-theme="dark"] .contact-links a {
@@ -498,11 +491,12 @@
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
     
-    /* Main content */
+    /* Main Content Area */
     main {
       padding: 0.75rem;
     }
     
+    /* Section Styling */
     .section {
       max-width: 1000px;
       margin: 1.5rem auto;
@@ -534,7 +528,46 @@
       margin-bottom: 1rem;
     }
     
-    /* Modern Skills Section Styling */
+    /* Fancy Divider with Font Awesome Icon */
+    .fancy-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 75%;
+      margin: 1.5rem auto;
+      position: relative;
+    }
+    
+    .fancy-divider::before,
+    .fancy-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    }
+    
+    .fancy-divider i {
+      margin: 0 1rem;
+      color: var(--primary-color);
+      font-size: 1.2rem;
+      background: var(--card-bg);
+      border-radius: 50%;
+      width: 2.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .fancy-divider:hover i {
+      transform: rotate(360deg);
+      color: var(--accent-color);
+    }
+    
+    /* Skills Container */
     .modern-skills-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -617,26 +650,20 @@
       margin-top: 1.6rem;
     }
     
-
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 1.4rem; /* slightly left to align with icon center */
-  top: 0;
-  bottom: -2rem; /* extend past last item */
-  width: 4px;
-  background: linear-gradient(to bottom, var(--primary-color), transparent 90%);
-  animation: growLine 3s ease-in-out forwards;
-}
-
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 1.4rem;
+      top: 0;
+      bottom: -2rem;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--primary-color), transparent 90%);
+      animation: growLine 3s ease-in-out forwards;
+    }
     
     @keyframes growLine {
-      0% {
-        height: 0;
-      }
-      100% {
-        height: 100%;
-      }
+      0% { height: 0; }
+      100% { height: 100%; }
     }
     
     .timeline-item {
@@ -660,32 +687,26 @@
       transform: translateX(5px);
     }
     
-
-
-
-.timeline-item::before {
-  content: "\f0b1";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  position: absolute;
-  left: -2.75rem; /* nudged slightly more left */
-  top: 0;
-  background: var(--card-bg-translucent);
-  color: var(--primary-color);
-  font-size: 1.35rem;
-  border-radius: 50%;
-  width: 2.6rem;
-  height: 2.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px var(--shadow-color);
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  backdrop-filter: blur(3px);
-}
-
-
-
+    .timeline-item::before {
+      content: "\f0b1";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      position: absolute;
+      left: -2.75rem;
+      top: 0;
+      background: var(--card-bg-translucent);
+      color: var(--primary-color);
+      font-size: 1.35rem;
+      border-radius: 50%;
+      width: 2.6rem;
+      height: 2.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px var(--shadow-color);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      backdrop-filter: blur(3px);
+    }
     
     .timeline-item:hover::before {
       transform: scale(1.15);
@@ -760,7 +781,6 @@
       z-index: 1;
     }
     
-    /* For slideshow direction awareness */
     .testimonial.slide-left {
       transform: translateX(-100px);
       opacity: 0;
@@ -852,6 +872,7 @@
       right: -20px;
     }
     
+    /* Back to Top Button */
     .back-to-top {
       display: none;
       position: fixed;
@@ -880,7 +901,7 @@
       transform: scale(1.1);
     }
     
-    /* Footer contact links */
+    /* Footer Contact Section */
     .footer-contact {
       text-align: center;
       margin-bottom: 1.5rem;
@@ -918,31 +939,13 @@
       color: var(--primary-color);
     }
     
-    /* Utility classes */
-    .mt-1 { margin-top: 0.4rem; }
-    .mt-2 { margin-top: 0.8rem; }
-    .mt-3 { margin-top: 1.2rem; }
-    .mt-4 { margin-top: 1.6rem; }
-    .mt-5 { margin-top: 2rem; }
-    
+    /* Utility Classes */
     .emphasis {
       color: var(--primary-color);
       font-weight: 600;
     }
     
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border-width: 0;
-    }
-    
-    /* Footer styling - explicit centering */
+    /* Footer */
     .footer-center {
       display: flex;
       justify-content: center;
@@ -955,7 +958,7 @@
       margin: 0;
     }
     
-    /* Media queries */
+    /* Media Queries */
     @media (max-width: 768px) {
       html {
         font-size: 14px;
@@ -1022,7 +1025,7 @@
       }
     }
     
-    /* Print styles */
+    /* Print Styles */
     @media print {
       body {
         background-color: white;
@@ -1049,6 +1052,7 @@
       }
     }
   </style>
+  
   <!-- Structured data for Professional Profile -->
   <script type="application/ld+json">
     {
@@ -1078,14 +1082,14 @@
       <span id="theme-label" class="sr-only">Toggle dark mode</span>
       <i class="fas fa-sun" aria-hidden="true"></i>
       <label class="theme-switch" for="checkbox">
-        <input type="checkbox" id="checkbox" role="switch" aria-checked="false" />
+        <input type="checkbox" id="checkbox" role="switch" aria-checked="false">
         <span class="slider"></span>
       </label>
       <i class="fas fa-moon" aria-hidden="true"></i>
     </div>
     
     <div class="profile-container">
-      <img src="https://iili.io/36TbGja.jpg" alt="Corey Rollins" width="160" height="160" />
+      <img src="https://iili.io/36TbGja.jpg" alt="Corey Rollins" width="160" height="160">
       <h1>Corey Rollins</h1>
       <div class="title">Instructional Designer & Technical Writer</div>
       <p>Good technology solves problems. Good documentation prevents them.</p>
@@ -1093,120 +1097,125 @@
         <a href="mailto:corey.p.rollins@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i> Email</a>
         <a href="https://www.linkedin.com/in/corey-p-rollins" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
         <a href="https://github.com/CRollins6020" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
-              <a href="#" class="resume-download">
-      <i class="fas fa-file-download" aria-hidden="true"></i> Resume
-  </a>
+        <a href="#" class="resume-download">
+          <i class="fas fa-file-download" aria-hidden="true"></i> Resume
+        </a>
       </nav>
     </div>
   </header>
 
   <main id="main-content">
-<section class="section" id="about" aria-labelledby="about-heading">
-    <h2 id="about-heading">About Me</h2>
-    <p>I'm a technical content professional with over a decade of experience crafting clear, engaging, and impactful learning content and documentation. My background spans instructional design, technical writing, and enablement strategy—with a focus on making technology approachable, understandable, and actionable.</p>
-    <p><span class="emphasis">When technology is complex, confusion becomes expensive.</span> I've worked closely with SMEs, product managers, sales, and engineering teams to produce everything from onboarding materials and product walkthroughs to internal enablement content.</p>
-    <p>In my most recent role, I worked with go-to-market teams to turn complex systems and workflows into clear, approachable content for both internal users and external audiences. My work centers on structure, clarity, and making technical information truly useful.</p>
-    <br>
-    <p>For samples of my technical writing work, please click the GitHub button at the top of this page to access my portfolio.</p>
-  </section>
+    <section class="section" id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About Me</h2>
+      <p>I'm a Technical Writer and Instructional Designer with over 10 years of experience creating content that helps people understand and use complex systems and products. I write user guides, internal documentation, and training materials, and I also produce short educational videos to support product rollouts, troubleshooting workflows, onboarding, and internal training.</p>
+      <p>I work closely with product managers, engineers, and subject matter experts to turn technical concepts into clear, practical content for both technical and non-technical audiences. My focus is always on clarity, accuracy, and usefulness.</p>
+      <p>Alongside writing, I've developed SCORM-compliant eLearning modules and created more than 375 video and written assets that improved adoption and reduced support requests. I'm proficient with tools like Confluence, Articulate 360, and Camtasia to create effective learning materials.</p>
+      <p>I'm currently exploring new opportunities in documentation and enablement. I'm looking for roles where I can apply my skills in transforming complex technical information into clear, engaging content that helps users succeed.</p>
+      <p>I'm also active in Slack communities like <strong><em>The Enablement Squad</em></strong> and <strong><em>Write the Docs</em></strong>—feel free to reach out there if we're in the same space.</p>
+      <p>You can explore examples of my technical writing on <a href="https://github.com/CRollins6020/" target="_blank">GitHub</a>.</p>
+      
+      <div class="fancy-divider" aria-hidden="true">
+        <i class="fas fa-file-alt"></i>
+      </div>
+      
+      <p>Outside of work, you'll find me cooking in the kitchen, going to the movies, or attending concerts. My playlist rotates between hip-hop, lofi, alternative, indie rock, and various rap artists. I'm an animal lover with two cats, Hank and Gus, who oversee my home office. I enjoy building small web projects like this one as a creative outlet.</p>
+    </section>
     
-<section class="section" id="skills" aria-labelledby="skills-heading">
-  <h2 id="skills-heading">Technical & Content Skills</h2>
+    <section class="section" id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Technical & Content Skills</h2>
 
-  <div class="modern-skills-container">
+      <div class="modern-skills-container">
+        <!-- Core Technical Communication Skills -->
+        <article class="skill-panel" tabindex="0">
+          <div class="skill-header">
+            <i class="fas fa-exchange-alt" aria-hidden="true"></i>
+            <h3>Core Technical Skills</h3>
+          </div>
+          <div class="skill-content">
+            <div class="skill-item"><span>Technical Documentation</span></div>
+            <div class="skill-item"><span>Translating Complex Concepts</span></div>
+            <div class="skill-item"><span>Information Architecture</span></div>
+            <div class="skill-item"><span>Content Strategy</span></div>
+            <div class="skill-item"><span>eLearning Standards (SCORM)</span></div>
+          </div>
+        </article>
 
-    <!-- Core Technical Communication Skills -->
-    <article class="skill-panel" tabindex="0">
-      <div class="skill-header">
-        <i class="fas fa-exchange-alt" aria-hidden="true"></i>
-        <h3>Core Technical Skills</h3>
-      </div>
-      <div class="skill-content">
-        <div class="skill-item"><span>Technical Documentation</span></div>
-        <div class="skill-item"><span>Translating Complex Concepts</span></div>
-        <div class="skill-item"><span>Information Architecture</span></div>
-        <div class="skill-item"><span>Content Strategy</span></div>
-        <div class="skill-item"><span>eLearning Standards (SCORM)</span></div>
-      </div>
-    </article>
+        <!-- Types of Documentation -->
+        <article class="skill-panel" tabindex="0">
+          <div class="skill-header">
+            <i class="fas fa-file-alt" aria-hidden="true"></i>
+            <h3>Documentation Types</h3>
+          </div>
+          <div class="skill-content">
+            <div class="skill-item"><span>Product Documentation</span></div>
+            <div class="skill-item"><span>How-To Guides</span></div>
+            <div class="skill-item"><span>Process Documentation</span></div>
+            <div class="skill-item"><span>Training Materials</span></div>
+            <div class="skill-item"><span>Enablement Videos</span></div>
+          </div>
+        </article>
 
-    <!-- Types of Documentation -->
-    <article class="skill-panel" tabindex="0">
-      <div class="skill-header">
-        <i class="fas fa-file-alt" aria-hidden="true"></i>
-        <h3>Documentation Types</h3>
-      </div>
-      <div class="skill-content">
-        <div class="skill-item"><span>Product Documentation</span></div>
-        <div class="skill-item"><span>How-To Guides</span></div>
-        <div class="skill-item"><span>Process Documentation</span></div>
-        <div class="skill-item"><span>Training Materials</span></div>
-        <div class="skill-item"><span>Enablement Videos</span></div>
-      </div>
-    </article>
+        <!-- Key Tools -->
+        <article class="skill-panel" tabindex="0">
+          <div class="skill-header">
+            <i class="fas fa-tools" aria-hidden="true"></i>
+            <h3>Key Tools</h3>
+          </div>
+          <div class="skill-content">
+            <div class="skill-item"><span>Confluence</span></div>
+            <div class="skill-item"><span>GitHub</span></div>
+            <div class="skill-item"><span>Articulate 360</span></div>
+            <div class="skill-item"><span>Camtasia</span></div>
+            <div class="skill-item"><span>JIRA</span></div>
+          </div>
+        </article>
 
-    <!-- Key Tools -->
-    <article class="skill-panel" tabindex="0">
-      <div class="skill-header">
-        <i class="fas fa-tools" aria-hidden="true"></i>
-        <h3>Key Tools</h3>
-      </div>
-      <div class="skill-content">
-        <div class="skill-item"><span>Confluence</span></div>
-        <div class="skill-item"><span>GitHub</span></div>
-        <div class="skill-item"><span>Articulate 360</span></div>
-        <div class="skill-item"><span>Camtasia</span></div>
-        <div class="skill-item"><span>JIRA</span></div>
-      </div>
-    </article>
+        <!-- Technical Knowledge -->
+        <article class="skill-panel" tabindex="0">
+          <div class="skill-header">
+            <i class="fas fa-code" aria-hidden="true"></i>
+            <h3>Technical Knowledge</h3>
+          </div>
+          <div class="skill-content">
+            <div class="skill-item"><span>Markdown</span></div>
+            <div class="skill-item"><span>HTML / CSS (Basics)</span></div>
+            <div class="skill-item"><span>Git Fundamentals</span></div>
+            <div class="skill-item"><span>SaaS & Cloud-Based Architecture</span></div>
+            <div class="skill-item"><span>LMS Platforms & SCORM Integration</span></div>
+          </div>
+        </article>
 
-    <!-- Technical Knowledge -->
-    <article class="skill-panel" tabindex="0">
-      <div class="skill-header">
-        <i class="fas fa-code" aria-hidden="true"></i>
-        <h3>Technical Knowledge</h3>
-      </div>
-      <div class="skill-content">
-        <div class="skill-item"><span>Markdown</span></div>
-        <div class="skill-item"><span>HTML / CSS (Basics)</span></div>
-        <div class="skill-item"><span>Git Fundamentals</span></div>
-        <div class="skill-item"><span>SaaS & Cloud-Based Architecture</span></div>
-        <div class="skill-item"><span>LMS Platforms & SCORM Integration</span></div>
-      </div>
-    </article>
+        <!-- Collaboration Skills -->
+        <article class="skill-panel" tabindex="0">
+          <div class="skill-header">
+            <i class="fas fa-users" aria-hidden="true"></i>
+            <h3>Collaboration Skills</h3>
+          </div>
+          <div class="skill-content">
+            <div class="skill-item"><span>Cross-Functional Collaboration</span></div>
+            <div class="skill-item"><span>Stakeholder Communication</span></div>
+            <div class="skill-item"><span>SME Interviewing</span></div>
+            <div class="skill-item"><span>Knowledge Transfer</span></div>
+            <div class="skill-item"><span>Asynchronous Communication</span></div>
+          </div>
+        </article>
 
-    <!-- Collaboration Skills -->
-    <article class="skill-panel" tabindex="0">
-      <div class="skill-header">
-        <i class="fas fa-users" aria-hidden="true"></i>
-        <h3>Collaboration Skills</h3>
+        <!-- Currently Learning -->
+        <article class="skill-panel" tabindex="0">
+          <div class="skill-header">
+            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+            <h3>Currently Learning</h3>
+          </div>
+          <div class="skill-content">
+            <div class="skill-item"><span>API Documentation</span></div>
+            <div class="skill-item"><span>GitHub Workflows</span></div>
+            <div class="skill-item"><span>Swagger (basic spec authoring)</span></div>
+            <div class="skill-item"><span>Visual Studio Code</span></div>
+            <div class="skill-item"><span>AI-Assisted Web Development</span></div>
+          </div>
+        </article>
       </div>
-      <div class="skill-content">
-        <div class="skill-item"><span>Cross-Functional Collaboration</span></div>
-        <div class="skill-item"><span>Stakeholder Communication</span></div>
-        <div class="skill-item"><span>SME Interviewing</span></div>
-        <div class="skill-item"><span>Knowledge Transfer</span></div>
-        <div class="skill-item"><span>Asynchronous Communication</span></div>
-      </div>
-    </article>
-
-    <!-- Currently Learning -->
-    <article class="skill-panel" tabindex="0">
-      <div class="skill-header">
-        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-        <h3>Currently Learning</h3>
-      </div>
-      <div class="skill-content">
-        <div class="skill-item"><span>API Documentation</span></div>
-        <div class="skill-item"><span>GitHub Workflows</span></div>
-        <div class="skill-item"><span>Swagger (basic spec authoring)</span></div>
-        <div class="skill-item"><span>Visual Studio Code</span></div>
-        <div class="skill-item"><span>AI-Assisted Web Development</span></div>
-      </div>
-    </article>
-
-  </div>
-</section>
+    </section>
 
     <section class="section" id="work-history" aria-labelledby="work-history-heading">
       <h2 id="work-history-heading">Work History</h2>
@@ -1278,7 +1287,13 @@
         
         <div class="testimonial-carousel" aria-live="polite">
           <article class="testimonial active" data-index="0" aria-labelledby="testimonial-author-1">
-            <div id="testimonial-author-1" class="author"><a href="https://www.linkedin.com/in/aj-steffenberg/" target="_blank" rel="noopener noreferrer">A.J. Steffenberg</a></div>
+            <div id="testimonial-author-1" class="author"><a href="https://www.linkedin.com/in/sandra-cutler-2a803217/" target="_blank" rel="noopener noreferrer">Sandra Cutler</a></div>
+            <div class="role">Principal Customer Success Playbook Manager | iManage</div>
+            <p>"It was such a pleasure working with Corey on the Instructional Design team at Mimecast. His calm demeanor and collaborative spirit made him an invaluable team member. Corey consistently shared insights and ideas—whether introducing new technology or offering practical tips — that helped everyone work more efficiently. <br><br>What stands out most is his exceptional attention to detail, deep technical expertise, and creative approach. He has a rare talent for simplifying complex concepts, often leveraging AI and new technology to deliver results faster and smarter. He is a true asset to any team."</p>
+          </article>
+          
+          <article class="testimonial" data-index="1" aria-labelledby="testimonial-author-2">
+            <div id="testimonial-author-2" class="author"><a href="https://www.linkedin.com/in/aj-steffenberg/" target="_blank" rel="noopener noreferrer">A.J. Steffenberg</a></div>
             <div class="role">VP, Global Services | Mimecast</div>
             <p>"When I started at Mimecast, Corey was already a manager of one of our teams, and what stands out to me with our time there is how much Corey evolved. He has an innate gift of 
             situational analysis and will give an accurate assessment concerning the feasibility of a task. <br><br>With the help of his perspectives, we were able to effectively specialize the 
@@ -1286,8 +1301,8 @@
             was consistently reliable with his perspectives and I could count on his judgement and execution on a daily basis."</p>
           </article>
 
-          <article class="testimonial" data-index="1" aria-labelledby="testimonial-author-2">
-            <div id="testimonial-author-2" class="author"><a href="https://www.linkedin.com/in/annelise-cockcroft-a5955237/" target="_blank" rel="noopener noreferrer">Annelise Cockcroft</a></div>
+          <article class="testimonial" data-index="2" aria-labelledby="testimonial-author-3">
+            <div id="testimonial-author-3" class="author"><a href="https://www.linkedin.com/in/annelise-cockcroft-a5955237/" target="_blank" rel="noopener noreferrer">Annelise Cockcroft</a></div>
             <div class="role">Principal Project Manager | Mimecast</div>
             <p>"I am pleased to recommend Corey, with whom I have had the pleasure of working for over six years. Throughout our time together, we have both taken on various roles, and I have 
             consistently been impressed by Corey's exceptional attention to detail. Corey has an outstanding track record of delivering all projects on time, ensuring that deadlines are met 
@@ -1296,8 +1311,8 @@
             but also a trusted team member. I wholeheartedly endorse Corey and believe he will continue to excel in any endeavor he pursues."</p>
           </article>
 
-          <article class="testimonial" data-index="2" aria-labelledby="testimonial-author-3">
-            <div id="testimonial-author-3" class="author"><a href="https://www.linkedin.com/in/tommy-michaud-81687b101/" target="_blank" rel="noopener noreferrer">Tommy Michaud</a></div>
+          <article class="testimonial" data-index="3" aria-labelledby="testimonial-author-4">
+            <div id="testimonial-author-4" class="author"><a href="https://www.linkedin.com/in/tommy-michaud-81687b101/" target="_blank" rel="noopener noreferrer">Tommy Michaud</a></div>
             <div class="role">Senior Technical Specialist | Mimecast</div>
             <p>"Corey was an invaluable teammate during my time at Mimecast. He was always the go-to person when you needed to get up to speed or understand something deeply. His attention to 
             detail and his ability to teach information clearly made him a trusted resource across the team. On top of that, he's an incredibly fun and positive person to work with."</p>
@@ -1310,27 +1325,20 @@
           <button class="testimonial-dot active" data-index="0" role="tab" aria-selected="true" aria-controls="testimonial-0" aria-label="Testimonial 1"></button>
           <button class="testimonial-dot" data-index="1" role="tab" aria-selected="false" aria-controls="testimonial-1" aria-label="Testimonial 2"></button>
           <button class="testimonial-dot" data-index="2" role="tab" aria-selected="false" aria-controls="testimonial-2" aria-label="Testimonial 3"></button>
+          <button class="testimonial-dot" data-index="3" role="tab" aria-selected="false" aria-controls="testimonial-3" aria-label="Testimonial 4"></button>
         </div>
       </div>
     </section>
-    
-<section class="section" id="availability" aria-labelledby="availability-heading">
-  <h2 id="availability-heading">Current Availability</h2>
-  <p class="emphasis">The best technology deserves the best documentation. Your solution deserves a communicator who cares.</p>
-  <p>I'm currently exploring new opportunities in documentation and enablement. I'm looking for roles where I can apply my skills in transforming complex technical information into clear, engaging content that helps users succeed.</p>
-  <p>I'm also active in Slack communities like <a href="https://enablementsquad.com/" target="_blank" rel="noopener noreferrer"><em>The Enablement Squad</em></a> and <a href="https://www.writethedocs.org/" target="_blank" rel="noopener noreferrer"><em>Write the Docs</em></a>—feel free to reach out there if we're in the same space.</p>
-</section>
-
   </main>
 
-  <!-- New footer contact section before the actual footer -->
+  <!-- Footer contact section -->
   <div class="section footer-contact">
     <h3>Connect With Me</h3>
     <div class="footer-contact-links">
       <a href="mailto:corey.p.rollins@gmail.com"><i class="fas fa-envelope"></i> Email</a>
       <a href="https://www.linkedin.com/in/corey-p-rollins" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
       <a href="https://github.com/CRollins6020" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
-      <a href="#" class="resume-download"><i class="fas fa-file-download"></i> Download Resume</a>
+      <a href="#" class="resume-download"><i class="fas fa-file-download"></i> Resume</a>
     </div>
   </div>
 
@@ -1342,7 +1350,6 @@
     <i class="fas fa-arrow-up" aria-hidden="true"></i>
   </button>
   
-  <!-- TODO: Move this JavaScript to an external file for better organization and performance -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Track if download is in progress to prevent duplicates
